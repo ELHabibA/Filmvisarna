@@ -1,0 +1,11 @@
+.seat {
+    width: 40px;
+    height: 40px;
+    background-color: green;
+    border: 1px solid #000;
+    margin: 2px; /* Lägg till lite marginal för att separera rutorna lite */
+}
+
+.selected {
+    background-color: red;
+}
