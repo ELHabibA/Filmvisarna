@@ -1,11 +1,32 @@
-.seat {
-    width: 40px;
-    height: 40px;
-    background-color: green;
-    border: 1px solid #000;
-    margin: 2px; /* Lägg till lite marginal för att separera rutorna lite */
+.cinema-container {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
 }
 
-.selected {
-    background-color: red;
+.seat-row {
+    margin-bottom: 10px;
 }
+
+.seat {
+    width: 25px;
+    height: 40px; /* Adjusted to make the shape more rectangular like cinema seats */
+    margin: 5px;
+    border-radius: 3px 3px 10px 10px; /* Rounded bottom corners for seat shape */
+    background-color: #4CAF50; /* Green for available seats */
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Added a slight shadow for a 3D effect */
+}
+
+    .seat.booked {
+        background-color: #F44336; /* Red for booked seats */
+    }
+
+    .seat:hover {
+        background-color: #66BB6A; /* Slightly brighter green on hover for available seats */
+    }
+
+    .seat.booked:hover {
+        background-color: #EF5350; /* Slightly brighter red on hover for booked seats */
+    }
