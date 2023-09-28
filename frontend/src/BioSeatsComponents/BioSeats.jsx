@@ -2,35 +2,45 @@ import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import './BioSeats.css';
 
-function BioSeats() {
-    // Initialisera alla säten som obokade (false)
-    const initialSeats = Array(7).fill(null).map(() => Array(7).fill(false));
+const CinemaSeat = ({ isAvailable, toggleSeat }) => {
+    return (
+        <div
+            className={`seat ${isAvailable ? 'available' : 'booked'}`}
+            onClick={toggleSeat}
+        ></div>
+    );
+};
 
-    // State för alla säten
+function CinemaLayout() {
+    // Initialize all seats as available (true in this case, to match the first code's convention)
+    const initialSeats = Array(7).fill(null).map(() => Array(7).fill(true));
+
+    // State for all seats
     const [seats, setSeats] = useState(initialSeats);
 
-    // Hantera klick på ett säte
+    // Handle click on a seat
     const handleSeatClick = (i, j) => {
-        // Skapa en kopia av nuvarande säten
+        // Create a copy of the current seats
         const newSeats = seats.map(row => row.slice());
-        
-        // Växla bokningsstatus för det klickade sätet
+
+        // Toggle booking status for the clicked seat
         newSeats[i][j] = !newSeats[i][j];
-        
-        // Uppdatera state med de nya sätena
+
+        // Update state with the new seats
         setSeats(newSeats);
     };
 
     return (
-        <Container>
+        <Container className="container">
+            <h2 className="title">Bio BokingSeat</h2>
             {seats.map((row, i) => (
-                <Row key={i} className="no-gutters">
+                <Row key={i}>
                     {row.map((seat, j) => (
-                        <Col key={j} xs={1}>
-                            <div 
-                                className={`seat ${seat ? 'booked' : ''}`}
-                                onClick={() => handleSeatClick(i, j)}
-                            ></div>
+                        <Col key={j} xs={1} md="auto">
+                            <CinemaSeat
+                                isAvailable={seat}
+                                toggleSeat={() => handleSeatClick(i, j)}
+                            />
                         </Col>
                     ))}
                 </Row>
@@ -39,4 +49,4 @@ function BioSeats() {
     );
 }
 
-export default BioSeats;
+export default CinemaLayout;
