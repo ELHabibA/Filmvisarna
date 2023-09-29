@@ -1,13 +1,12 @@
-import { React } from 'react';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
-import './Navbar.css';
+import React from 'react';
+import { Navbar, Nav } from 'react-bootstrap';
 
 function BasicNavbar() {
   return (
-      <Navbar expand="lg">
-      <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+    <Navbar expand="lg">
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="autosize">
+        <Nav className="navbar-film">
           <Nav.Link href="#home">Hem</Nav.Link>
           <Nav.Link href="#movies">Filmer</Nav.Link>
           <Nav.Link href="#tickets">Biljetter</Nav.Link>
