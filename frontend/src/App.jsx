@@ -4,15 +4,15 @@ import "./sass/main.scss";
 // Import some Bootstrap components
 import MainMenu from './MainMenu';
 import { Container, Row, Col, Button } from 'react-bootstrap';
+import BookingForm from "./components/bookingform/bookingform";
 
 export default function App() {
   return <>
     <MainMenu />
-    <Container className="mt-5">
+    <Container className="mt-5 col-3 ">
       <Row>
         <Col>
-          <h1>Hello!</h1>
-          <p>There you are...</p>
+       <BookingForm/>
         </Col>
       </Row>
     </Container>
