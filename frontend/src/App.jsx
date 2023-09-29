@@ -11,8 +11,7 @@ export default function App() {
     <Container className="mt-5">
       <Row>
         <Col>
-          <h1>Hello!</h1>
-          <p>There you are...</p>
+          <Outlet />
         </Col>
       </Row>
     </Container>
