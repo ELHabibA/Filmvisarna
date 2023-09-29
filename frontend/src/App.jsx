@@ -17,6 +17,6 @@ export default function App() {
         </Col>
       </Row>
     </Container>
-    <Footer />
+    <footer><Footer /></footer>
   </>;
 }
