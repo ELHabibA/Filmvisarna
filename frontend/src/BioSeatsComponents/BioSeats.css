@@ -1,33 +1,33 @@
-.cinema-container {
-    background-color: #f0f0f0;
+/* Styling for the Saloon/Screen */
+.saloon-container {
+    background-color: #1E1E1E; /* Dark background for the container */
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 8px;
 }
 
-.seat-row {
-    margin-bottom: 10px;
+.screen {
+    background-color: #444444; /* Dark gray for the screen */
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
 }
 
-.seat {
-    width: 25px;
-    height: 40px; /* Adjusted to make the shape more rectangular like cinema seats */
-    margin: 5px;
-    border-radius: 3px 3px 10px 10px; /* Rounded bottom corners for seat shape */
-    background-color: #4CAF50; /* Green for available seats */
-    transition: background-color 0.3s ease;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Added a slight shadow for a 3D effect */
+/* Styling for the seat buttons */
+.btn-primary, .btn-secondary {
+    background-color: #8B6F47 !important; /* Antic dark gold color */
+    border-color: #8B6F47 !important;
 }
 
-    .seat.booked {
-        background-color: #F44336; /* Red for booked seats */
+    .btn-primary:hover, .btn-secondary:hover {
+        background-color: #9D7F58 !important; /* Slightly lighter shade for hover */
+        border-color: #9D7F58 !important;
     }
 
-    .seat:hover {
-        background-color: #66BB6A; /* Slightly brighter green on hover for available seats */
-    }
-
-    .seat.booked:hover {
-        background-color: #EF5350; /* Slightly brighter red on hover for booked seats */
-    }
+.btn:disabled {
+    background-color: #555555 !important; /* Dark gray indicating the seat is taken */
+    border-color: #555555 !important;
+}
 

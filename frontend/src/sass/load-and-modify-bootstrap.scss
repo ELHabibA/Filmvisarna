@@ -3,4 +3,6 @@
 $body-color: #eee;
 // $font-family-base: 'Roboto Slab';
 // Import Bootstrap
+$font-size-base: 1.2rem;
+$line-height-base:1.4;
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
