@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-// Importing the provided JSON data
 import auditoriumsData from "./SeatsData.js";
-import { Button, Form, Row, Col, Container } from "react-bootstrap";
+import { Button, Row, Col, Container } from "react-bootstrap";
 import "./BioSeats.css";
 
 function BioSeats() {
@@ -24,29 +23,33 @@ function BioSeats() {
     };
 
     const renderSeats = () => {
-        const rows = {};
-        auditoriumsData.forEach((seat) => {
-            if (!rows[seat.rowNumber]) {
-                rows[seat.rowNumber] = [];
-            }
-            rows[seat.rowNumber].push(seat);
-        });
+        const seatsPerRow = [8, 9, 10, 10, 10, 10, 12, 12];
+        const sortedAuditoriumData = auditoriumsData.sort((a, b) =>
+            a.rowNumber !== b.rowNumber ? a.rowNumber - b.rowNumber : a.seatNumber - b.seatNumber
+        );
 
-        return Object.values(rows).map((rowSeats, idx) => (
-            <Row key={idx} className="mb-2">
-                {rowSeats.map((seat) => (
-                    <Col key={seat.id} className="text-center">
-                        <Button
-                            variant={selectedSeats.includes(seat.id) ? "primary" : "secondary"}
-                            disabled={bookedTickets.includes(seat.id)}
-                            onClick={() => handleSeatSelection(seat.id)}
-                        >
-                            {seat.seatNumber}
-                        </Button>
-                    </Col>
-                ))}
-            </Row>
-        ));
+        let seatIndex = 0;
+
+        return seatsPerRow.map((numSeats, rowIndex) => {
+            const rowSeats = sortedAuditoriumData.slice(seatIndex, seatIndex + numSeats);
+            seatIndex += numSeats;
+
+            return (
+                <Row key={rowIndex} className="mb-2 center-seats">
+                    {rowSeats.map((seat) => (
+                        <Col key={seat.id} xs="auto" className="text-center">
+                            <Button
+                                variant={selectedSeats.includes(seat.id) ? "primary" : "secondary"}
+                                disabled={bookedTickets.includes(seat.id)}
+                                onClick={() => handleSeatSelection(seat.id)}
+                            >
+                                {seat.seatNumber}
+                            </Button>
+                        </Col>
+                    ))}
+                </Row>
+            );
+        });
     };
 
     return (

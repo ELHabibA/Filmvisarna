@@ -1,4 +1,10 @@
 /* Styling for the Saloon/Screen */
+
+.center-seats {
+    display: flex;
+    justify-content: center;
+}
+
 .saloon-container {
     background-color: #1E1E1E; /* Dark background for the container */
     padding: 20px;
