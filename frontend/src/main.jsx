@@ -18,6 +18,7 @@ export const pages = [
   // {path: '/', label: 'Startsida', element: <Main /> },
   { path: '/kontakt', label: 'Kontakta oss', element: <ContactUs /> },
   { path: '/boka', label: 'Boka', element: <Booking /> }
+  //{path: '/blimedlem', label: 'Bli Medlem', element: <BecomeMember />},
 ];
 
 const router = createBrowserRouter([
