@@ -3,16 +3,18 @@
 .center-seats {
     display: flex;
     justify-content: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
 }
 
 .saloon-container {
-    background-color: #1E1E1E; /* Dark background for the container */
+    background-color: #071b25; /* Dark background for the container */
     padding: 20px;
     border-radius: 8px;
 }
 
 .screen {
-    background-color: #444444; /* Dark gray for the screen */
+    background-color: #0a3048; /* Dark gray for the screen */
     height: 30px;
     line-height: 30px;
     text-align: center;
@@ -22,18 +24,37 @@
 }
 
 /* Styling for the seat buttons */
-.btn-primary, .btn-secondary {
-    background-color: #8B6F47 !important; /* Antic dark gold color */
+.btn-primary {
+    background-color: #8B6F47 !important;
+    /* Antic dark gold color */
+    border-color: #8B6F47 !important;
+}
+.btn-secondary {
+    background-color: #b5972a !important; /* Antic dark gold color */
     border-color: #8B6F47 !important;
 }
 
     .btn-primary:hover, .btn-secondary:hover {
-        background-color: #9D7F58 !important; /* Slightly lighter shade for hover */
+        background-color: #e1bb34 !important; /* Slightly lighter shade for hover */
         border-color: #9D7F58 !important;
     }
 
 .btn:disabled {
-    background-color: #555555 !important; /* Dark gray indicating the seat is taken */
-    border-color: #555555 !important;
+    background-color: #ebdaa0 !important; /* Dark gray indicating the seat is taken */
+    border-color: #ebdaa0 !important;
 }
+@media (max-width: 576px) { /* Mobilvy */
+    .seat-col {
+        padding: 1px !important; /* Minskar avståndet mellan sätena */
+    }
+
+    .seat-btn {
+        font-size: 0.6rem; /* Minskar textstorleken på knappen */
+        padding: 3px 6px; /* Minskar padding på knappen */
+    }
+}
+
+
+
+
 

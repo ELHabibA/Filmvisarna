@@ -1,8 +1,5 @@
-// Only import your sass in App (not every component)
 import "./sass/main.scss";
 import BioSeats from './BioSeatsComponents/BioSeats.jsx'
-
-// Import some Bootstrap components
 import MainMenu from './MainMenu';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 
