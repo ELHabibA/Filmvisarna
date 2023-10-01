@@ -3,6 +3,7 @@ import "./sass/main.scss";
 
 // Import some Bootstrap components
 import MainMenu from './MainMenu';
+import Footer from "./components/Footer/Footer";
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import BookingForm from "./components/bookingform/bookingform";
 
@@ -16,5 +17,6 @@ export default function App() {
         </Col>
       </Row>
     </Container>
+    <footer><Footer /></footer>
   </>;
 }
