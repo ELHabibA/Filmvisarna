@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 //Här importerar vi alla sidor som kommer vilja använda i routingen
 import App from './App.jsx';
@@ -13,12 +13,13 @@ import BecomeMember from './BecomeMember.jsx';
 //label behöver vi inte men om vi lägger till det här 
 //så är all denna logik samlad. Läraren gjorde detta 
 //i sitt exempel och jag tycker det är neat
+//den översta i pages ska vara startsidan
 
 export const pages = [
-  // {path: '/', label: 'Startsida', element: <Main /> },
-  { path: '/kontakt', label: 'Kontakta oss', element: <ContactUs /> },
-  { path: '/boka', label: 'Boka', element: <Booking /> }
-  //{path: '/blimedlem', label: 'Bli Medlem', element: <BecomeMember />},
+ // {path: '/', label: 'Startsida', element: <Main /> },
+  {    path: '/kontakt', label: 'Kontakta oss', element: <ContactUs /> },
+  {    path: '/boka', label: 'Boka', element: <Booking /> },
+  {   path: '/blimedlem', label: 'Bli Medlem', element: <BecomeMember />}
 ];
 
 const router = createBrowserRouter([
