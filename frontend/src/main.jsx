@@ -7,6 +7,7 @@ import App from './App.jsx';
 import ContactUs from './ContactUs.jsx';
 import Booking from './Booking.jsx';
 import BecomeMember from './BecomeMember.jsx';
+import MoviePage from './MoviePage.jsx';
   
   
 //Pages är det som ska routas och hur.
@@ -19,7 +20,8 @@ export const pages = [
  // {path: '/', label: 'Startsida', element: <Main /> },
   {    path: '/kontakt', label: 'Kontakta oss', element: <ContactUs /> },
   {    path: '/boka', label: 'Boka', element: <Booking /> },
-  {   path: '/blimedlem', label: 'Bli Medlem', element: <BecomeMember />}
+  {   path: '/blimedlem', label: 'Bli Medlem', element: <BecomeMember />},
+  {   path: '/detaljsidan', label: 'detaljsidan', element: <MoviePage />}
 ];
 
 const router = createBrowserRouter([
