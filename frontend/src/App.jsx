@@ -9,6 +9,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 export default function App() {
   return <>
+  <MainMenu />
     <BasicNavbar/>
     <Container className="mt-5">
       <Row>
