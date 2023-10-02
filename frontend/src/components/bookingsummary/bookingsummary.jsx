@@ -21,6 +21,10 @@ function BookingSummary() {
                                 <div>1 st barn</div>
                                 <div>1 st pensionär</div>
                             </div>
+                            <div className="fw-bold mb-3">Platser</div>
+                            <div className="mb-4">
+                                <div>A1, A2, A3</div>
+                            </div>
                             <hr />
                             <div className="fw-bold">Totalt: 440 kr</div>
                         </div>
