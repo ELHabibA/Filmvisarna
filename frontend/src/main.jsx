@@ -4,9 +4,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 //Här importerar vi alla sidor som kommer vilja använda i routingen
 import App from './App.jsx';
+import Home from './Home.jsx';
+import Movies from './Movies.jsx';
 import ContactUs from './ContactUs.jsx';
 import Booking from './Booking.jsx';
 import BecomeMember from './BecomeMember.jsx';
+import LogIn from './LogIn.jsx';
   
   
 //Pages är det som ska routas och hur.
@@ -17,9 +20,12 @@ import BecomeMember from './BecomeMember.jsx';
 
 export const pages = [
  // {path: '/', label: 'Startsida', element: <Main /> },
-  {    path: '/kontakt', label: 'Kontakta oss', element: <ContactUs /> },
+  {    path: '/Hem', label: 'Hem', element: <Home /> },
+  {    path: '/Filmer', label: 'Filmer', element: <Movies /> },
   {    path: '/boka', label: 'Boka', element: <Booking /> },
-  {   path: '/blimedlem', label: 'Bli Medlem', element: <BecomeMember />}
+  {    path: '/kontakt', label: 'Kontakta oss', element: <ContactUs /> },
+  {    path: '/blimedlem', label: 'Bli medlem', element: <BecomeMember />},
+  {    path: '/loggain', label: 'Logga in', element: <LogIn />}
 ];
 
 const router = createBrowserRouter([
