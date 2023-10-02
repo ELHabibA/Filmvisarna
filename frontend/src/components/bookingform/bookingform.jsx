@@ -30,34 +30,37 @@ export default function BookingForm() {
         body: formState,
         callback: doAfterSend
       })}>
-        <div className='bg-secondary rounded p-3 '>
-          <h3 className='mb-3'>Fyll i dina uppgifter</h3>
-          <Row>{[
+        <Row>
+          <Col sm={12}>
+            <div className='bg-secondary rounded p-3'>
+              <h3>Fyll i dina uppgifter</h3>
+              {[
 
-            ['input', 'firstName', 'Förnamn'],
+                ['input', 'firstName', 'Förnamn'],
 
-            ['input', 'lastName', 'Efternamn'],
+                ['input', 'lastName', 'Efternamn'],
 
-            ['input', 'phone', 'Telefonnummer',
-              {
-                type: 'tel',
-                minLength: 8,
-                error: x => /^\d*$/.test(x) ? '' :
-                  'Ange telefonnumret med endast siffror!'
-              }
-            ],
+                ['input', 'phone', 'Telefonnummer',
+                  {
+                    type: 'tel',
+                    minLength: 8,
+                    error: x => /^\d*$/.test(x) ? '' :
+                      'Ange telefonnumret med endast siffror!'
+                  }
+                ],
 
-            ['input', 'email', 'E-post', { type: 'email' }],
+                ['input', 'email', 'E-post', { type: 'email' }],
 
 
-          ].map(elData => createInputElement(...elData))
+              ].map(elData => createInputElement(...elData))
 
-          }</Row>
-        </div>
+              }</div></Col>
+        </Row>
+
 
 
         <Row>
-          <Col className='mt-3'>{[
+          <Col className='mt-3 mb-3'>{[
 
             ['button', '_submit', '', {
               type: 'submit',

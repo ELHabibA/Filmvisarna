@@ -11,7 +11,7 @@ function FinalizeBooking() {
 
         <Container className="mt-5">
             <Row>
-                <Col md={4} className="mb-3">
+                <Col md={6} className="mb-3">
                     <BookingSummary />
                 </Col>
                 <Col md={6} className="mb-3">

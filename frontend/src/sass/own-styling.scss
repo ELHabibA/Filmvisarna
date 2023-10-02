@@ -10,8 +10,9 @@
   --#{$prefix}navbar-toggler-icon-bg: #{escape-svg($navbar-dark-toggler-icon-bg)};
   position: absolute;
 }
-button:nth-child(1){
-  background-color:#A26704;
+
+button:nth-child(1) {
+  background-color: #A26704;
   border: none;
   border-radius: 25px;
   size: 25px;
@@ -21,7 +22,18 @@ button:nth-child(1){
   max-width: 300px;
 }
 
-.tradeMarkFooter{
+button:nth-child(2) {
+  background-color: #5a5a5a;
+  border: none;
+  border-radius: 25px;
+  size: 25px;
+  padding: 5px 32px;
+  text-align: center;
+  min-width: 140px;
+  max-width: 300px;
+}
+
+.tradeMarkFooter {
   text-align: center;
 }
 
