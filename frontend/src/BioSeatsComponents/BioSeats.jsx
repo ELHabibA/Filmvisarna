@@ -23,34 +23,37 @@ function BioSeats() {
     };
 
     const renderSeats = () => {
-        const seatsPerRow = [8, 9, 10, 10, 10, 10, 12, 12];
-        const sortedAuditoriumData = auditoriumsData.sort((a, b) =>
-            a.rowNumber !== b.rowNumber ? a.rowNumber - b.rowNumber : a.seatNumber - b.seatNumber
-        );
+        // Grouping seats by rowNumber
+        const groupedSeats = auditoriumsData.reduce((acc, seat) => {
+            if (!acc[seat.rowNumber]) {
+                acc[seat.rowNumber] = [];
+            }
+            acc[seat.rowNumber].push(seat);
+            return acc;
+        }, {});
 
-        let seatIndex = 0;
+        // Sorting seats within each row
+        for (let row in groupedSeats) {
+            groupedSeats[row].sort((a, b) => a.seatNumber - b.seatNumber);
+        }
 
-        return seatsPerRow.map((numSeats, rowIndex) => {
-            const rowSeats = sortedAuditoriumData.slice(seatIndex, seatIndex + numSeats);
-            seatIndex += numSeats;
-
-            return (
-                <Row key={rowIndex} className="mb-2 center-seats flex-row">
-                    {rowSeats.map((seat) => (
-                        <Col key={seat.id} xs="auto" className="text-center seat-col">
-                            <Button
-                                variant={selectedSeats.includes(seat.id) ? "primary" : "secondary"}
-                                disabled={bookedTickets.includes(seat.id)}
-                                onClick={() => handleSeatSelection(seat.id)}
-                                className="seat-btn"
-                            >
-                                {seat.seatNumber}
-                            </Button>
-                        </Col>
-                    ))}
-                </Row>
-            );
-        });
+        // Rendering rows based on grouped data
+        return Object.keys(groupedSeats).map((rowNumber) => (
+            <Row key={rowNumber} className="mb-2 center-seats flex-row">
+                {groupedSeats[rowNumber].map((seat) => (
+                    <Col key={seat.id} xs="auto" className="text-center seat-col">
+                        <Button
+                            variant={selectedSeats.includes(seat.id) ? "primary" : "secondary"}
+                            disabled={bookedTickets.includes(seat.id)}
+                            onClick={() => handleSeatSelection(seat.id)}
+                            className="seat-btn"
+                        >
+                            {seat.seatNumber}
+                        </Button>
+                    </Col>
+                ))}
+            </Row>
+        ));
     };
 
     return (
