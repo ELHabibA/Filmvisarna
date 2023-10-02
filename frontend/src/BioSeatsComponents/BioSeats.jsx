@@ -1,11 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import auditoriumsData from "./SeatsData.js";
 import { Button, Row, Col, Container } from "react-bootstrap";
 import "./BioSeats.css";
+import ticketsData from './Tickets.js';
 
 function BioSeats() {
     const [bookedTickets, setBookedTickets] = useState([]);
     const [selectedSeats, setSelectedSeats] = useState([]);
+
+    // Calculate the total number of tickets
+    const totalTickets = useMemo(() => {
+        return ticketsData.kids + ticketsData.adults + ticketsData.elderly;
+    }, []);
 
     useEffect(() => {
         // Mock: Fetching booked tickets from movieSchedule (can be replaced with actual data)
@@ -17,7 +23,7 @@ function BioSeats() {
     const handleSeatSelection = (seatId) => {
         if (selectedSeats.includes(seatId)) {
             setSelectedSeats((prev) => prev.filter((id) => id !== seatId));
-        } else {
+        } else if (selectedSeats.length < totalTickets) {
             setSelectedSeats((prev) => [...prev, seatId]);
         }
     };
