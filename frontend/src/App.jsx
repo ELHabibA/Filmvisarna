@@ -1,11 +1,11 @@
-// Only import your sass in App (not every component)
+import { Outlet } from 'react-router-dom';
+import MainMenu from './MainMenu';
+import Footer from "./components/Footer/Footer";
 import "./sass/main.scss";
-
-// Import some Bootstrap components
 import BasicNavbar from "./components/Navbar/Navbar";
-import { Container, Row, Col, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import { Container, Row, Col } from 'react-bootstrap';
 
 export default function App() {
   return <>
@@ -13,10 +13,10 @@ export default function App() {
     <Container className="mt-5">
       <Row>
         <Col>
-          <h1>Hello!</h1>
-          <p>1234</p>
+          <Outlet />
         </Col>
       </Row>
     </Container>
+    <footer><Footer /></footer>
   </>;
 }

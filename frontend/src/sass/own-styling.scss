@@ -1,7 +1,3 @@
-button:nth-child(1) {
-  background-color: rgb(255, 255, 255);
-}
-
 .navbar-film,
 .navbar[data-bs-theme="dark"] {
   --#{$prefix}navbar-color: #A26704;
@@ -13,4 +9,34 @@ button:nth-child(1) {
   --#{$prefix}navbar-toggler-border-color: #{$navbar-dark-toggler-border-color};
   --#{$prefix}navbar-toggler-icon-bg: #{escape-svg($navbar-dark-toggler-icon-bg)};
   position: absolute;
+}
+button:nth-child(1){
+  background-color:#A26704;
+  border: none;
+  border-radius: 25px;
+  size: 25px;
+  padding: 5px 32px;
+  text-align: center;
+  min-width: 140px;
+  max-width: 300px;
+}
+button:nth-child(1):hover{
+  background-color: #ffffff
+}
+
+
+.tradeMarkFooter{
+  text-align: center;
+}
+
+.footer {
+  align-items: center;
+  background-color: none;
+  
+  
+}
+
+.logoSize {
+  max-width: 100px;
+  text-align: center;
 }
