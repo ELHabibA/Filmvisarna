@@ -1,6 +1,8 @@
-//Kommentar till testarna. Hejhej
 //
-//Komponenten testas i Footer
+//Komponenten testades i Footer såhär:
+//const bookingNumber = BookingNumber();
+//och sen frö att se det i text:
+//<p>Bokningsnummer: {bookingNumber}</p>
 
 
 function generateRandomLetters() {
