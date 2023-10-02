@@ -1,5 +1,9 @@
 import './Footer.css';
 import { Container, Row, Button, Col } from 'react-bootstrap';
+import BookingNumber from '../BookingNumber'
+
+
+const bookingNumber = BookingNumber();//För att testa bokningsnummer - tas bort av testaren
 
 export default function Footer() {
     return (
@@ -12,6 +16,7 @@ export default function Footer() {
             </Row>
             <Row className='tradeMarkFooter'><img src="../public/logo.png" className='logoSize mx-auto d-block'></img></Row>
             <Row className='tradeMarkFooter'>
+                <p>Bokningsnummer: {bookingNumber}</p>//För att testa bokningsnummer - tas bort av testaren
                 <p>Made by: Team 3 - Elia, Habib, Hampus, Tanya, Artur, Simon & Bobby</p>
             </Row>
         </Container>
