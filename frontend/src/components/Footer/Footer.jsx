@@ -13,7 +13,7 @@ export default function Footer() {
                 <Col className='tradeMarkFooter m-2'><Link to="/boka"><div><Button >Boka</Button></div></Link> </Col>
                 <Col className='tradeMarkFooter m-2'><div><Link to="/kontakt"><Button>Kontakta oss</Button></Link></div></Col>
             </Row>
-            <Row className='tradeMarkFooter'><img src="../public/logo.png" className='logoSize mx-auto d-block'></img></Row> 
+            <Row className='tradeMarkFooter logoSize mx-auto d-block'><img src="../public/logo.png"></img></Row> 
             <Row className='tradeMarkFooter'>
                  {/* För att testa bokningsnummer - tas bort av testaren */}
                 <p>Bokningsnummer: {bookingNumber}</p>
