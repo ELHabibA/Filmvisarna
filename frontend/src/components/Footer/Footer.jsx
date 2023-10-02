@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default function Footer() {
     return (
-        <Container className='container-fluid fixed-bottom'>
+        <Container className='container-fluid footer'>
                   
             <hr></hr>
             <Row>
