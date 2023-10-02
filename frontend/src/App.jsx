@@ -8,18 +8,17 @@ export default function App() {
     return <>
         <header></header>
         <main>
-            <MainMenu />
             <Container className="mt-5">
                 <Row>
                     <Col>
-
-                        <h1>Hello!</h1>
+                        <MainMenu />
                         <BioSeats />
-                        <p>There you are...</p>
-
-        </Col>
-      </Row>
-    </Container>
-    <footer><Footer /></footer>
+                    </Col>
+                    
+                </Row>
+               
+            </Container>
+        </main>
+    <footer></footer>
   </>;
 }
