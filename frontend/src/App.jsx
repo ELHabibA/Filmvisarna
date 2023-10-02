@@ -9,10 +9,10 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 export default function App() {
   return <>
-    <BasicNavbar/>
-    <Container className="mt-5">
+    <BasicNavbar />
+    <Container className="mt-5 body">
       <Row>
-        <Col>
+        <Col className="container-main">
           <Outlet />
         </Col>
       </Row>
