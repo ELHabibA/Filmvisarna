@@ -1,22 +1,31 @@
 import { Outlet } from 'react-router-dom';
+import "./sass/main.scss";
 import MainMenu from './MainMenu';
 import Footer from "./components/Footer/Footer";
-import "./sass/main.scss";
-import BasicNavbar from "./components/Navbar/Navbar";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
 import { Container, Row, Col } from 'react-bootstrap';
+import FinalizeBooking from './FinalizeBooking';
+
 
 export default function App() {
-  return <>
-    <BasicNavbar />
-    <Container className="mt-5 body">
-      <Row>
-        <Col className="container-main">
-          <Outlet />
-        </Col>
-      </Row>
-    </Container>
-    <footer><Footer /></footer>
-  </>;
+  return (
+    <>
+      <BasicNavbar />
+      <Container className="mt-5 body">
+        <Row>
+          <Col className="container-main">
+            <MainMenu />
+            <Container className="col-12">
+              <Row>
+                <Col>
+                  <FinalizeBooking />
+                  <Outlet />
+                </Col>
+              </Row>
+            </Container>
+            <footer><Footer /></footer>
+          </Col>
+        </Row>
+      </Container>
+    </>
+  );
 }
