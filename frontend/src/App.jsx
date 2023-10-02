@@ -6,6 +6,7 @@ import BasicNavbar from "./components/Navbar/Navbar";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import { Container, Row, Col } from 'react-bootstrap';
+import ChooseAge from './components/ChooseAge';
 
 export default function App() {
   return <>
@@ -14,6 +15,7 @@ export default function App() {
       <Row>
         <Col>
           <Outlet />
+          <ChooseAge />
         </Col>
       </Row>
     </Container>
