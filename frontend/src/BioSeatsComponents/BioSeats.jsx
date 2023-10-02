@@ -7,6 +7,7 @@ import ticketsData from './Tickets.js';
 function BioSeats() {
     const [bookedTickets, setBookedTickets] = useState([]);
     const [selectedSeats, setSelectedSeats] = useState([]);
+    const [auditoriumId, setAuditoriumId] = useState(1); // By default, show the larger auditorium
 
     // Calculate the total number of tickets
     const totalTickets = useMemo(() => {
@@ -29,8 +30,11 @@ function BioSeats() {
     };
 
     const renderSeats = () => {
+        // Filter seats based on auditoriumId
+        const seatsForCurrentAuditorium = auditoriumsData.filter(seat => seat.auditoriumId === auditoriumId);
+
         // Grouping seats by rowNumber
-        const groupedSeats = auditoriumsData.reduce((acc, seat) => {
+        const groupedSeats = seatsForCurrentAuditorium.reduce((acc, seat) => {
             if (!acc[seat.rowNumber]) {
                 acc[seat.rowNumber] = [];
             }
@@ -66,6 +70,7 @@ function BioSeats() {
         <Container className="saloon-container mt-5">
             <div className="screen mb-5">Screen</div>
             {renderSeats()}
+            <Button onClick={() => setAuditoriumId(auditoriumId === 1 ? 2 : 1)}>Toggle Auditorium</Button>
         </Container>
     );
 }
