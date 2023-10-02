@@ -1,6 +1,7 @@
 import "./sass/main.scss";
 import BioSeats from './BioSeatsComponents/BioSeats.jsx'
 import MainMenu from './MainMenu';
+import Footer from "./components/Footer/Footer";
 import { Container, Row, Col, Button } from 'react-bootstrap';
 
 export default function App() {
@@ -16,11 +17,9 @@ export default function App() {
                         <BioSeats />
                         <p>There you are...</p>
 
-                    </Col>
-                </Row>
-            </Container>
-        </main>
-        <footer></footer>
-   
+        </Col>
+      </Row>
+    </Container>
+    <footer><Footer /></footer>
   </>;
 }
