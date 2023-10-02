@@ -1,5 +1,5 @@
 /*import React from 'react';*/
-import backgroundImage from '../assets/Backgrounds/Full_Pic-craiyon_105918_Cinema_background_picture.jpg';
+import backgroundImage from '../../assets/Backgrounds/Full_Pic-craiyon_105918_Cinema_background_picture.jpg';
 
 function Background() {
     const backgroundStyle = {
