@@ -26,7 +26,8 @@ export const pages = [
   {    path: '/boka', label: 'Boka', element: <Booking /> },
   {    path: '/kontakt', label: 'Kontakta oss', element: <ContactUs /> },
   {    path: '/blimedlem', label: 'Bli medlem', element: <BecomeMember />},
-  {    path: '/loggain', label: 'Logga in', element: <LogIn />}
+  {    path: '/loggain', label: 'Logga in', element: <LogIn />},
+  {    path: '/detaljsidan', label: '', element: <MoviePage />}
 ];
 
 const router = createBrowserRouter([
