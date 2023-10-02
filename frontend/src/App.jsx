@@ -1,3 +1,6 @@
+import { Outlet } from 'react-router-dom';
+import MainMenu from './MainMenu';
+import Footer from "./components/Footer/Footer";
 // Only import your sass in App (not every component)
 import "./sass/main.scss";
 
@@ -23,8 +26,12 @@ export default function App() {
     <Container className="mt-5">
       <Row>
         <MovieScroller movieImages={movieImages} />
+        <Background />
+        <Col>
+          <Outlet />
+        </Col>
       </Row>
     </Container>
-    <Background />
+    <footer><Footer /></footer>
   </>;
 }
