@@ -1,41 +1,86 @@
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import { useFormHelper } from '../../hooks/useFormHelper';
 
 
-function BookingForm() {
-  return (
-    // First name form with description and input
-    <Form>
-        <div class ="bg-secondary w-100 p-5 rounded">
-        <h1 className="mb-5">Bokning</h1>
-      <Form.Group className="mb-3" controlId="formFirstName">
-        <Form.Label>Förnamn</Form.Label>
-        <Form.Control type="firstName"/>
-      </Form.Group>
+export default function BookingForm() {
 
-      <Form.Group className="mb-3" controlId="formLastName">
-        <Form.Label>Efternamn</Form.Label>
-        <Form.Control type="lastName"/>
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formEmailAdress">
-        <Form.Label>E-postaddress</Form.Label>
-        <Form.Control type="emailAdress"/>
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formPhoneNumber">
-        <Form.Label>Telefonnummer</Form.Label>
-        <Form.Control type="phoneNumber"/>
-      </Form.Group>
-      <Form.Group>
-      <Button variant="primary" type="submit">
-        Boka
-      </Button>
-      </Form.Group>
-      </div>
-    </Form>
-  );
+  const {
+    formState,
+    setFormState,
+    createInputElement,
+    formIsValid,
+  } = useFormHelper();
+
+  // debug
+  console.log(JSON.stringify(formState, '', '  '));
+
+  function doAfterSend(serverResponse) {
+    console.log('serverResponse', serverResponse);
+  }
+
+  return <>
+    <>
+
+
+      <form onSubmit={event => sendForm({
+        event,
+        route: 'users',
+        body: formState,
+        callback: doAfterSend
+      })}>
+        <div className='bg-secondary rounded p-3 '>
+          <h3 className='mb-3'>Fyll i dina uppgifter</h3>
+          <Row>{[
+
+            ['input', 'firstName', 'Förnamn'],
+
+            ['input', 'lastName', 'Efternamn'],
+
+            ['input', 'phone', 'Telefonnummer',
+              {
+                type: 'tel',
+                minLength: 8,
+                error: x => /^\d*$/.test(x) ? '' :
+                  'Ange telefonnumret med endast siffror!'
+              }
+            ],
+
+            ['input', 'email', 'E-post', { type: 'email' }],
+
+
+          ].map(elData => createInputElement(...elData))
+
+          }</Row>
+        </div>
+
+
+        <Row>
+          <Col className='mt-3'>{[
+
+            ['button', '_submit', '', {
+              type: 'submit',
+              className: !formIsValid ? 'can-not-submit' : '',
+              nolabel: true
+            }, 'Boka'],
+
+            ['button', '_reset', '', {
+              type: 'reset',
+              onClick: () => setFormState({}),
+              className: 'btn-secondary mx-3',
+              nolabel: true
+            }, 'Töm fälten']
+
+          ].map(elData => createInputElement(...elData))
+          }</Col>
+        </Row>
+
+      </form>
+    </>
+  </>;
 }
 
 
 
 
-export default BookingForm;
