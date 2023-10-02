@@ -6,7 +6,7 @@ const bookingNumber = BookingNumber();//För att testa bokningsnummer - tas bort
 
 export default function Footer() {
     return (
-        <Container className='container-fluid fixed-bottom'>
+        <Container className='footer mt-auto py-3'>
                   
             <hr></hr>
             <Row>
