@@ -14,8 +14,8 @@ function BioSeats() {
         , []);
 
     useEffect(() => {
-        // For simplicity, this is an empty array; replace with actual booked seats data if needed
-        setBookedTickets([]);
+        // Här kan man ändra manuellt "Booked seats" (Tillfälligt)
+        setBookedTickets([1, 2, 3, 15, 16,44,45,23,61,72,71,77,78]);
     }, []);
 
     const handleSeatSelection = (seatId) => {
