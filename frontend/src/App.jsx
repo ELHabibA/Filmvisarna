@@ -4,6 +4,7 @@ import Footer from "./components/Footer/Footer";
 import { Container, Row, Col } from 'react-bootstrap';
 import FinalizeBooking from './FinalizeBooking';
 import BasicNavbar from './components/Navbar/Navbar'
+import BioSeats from './BioSeatsComponents/BioSeats'
 
 
 export default function App() {
@@ -15,8 +16,10 @@ export default function App() {
           <Col className="container-main">
             <Container className="col-12">
               <Row>
-                <Col>
+                              <Col>
+                                  <BioSeats />
                   <Outlet />
+
                 </Col>
               </Row>
             </Container>
