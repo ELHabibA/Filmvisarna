@@ -28,7 +28,7 @@ export const pages = [
   { path: '/kontakt', label: 'Kontakta oss', element: <ContactUs /> },
   { path: '/blimedlem', label: 'Bli medlem', element: <BecomeMember /> },
   { path: '/loggain', label: 'Logga in', element: <LogIn /> },
-  { path: '/detaljsidan', label: '', element: <MoviePage /> },
+  { path: '/detaljsidan/:movieId', label: '', element: <MoviePage /> },
   { path: '/finalize-booking', label: '', element: <FinalizeBooking /> } // Ta bort sedan, kunder/externa användare ska inte kunna se denna sida utan att ha valt film.
 ];
 
