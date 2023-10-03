@@ -1,24 +1,23 @@
 // Only import your sass in App (not every component)
 import "./sass/main.scss";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import BioSeats from './BioSeatsComponents/BioSeats'
 
 // Import some Bootstrap components
 import MainMenu from './MainMenu';
 import Footer from "./components/Footer/Footer";
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import "./sass/main.scss";
+import BasicNavbar from "./components/Navbar/Navbar";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import { Container, Row, Col } from 'react-bootstrap';
 
 export default function App() {
   return <>
-    <MainMenu />
-    <Container className="mt-5">
+    <BasicNavbar />
+    <Container className="mt-5 body">
       <Row>
-              <Col>
-                  
-                  <h1>Hello!</h1>
-                  <BioSeats />
-                  <p>There you are...</p>
-
+        <Col>
+          <h1>Hello!</h1>
+          <p>There you are...</p>
         </Col>
       </Row>
     </Container>
