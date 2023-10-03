@@ -6,6 +6,7 @@ import FinalizeBooking from './FinalizeBooking';
 import BasicNavbar from './components/Navbar/Navbar'
 
 
+
 export default function App() {
   return (
     <>
@@ -15,8 +16,10 @@ export default function App() {
           <Col className="container-main">
             <Container className="col-12">
               <Row>
-                <Col>
+              <Col>
+
                   <Outlet />
+
                 </Col>
               </Row>
             </Container>
