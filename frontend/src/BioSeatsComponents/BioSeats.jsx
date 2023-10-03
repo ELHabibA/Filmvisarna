@@ -7,50 +7,40 @@ import ticketsData from './Tickets.js';
 function BioSeats() {
     const [bookedTickets, setBookedTickets] = useState([]);
     const [selectedSeats, setSelectedSeats] = useState([]);
-    const [auditoriumId, setAuditoriumId] = useState(1); // By default, show the larger auditorium
+    const [auditoriumId, setAuditoriumId] = useState(1);
 
-    // Calculate the total number of tickets
-    const totalTickets = useMemo(() => {
-        return ticketsData.kids + ticketsData.adults + ticketsData.elderly;
-    }, []);
+    const totalTickets = useMemo(() =>
+        ticketsData.kids + ticketsData.adults + ticketsData.elderly
+        , []);
 
     useEffect(() => {
-        // Mock: Fetching booked tickets from movieSchedule (can be replaced with actual data)
-        const selectedShow = JSON.parse(sessionStorage.getItem("selectedShow"));
-        const bookedSeatsForShow = []; // For simplicity, this is an empty array; replace with actual booked seats data if needed
-        setBookedTickets(bookedSeatsForShow);
+        // For simplicity, this is an empty array; replace with actual booked seats data if needed
+        setBookedTickets([]);
     }, []);
 
     const handleSeatSelection = (seatId) => {
-        if (selectedSeats.includes(seatId)) {
-            setSelectedSeats((prev) => prev.filter((id) => id !== seatId));
-        } else if (selectedSeats.length < totalTickets) {
-            setSelectedSeats((prev) => [...prev, seatId]);
-        }
+        setSelectedSeats(prev =>
+            selectedSeats.includes(seatId)
+                ? prev.filter(id => id !== seatId)
+                : (selectedSeats.length < totalTickets) ? [...prev, seatId] : prev
+        );
     };
 
     const renderSeats = () => {
-        // Filter seats based on auditoriumId
         const seatsForCurrentAuditorium = auditoriumsData.filter(seat => seat.auditoriumId === auditoriumId);
 
-        // Grouping seats by rowNumber
         const groupedSeats = seatsForCurrentAuditorium.reduce((acc, seat) => {
-            if (!acc[seat.rowNumber]) {
-                acc[seat.rowNumber] = [];
-            }
-            acc[seat.rowNumber].push(seat);
+            (acc[seat.rowNumber] || (acc[seat.rowNumber] = [])).push(seat);
             return acc;
         }, {});
 
-        // Sorting seats within each row
         for (let row in groupedSeats) {
             groupedSeats[row].sort((a, b) => a.seatNumber - b.seatNumber);
         }
 
-        // Rendering rows based on grouped data
-        return Object.keys(groupedSeats).map((rowNumber) => (
+        return Object.keys(groupedSeats).map(rowNumber => (
             <Row key={rowNumber} className="mb-2 center-seats flex-row">
-                {groupedSeats[rowNumber].map((seat) => (
+                {groupedSeats[rowNumber].map(seat => (
                     <Col key={seat.id} xs="auto" className="text-center seat-col">
                         <Button
                             variant={selectedSeats.includes(seat.id) ? "primary" : "secondary"}
