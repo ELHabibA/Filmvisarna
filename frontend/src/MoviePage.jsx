@@ -21,7 +21,7 @@ const MoviePage = () => {
         <div className="col-md-6">
           <iframe
             width="100%"
-            height="315"
+            height="250"
             src="https://www.youtube.com/embed/your-movie-trailer-url" // Trailer URL
             title="Movie Trailer"
             frameBorder="0"
