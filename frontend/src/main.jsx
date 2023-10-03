@@ -14,6 +14,7 @@ import MoviePage from './MoviePage.jsx';
 import FinalizeBooking from './FinalizeBooking.jsx';
 
 
+
 //Pages är det som ska routas och hur.
 //label behöver vi inte men om vi lägger till det här 
 //så är all denna logik samlad. Läraren gjorde detta 
@@ -33,15 +34,15 @@ export const pages = [
 ];
 
 const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <App />,
-    children: pages
-  }
+    {
+        path: '/',
+        element: <App />,
+        children: pages
+    }
 ]);
 
 ReactDOM.createRoot(document.querySelector('#root')).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>,
+    <React.StrictMode>
+        <RouterProvider router={router} />
+    </React.StrictMode>,
 );
