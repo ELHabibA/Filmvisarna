@@ -4,6 +4,7 @@ import MainMenu from './MainMenu';
 import Footer from "./components/Footer/Footer";
 import { Container, Row, Col } from 'react-bootstrap';
 import FinalizeBooking from './FinalizeBooking';
+import BasicNavbar from './components/Navbar/Navbar'
 
 
 export default function App() {
