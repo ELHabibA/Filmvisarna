@@ -1,7 +1,8 @@
 // Detta kan vara boknings-sidan om vi vill det
+import BioSeats from './BioSeatsComponents/BioSeats'
 
 const Booking = () => {
-   return <p>Boka här</p>
+    return <BioSeats />
 }
 
 export default Booking
