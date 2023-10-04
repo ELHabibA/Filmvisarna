@@ -6,6 +6,7 @@ function CounterButton({onUpdate}) {
 
     function addPerson() {
         setCount(numOfSeats => {
+            
             onUpdate(numOfSeats + 1); 
             return numOfSeats + 1;
         });
@@ -14,8 +15,9 @@ function CounterButton({onUpdate}) {
   
     function removePerson() {
         setCount(numOfSeats => {
-            onUpdate(numOfSeats - 1);
-            return numOfSeats - 1;
+            const updatedSeats = numOfSeats > 0 ? numOfSeats - 1 : 0
+            onUpdate(updatedSeats)
+            return updatedSeats;
         });
 
     }
