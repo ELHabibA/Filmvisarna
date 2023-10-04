@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-//import { Container, Row, Col } from "react-bootstrap";
+import { HiPlus, HiMinus } from "react-icons/hi2";
+import { FaMinus } from "react-icons/fa";
 
 function CounterButton({onUpdate}) {
     let [count, setCount] = useState(0);
@@ -25,8 +26,8 @@ function CounterButton({onUpdate}) {
     return (
         <>
        
-            <button className="counterButton" onClick={addPerson}>+</button>
-            <button className="counterButton" onClick={removePerson}>-</button> {count}
+            <button className="counterButton" onClick={addPerson}><HiPlus /></button>
+            <button className="counterButton" onClick={removePerson}><HiMinus /></button> {count} st
 
        </>         
     );
