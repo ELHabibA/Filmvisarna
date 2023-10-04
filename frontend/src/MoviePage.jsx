@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import moviesData from './components/data/movies.json'; 
 
 const MoviePage = () => {
@@ -63,6 +63,3 @@ const MoviePage = () => {
 };
 
 export default MoviePage;
-
-
-
