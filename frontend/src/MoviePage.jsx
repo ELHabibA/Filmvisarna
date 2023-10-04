@@ -24,6 +24,8 @@ const MoviePage = () => {
       <div className="row">
         <div className="col-md-6">
           <img
+            width="100%"
+            height="250"
             src={movie.poster} //  Image URL
             alt="Movie Poster"
             className="img-fluid"
