@@ -4,11 +4,16 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 //Här importerar vi alla sidor som kommer vilja använda i routingen
 import App from './App.jsx';
+import Home from './Home.jsx';
+import Movies from './Movies.jsx';
 import ContactUs from './ContactUs.jsx';
 import Booking from './Booking.jsx';
 import BecomeMember from './BecomeMember.jsx';
-  
-  
+import LogIn from './LogIn.jsx';
+import MoviePage from './MoviePage.jsx';
+import FinalizeBooking from './FinalizeBooking.jsx';
+
+
 //Pages är det som ska routas och hur.
 //label behöver vi inte men om vi lägger till det här 
 //så är all denna logik samlad. Läraren gjorde detta 
@@ -16,10 +21,15 @@ import BecomeMember from './BecomeMember.jsx';
 //den översta i pages ska vara startsidan
 
 export const pages = [
- // {path: '/', label: 'Startsida', element: <Main /> },
-  {    path: '/kontakt', label: 'Kontakta oss', element: <ContactUs /> },
-  {    path: '/boka', label: 'Boka', element: <Booking /> },
-  {   path: '/blimedlem', label: 'Bli Medlem', element: <BecomeMember />}
+  // {path: '/', label: 'Startsida', element: <Main /> },
+  { path: '/Hem', label: 'Hem', element: <Home /> },
+  { path: '/Filmer', label: 'Filmer', element: <Movies /> },
+  { path: '/boka', label: 'Boka', element: <Booking /> },
+  { path: '/kontakt', label: 'Kontakta oss', element: <ContactUs /> },
+  { path: '/blimedlem', label: 'Bli medlem', element: <BecomeMember /> },
+  { path: '/loggain', label: 'Logga in', element: <LogIn /> },
+  { path: '/detaljsidan', label: '', element: <MoviePage /> },
+  { path: '/finalize-booking', label: '', element: <FinalizeBooking /> } // Ta bort sedan, kunder/externa användare ska inte kunna se denna sida utan att ha valt film.
 ];
 
 const router = createBrowserRouter([

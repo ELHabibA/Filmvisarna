@@ -1,37 +1,43 @@
 import { Outlet } from 'react-router-dom';
-import MainMenu from './MainMenu';
-import Footer from "./components/Footer/Footer";
-// Only import your sass in App (not every component)
 import "./sass/main.scss";
 
 // Import some Bootstrap components
 import Background from './components/MainSide/Background';
-import { Container, Row, Col, Button } from 'react-bootstrap';
 import MainLayout from './MainLayout';
+import Footer from "./components/Footer/Footer";
+import { Container, Row, Col } from 'react-bootstrap';
+import FinalizeBooking from './FinalizeBooking';
+import BasicNavbar from './components/Navbar/Navbar'
+
 
 
 export default function App() {
   return (
     <>
-      <MainMenu />
-      <Container className="mt-5">
+
+      <BasicNavbar />
+      <Container className="mt-5 body">
         <Row>
-          <Col>
-            <Background />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <MainLayout />
+          <Col className="container-main">
+            <Container className="col-12">
+              <Row>
+                <Col>
+
+                  <Outlet />
+
+                </Col>
+              </Row>
+              <Background />
+              <Row>
+                <Col>
+                  <MainLayout />
+                </Col>
+              </Row>
+            </Container>
+            <footer><Footer /></footer>
           </Col>
         </Row>
       </Container>
-      <Footer />
     </>
   );
 }
-
-
-
-
-
