@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 import CounterButton from "./CounterButton";
 
 
@@ -32,19 +32,16 @@ function ChooseAge() {
     return (
         <>
              
-                        
-            <Row>
-                
-               
-                <Col className="col-lg-4 bg-secondary rounded p-3">      
-                Välj antal vuxna <CounterButton onUpdate={updateAdultValue} />
-                Välj antal barn <CounterButton onUpdate={updateKidsValue} />
-                Välj antal pensionärer <CounterButton  onUpdate={updateRetiredValue}/>
-                </Col>
-                
+            <Container className="col-lg-6 bg-secondary rounded p-3">
+                <Row><Col>Välj antal vuxna</Col><Col><CounterButton onUpdate={updateAdultValue} /></Col></Row>
+                <hr />
+                <Row><Col>Välj antal barn </Col><Col><CounterButton onUpdate={updateKidsValue} /></Col></Row>
+                <hr />
+                <Row><Col>Välj antal pensionärer</Col><Col><CounterButton onUpdate={updateRetiredValue} /></Col></Row>
+                <hr />
                 <p>Ni är {sum} personer. Nr: { adults}</p>
-                
-            </Row>
+            </Container>
+            
         
         </>
 

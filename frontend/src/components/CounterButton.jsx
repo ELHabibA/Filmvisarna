@@ -23,8 +23,8 @@ function CounterButton({onUpdate}) {
     return (
         <>
        
-            <button onClick={addPerson}>+</button>
-            <button onClick={removePerson}>-</button> {count}
+            <button className="counterButton" onClick={addPerson}>+</button>
+            <button className="counterButton" onClick={removePerson}>-</button> {count}
 
        </>         
     );
