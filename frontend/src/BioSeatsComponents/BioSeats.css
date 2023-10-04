@@ -8,7 +8,7 @@
 }
 
 .saloon-container {
-    background-color: #071b25; /* DarkBlue background for the container */
+    background-color: #071b25; /* Dark background for the container */
     padding: 20px;
     border-radius: 8px;
 }
@@ -43,12 +43,10 @@
     background-color: #ebdaa0 !important; /* Dark gray indicating the seat is taken */
     border-color: #ebdaa0 !important;
 }
-
 .seat-btn {
     transition: all 0.3s ease-in-out; /* Smooth transition */
 }
-
-@media (max-width: 506px) { /* Mobilvy */
+@media (max-width: 576px) { /* Mobilvy */
     .seat-col {
         padding: 1px !important; /* Minskar avståndet mellan sätena */
     }
@@ -59,17 +57,51 @@
     }
 }
 
-@media (min-width: 406px) and (max-width: 1024px) { /* Tablet view */
-    .saloon-container {
-        padding: 25px;
-    }
-
+@media (min-width: 577px) and (max-width: 768px) {
     .seat-col {
-        padding: 4px !important;
+        padding: 2px !important; /* Justera avståndet mellan sätena */
     }
 
     .seat-btn {
-        font-size: 0.8rem;
-        padding: 6px 12px;
+        font-size: 0.8rem; /* Justera textstorleken på knappen */
+        padding: 5px 10px; /* Justera padding på knappen */
+    }
+
+    .screen {
+        font-size: 1.2rem; /* Större text för skärmen */
+        height: 40px; /* Högre höjd för skärmen */
+        line-height: 40px; /* Centrera texten vertikalt */
     }
 }
+
+/* Desktopvy */
+@media (min-width: 769px) {
+    .seat-col {
+        padding: 5px !important; /* Ökad padding mellan sätena */
+    }
+
+    .seat-btn {
+        font-size: 1rem; /* Ökad textstorlek på knappen */
+        padding: 8px 16px; /* Ökad padding på knappen */
+    }
+}
+@media (min-width: 577px) and (max-width: 768px) and (orientation: landscape) {
+    .seat-col {
+        padding: 3px !important; /* Justera avståndet mellan sätena */
+    }
+
+    .seat-btn {
+        font-size: 1rem; /* Justera textstorleken på knappen */
+        padding: 6px 12px; /* Justera padding på knappen */
+    }
+
+    .screen {
+        font-size: 1.5rem; /* Större text för skärmen */
+        height: 50px; /* Högre höjd för skärmen */
+        line-height: 50px; /* Centrera texten vertikalt */
+    }
+}
+
+
+
+
