@@ -1,0 +1,81 @@
+/* MovieScroller.css */
+
+.movie-scroller {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 280px;
+    /* Adjust the height as needed */
+    padding-top: 2px;
+}
+
+.movie-scroller .prev-button {
+    background-color: transparent !important;
+    /* Other styles here */
+}
+
+.prev-button,
+.next-button {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+    /* Add this to make the text white */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    /* Add this to control the stacking order */
+}
+
+.prev-button {
+    left: calc(31% - 100px);
+    /* Adjust the value to position the "previous" button */
+}
+
+.next-button {
+    right: calc(37% - 100px);
+    /* Adjust the value to position the "next" button */
+}
+
+.image-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 100%;
+    position: relative;
+    /* Make sure it's a positioned element for absolute positioning */
+}
+
+.center-image {
+    width: 360px;
+    /* Adjust the width of the center image */
+    height: 280px;
+    /* Maintain aspect ratio and make it responsive */
+    padding: 5px;
+}
+
+.left-side-image,
+.right-side-image {
+    width: 150px;
+    /* Match the width of the center image */
+    height: 180px;
+    /* Match the height of the center image */
+    transform-style: preserve-3d;
+    /* Enable 3D transformations */
+    perspective: 1000px;
+    /* Set the perspective to create the illusion of depth */
+}
+
+/* Apply fixed rotation and tilt to left and right images */
+.left-side-image {
+    transform: rotateY(-60deg) rotateX(12deg) translateZ(55px);
+    /* Rotate and tilt the left-side image */
+}
+
+.right-side-image {
+    transform: rotateY(60deg) rotateX(12deg) translateZ(55px);
+    /* Rotate and tilt the right-side image */
+}
