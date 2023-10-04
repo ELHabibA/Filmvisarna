@@ -28,11 +28,6 @@ export default function App() {
                 </Col>
               </Row>
               <Background />
-              <Row>
-                <Col>
-                  <MainLayout />
-                </Col>
-              </Row>
             </Container>
             <footer><Footer /></footer>
           </Col>
