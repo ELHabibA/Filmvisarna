@@ -13,8 +13,8 @@ const MoviePage = () => {
 
     const posterStyle = {
         maxWidth: '100%',
-        maxHeight: '70vh', // Sätt maximal höjd här
-        objectFit: 'contain', // Använd 'contain' för att behålla proportioner
+        maxHeight: '70vh', 
+        objectFit: 'contain', 
     };
 
     return (
