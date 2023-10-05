@@ -1,7 +1,5 @@
-import { Container } from "react-bootstrap";
-import Image from 'react-bootstrap/Image';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { Container, Row, Col, Image } from "react-bootstrap";
+import BookingNumber from '../BookingNumber';
 
 function BookingSummary() {
     return (
@@ -16,6 +14,8 @@ function BookingSummary() {
                     <div className="mb-4">2023-10-05 19:30</div>
                     <div className="fw-bold mb-3">Biljetter</div>
                     <div className="mb-4">
+                        
+                        <div>Bokningsnummer: <BookingNumber /></div>
                         <div>2 st vuxna</div>
                         <div>1 st barn</div>
                         <div>1 st pensionär</div>
