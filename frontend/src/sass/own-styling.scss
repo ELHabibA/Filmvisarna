@@ -10,7 +10,7 @@
 
 @media (max-width: 984px) {
   .navbar-collapse {
-    position:absolute;
+    position: absolute;
     right: 0;
     background-color: black;
   }
@@ -27,7 +27,9 @@
 
 .navbar-collapse {
   .nav-link {
-    --bs-nav-link-color: #A26704; 
+    --bs-nav-link-color: #A26704;
+    background-color: black;
+    --bs-nav-link-color: #A26704;
     max-width: 200px;
     padding-left: 10px;
   }
@@ -38,22 +40,23 @@
   min-width: 200px;
 }
 
-button:nth-child(1){
-  background-color:#A26704;
+button:nth-child(1) {
+  background-color: #A26704;
 }
 
 button:not(.seat-btn):nth-child(1) {
-    background-color: #A26704;
-    border: none;
-    border-radius: 25px;
-    size: 25px;
-    padding: 5px 32px;
-    text-align: center;
-    min-width: 140px;
-    max-width: 300px;
+  background-color: #A26704;
+  border: none;
+  border-radius: 25px;
+  size: 25px;
+  padding: 5px 32px;
+  text-align: center;
+  min-width: 140px;
+  max-width: 300px;
 }
+
 button:not(.seat-btn):nth-child(1):hover {
-    background-color: #ffffff;
+  background-color: #ffffff;
 }
 
 
@@ -98,16 +101,14 @@ button:nth-child(2) {
 
 
 
- .counterButton {
-    padding: 2px 8px 9px 8px !important;
-    margin: 5px 40px 5px 10px !important;
-    size: 5000px !important;
-    background-color: rgb(218, 218, 218) !important;
-    border: 1px !important;
-    border-radius: 10px !important;
-  
-    min-width: 30px  !important;
-    max-width: 300px !important;
-  }
+.counterButton {
+  padding: 2px 8px 9px 8px !important;
+  margin: 5px 40px 5px 10px !important;
+  size: 5000px !important;
+  background-color: rgb(218, 218, 218) !important;
+  border: 1px !important;
+  border-radius: 10px !important;
 
-
+  min-width: 30px !important;
+  max-width: 300px !important;
+}
