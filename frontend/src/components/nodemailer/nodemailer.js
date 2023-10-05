@@ -23,9 +23,16 @@ async function main(){
         to: 'testemailadress',
         subject: 'Tack för din bokning!',
         html: html,
+        attachments: [{
+            filename: 'random.jpg',
+            path: './random.jpg',
+            cid: 'filmvisarna@mailserver.com'
+        }]
     })
 
     console.log('message sent' + info.messageId)
+    console.log(info.accepted)
+    console.log(info.rejected)
 }
 
 main()
