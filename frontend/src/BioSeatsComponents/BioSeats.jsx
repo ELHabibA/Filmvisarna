@@ -5,40 +5,48 @@ import "./BioSeats.css";
 import ticketsData from './Tickets.js';
 import { Link } from 'react-router-dom';
 
-
 function BioSeats() {
+    // State för att hålla reda på bokade platser, valda platser och auditorium ID
     const [bookedTickets, setBookedTickets] = useState([]);
     const [selectedSeats, setSelectedSeats] = useState([]);
     const [auditoriumId, setAuditoriumId] = useState(1);
 
+    // Beräknar totalt antal biljetter med useMemo för att undvika onödiga beräkningar
     const totalTickets = useMemo(() =>
         ticketsData.kids + ticketsData.adults + ticketsData.elderly
         , []);
 
+    // useEffect som sätter manuellt bokade platser när komponenten monteras
     useEffect(() => {
         setBookedTickets([1, 2, 3, 15, 16, 44, 45, 23, 61, 72, 71, 77, 78]);
     }, []);
 
+
     const handleSeatSelection = (seatId) => {
         setSelectedSeats(prev =>
             selectedSeats.includes(seatId)
-                ? prev.filter(id => id !== seatId)
-                : (selectedSeats.length < totalTickets) ? [...prev, seatId] : prev
+                ? prev.filter(id => id !== seatId) // Om platsen redan är vald, avmarkera den
+                : (selectedSeats.length < totalTickets) ? [...prev, seatId] : prev // Annars, markera den om gränsen inte är nådd
         );
     };
 
+
     const renderSeats = () => {
+        // Filtrera ut platserna för det aktuella auditoriet
         const seatsForCurrentAuditorium = auditoriumsData.filter(seat => seat.auditoriumId === auditoriumId);
 
+        // Gruppera platserna per rad
         const groupedSeats = seatsForCurrentAuditorium.reduce((acc, seat) => {
             (acc[seat.rowNumber] || (acc[seat.rowNumber] = [])).push(seat);
             return acc;
         }, {});
 
+        // Sortera platserna per rad
         for (let row in groupedSeats) {
             groupedSeats[row].sort((a, b) => a.seatNumber - b.seatNumber);
         }
 
+        // Rendera platserna som knappar
         return Object.keys(groupedSeats).map(rowNumber => (
             <Row key={rowNumber} className="mb-2 center-seats flex-row">
                 {groupedSeats[rowNumber].map(seat => (
@@ -57,6 +65,7 @@ function BioSeats() {
         ));
     };
 
+    // Rendera screen och knappar 
     return (
         <Container className="saloon-container mt-5">
             <div className="screen mb-5">Screen</div>
@@ -69,11 +78,9 @@ function BioSeats() {
                     <Link to="/Finalize-booking">
                         <Button>{'Forts' + String.fromCharCode(228) + 'tt Bokningen'}</Button>
                     </Link>
-                   
                 </Col>
             </Row>
         </Container>
-
     );
 }
 
