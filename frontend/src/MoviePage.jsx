@@ -7,7 +7,7 @@ const MoviePage = () => {
     const movie = moviesData.find((movie) => movie.id === parseInt(movieId, 10));
 
     if (!movie) {
-        // Hantera fallet när filmen inte hittas
+        
         return <div>Movie not found.</div>;
     }
 
@@ -30,7 +30,7 @@ const MoviePage = () => {
             <div className="row">
                 <div className="col-md-6">
                     <img
-                        src={movie.poster} // Använd posterns URL här
+                        src={movie.poster}
                         alt="Movie Poster"
                         className="img-fluid"
                         style={posterStyle}
@@ -39,8 +39,8 @@ const MoviePage = () => {
                 <div className="col-md-6 mt-2">
                     <iframe
                         width="100%"
-                        height="315"
-                        src={movie.trailerURL} // Använd videons URL här
+                        height="500"
+                        src={movie.trailerURL} 
                         title="Movie Trailer"
                         frameBorder="0"
                         allowFullScreen
