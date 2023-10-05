@@ -1,7 +1,8 @@
 //Skapa en 'Hem' sida här
+import MainLayout from './MainLayout';
 
 const Home = () => {
-    return <p>Hem</p>;
+    return <MainLayout />
   };
   
   export default Home;
