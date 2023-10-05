@@ -24,7 +24,9 @@ const MoviePage = () => {
                     <h1 className="my-4">{movie.title}</h1>
                 </div>
                 <div className="col-md-6 text-md-end">
-                    <button className="btn btn-primary mb-4">Boka Här</button>
+                    <Link to="/boka">
+                        <button className="btn btn-primary mb-4">Boka Här </button>
+                    </Link>
                 </div>
             </div>
             <div className="row">
@@ -61,7 +63,7 @@ const MoviePage = () => {
                     </ul>
                 </div>
                 <div className="col-md-6">
-                    <h2>Description</h2>
+                    <h2></h2>
                     <p>{movie.description}</p>
                 </div>
             </div>
