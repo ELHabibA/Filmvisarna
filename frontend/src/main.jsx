@@ -22,8 +22,7 @@ import FinalizeBooking from './FinalizeBooking.jsx';
 //den översta i pages ska vara startsidan
 
 export const pages = [
-  // {path: '/', label: 'Startsida', element: <Main /> },
-  { path: '/Hem', label: 'Hem', element: <Home /> },
+  { path: '/', label: 'Hem', element: <Home /> },
   { path: '/Filmer', label: 'Filmer', element: <Movies /> },
   { path: '/boka', label: 'Boka', element: <Booking /> },
   { path: '/kontakt', label: 'Kontakta oss', element: <ContactUs /> },
