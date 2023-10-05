@@ -40,6 +40,25 @@
 
 button:nth-child(1){
   background-color:#A26704;
+}
+
+button:not(.seat-btn):nth-child(1) {
+    background-color: #A26704;
+    border: none;
+    border-radius: 25px;
+    size: 25px;
+    padding: 5px 32px;
+    text-align: center;
+    min-width: 140px;
+    max-width: 300px;
+}
+button:not(.seat-btn):nth-child(1):hover {
+    background-color: #ffffff;
+}
+
+
+button:nth-child(2) {
+  background-color: #5a5a5a;
   border: none;
   border-radius: 25px;
   size: 25px;
@@ -49,7 +68,7 @@ button:nth-child(1){
   max-width: 300px;
 }
 
-.tradeMarkFooter{
+.tradeMarkFooter {
   text-align: center;
 }
 
@@ -58,12 +77,13 @@ button:nth-child(1){
   background-color: none;
   padding: 20px;
   width: 100%;
-  
+
 }
 
 .logoSize {
   max-width: 100px;
   text-align: center;
+
 }
 
 .body {
@@ -74,4 +94,5 @@ button:nth-child(1){
 
 .container-main {
   flex: 1;
+
 }
