@@ -7,14 +7,14 @@ const MoviePage = () => {
     const movie = moviesData.find((movie) => movie.id === parseInt(movieId, 10));
 
     if (!movie) {
-        // Hantera fallet när filmen inte hittas
+        
         return <div>Movie not found.</div>;
     }
 
     const posterStyle = {
         maxWidth: '100%',
-        maxHeight: '70vh', // Sätt maximal höjd här
-        objectFit: 'contain', // Använd 'contain' för att behålla proportioner
+        maxHeight: '70vh', 
+        objectFit: 'contain', 
     };
 
     return (
@@ -24,13 +24,15 @@ const MoviePage = () => {
                     <h1 className="my-4">{movie.title}</h1>
                 </div>
                 <div className="col-md-6 text-md-end">
-                    <button className="btn btn-primary mb-4">Boka Här</button>
+                    <Link to="/boka">
+                        <button className="btn btn-primary mb-4">Boka Här </button>
+                    </Link>
                 </div>
             </div>
             <div className="row">
                 <div className="col-md-6">
                     <img
-                        src={movie.poster} // Använd posterns URL här
+                        src={movie.poster}
                         alt="Movie Poster"
                         className="img-fluid"
                         style={posterStyle}
@@ -39,8 +41,8 @@ const MoviePage = () => {
                 <div className="col-md-6 mt-2">
                     <iframe
                         width="100%"
-                        height="315"
-                        src={movie.trailerURL} // Använd videons URL här
+                        height="500"
+                        src={movie.trailerURL} 
                         title="Movie Trailer"
                         frameBorder="0"
                         allowFullScreen
@@ -61,7 +63,7 @@ const MoviePage = () => {
                     </ul>
                 </div>
                 <div className="col-md-6">
-                    <h2>Description</h2>
+                    <h2></h2>
                     <p>{movie.description}</p>
                 </div>
             </div>
