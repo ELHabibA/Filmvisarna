@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import { pages } from '../../main';
 
 function BasicNavbar() {
+
+  const filteredPages = pages.filter((page) => page.path !== '/detaljsidan');
+
   return (
     <Navbar expand="lg">
       <Container>
@@ -22,7 +25,7 @@ function BasicNavbar() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Container> 
             <Nav className="navbar-film">
-              {pages.map((page) => (
+              {filteredPages.map((page) => (
                 <Nav.Link key={page.path} as={Link} to={page.path}>
                   {page.label}
                 </Nav.Link>

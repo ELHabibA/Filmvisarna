@@ -8,10 +8,23 @@
   --#{$prefix}navbar-toggler-icon-bg: #{escape-svg($navbar-dark-toggler-icon-bg)};
 }
 
-.navbar-collapse {
-  right: 0;
-  position: absolute;
+@media (max-width: 821px) {
+  .navbar-collapse {
+    position:absolute;
+    right: 0;
+  }
+}
 
+@media (min-width: 821px) {
+  .navbar-collapse {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+.navbar-collapse {
   .nav-link {
     --bs-nav-link-color: #A26704; 
     background-color: black;
