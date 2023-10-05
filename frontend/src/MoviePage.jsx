@@ -7,7 +7,7 @@ const MoviePage = () => {
     const movie = moviesData.find((movie) => movie.id === parseInt(movieId, 10));
 
     if (!movie) {
-      
+        // Hantera fallet när filmen inte hittas
         return <div>Movie not found.</div>;
     }
 
@@ -19,18 +19,18 @@ const MoviePage = () => {
 
     return (
         <div className="container">
-           <div className="row align-items-center">
-        <div className="col-md-6">
-          <h1 className="my-4">{movie.title}</h1>
-        </div>
-        <div className="col-md-6 text-md-end">
-          <button className="btn btn-primary mb-4">Boka Här</button>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-md-6">
+            <div className="row align-items-center">
+                <div className="col-md-6">
+                    <h1 className="my-4">{movie.title}</h1>
+                </div>
+                <div className="col-md-6 text-md-end">
+                    <button className="btn btn-primary mb-4">Boka Här</button>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-md-6">
                     <img
-                        src={movie.poster} 
+                        src={movie.poster} // Använd posterns URL här
                         alt="Movie Poster"
                         className="img-fluid"
                         style={posterStyle}
@@ -39,8 +39,8 @@ const MoviePage = () => {
                 <div className="col-md-6 mt-2">
                     <iframe
                         width="100%"
-                        height="500"
-                        src={movie.trailerURL} 
+                        height="315"
+                        src={movie.trailerURL} // Använd videons URL här
                         title="Movie Trailer"
                         frameBorder="0"
                         allowFullScreen
@@ -61,6 +61,7 @@ const MoviePage = () => {
                     </ul>
                 </div>
                 <div className="col-md-6">
+                    <h2>Description</h2>
                     <p>{movie.description}</p>
                 </div>
             </div>
