@@ -22,15 +22,14 @@ import FinalizeBooking from './FinalizeBooking.jsx';
 //den översta i pages ska vara startsidan
 
 export const pages = [
-  // {path: '/', label: 'Startsida', element: <Main /> },
-  { path: '/Hem', label: 'Hem', element: <Home /> },
-  { path: '/Filmer', label: 'Filmer', element: <Movies /> },
-  { path: '/boka', label: 'Boka', element: <Booking /> },
-  { path: '/kontakt', label: 'Kontakta oss', element: <ContactUs /> },
-  { path: '/blimedlem', label: 'Bli medlem', element: <BecomeMember /> },
-  { path: '/loggain', label: 'Logga in', element: <LogIn /> },
-  { path: '/detaljsidan/:movieId', label: '', element: <MoviePage /> },
-  { path: '/finalize-booking', label: '', element: <FinalizeBooking /> } // Ta bort sedan, kunder/externa användare ska inte kunna se denna sida utan att ha valt film.
+ // {path: '/', label: 'Startsida', element: <Main /> },
+  {    path: '/Hem', label: 'Hem', element: <Home /> },
+  {    path: '/Filmer', label: 'Filmer', element: <Movies /> },
+  {    path: '/boka', label: 'Boka', element: <Booking /> },
+  {    path: '/kontakt', label: 'Kontakta oss', element: <ContactUs /> },
+  {    path: '/blimedlem', label: 'Bli medlem', element: <BecomeMember />},
+  {    path: '/loggain', label: 'Logga in', element: <LogIn />},
+  {    path: '/detaljsidan', label: '', element: <MoviePage /> }
 ];
 
 const router = createBrowserRouter([
