@@ -3,6 +3,8 @@ import auditoriumsData from "./SeatsData.js";
 import { Button, Row, Col, Container } from "react-bootstrap";
 import "./BioSeats.css";
 import ticketsData from './Tickets.js';
+import { Link } from 'react-router-dom';
+
 
 function BioSeats() {
     const [bookedTickets, setBookedTickets] = useState([]);
@@ -14,8 +16,7 @@ function BioSeats() {
         , []);
 
     useEffect(() => {
-        // For simplicity, this is an empty array; replace with actual booked seats data if needed
-        setBookedTickets([]);
+        setBookedTickets([1, 2, 3, 15, 16, 44, 45, 23, 61, 72, 71, 77, 78]);
     }, []);
 
     const handleSeatSelection = (seatId) => {
@@ -60,8 +61,19 @@ function BioSeats() {
         <Container className="saloon-container mt-5">
             <div className="screen mb-5">Screen</div>
             {renderSeats()}
-            <Button onClick={() => setAuditoriumId(auditoriumId === 1 ? 2 : 1)}>Toggle Auditorium</Button>
+            <Row className="mt-3 justify-content-center">
+                <Col xs="auto">
+                    <Button onClick={() => setAuditoriumId(auditoriumId === 1 ? 2 : 1)}>Toggle Auditorium</Button>
+                </Col>
+                <Col xs="auto">
+                    <Link to="/Finalize-booking">
+                        <Button>{'Forts' + String.fromCharCode(228) + 'tt Bokningen'}</Button>
+                    </Link>
+                   
+                </Col>
+            </Row>
         </Container>
+
     );
 }
 

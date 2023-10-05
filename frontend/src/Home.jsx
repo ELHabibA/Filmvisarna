@@ -1,7 +1,5 @@
-import MainLayout from "./MainLayout";
-
-
 //Skapa en 'Hem' sida här
+import MainLayout from './MainLayout';
 
 const Home = () => {
   return <MainLayout />;
