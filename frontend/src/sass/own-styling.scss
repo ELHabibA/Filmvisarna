@@ -94,5 +94,20 @@ button:nth-child(2) {
 
 .container-main {
   flex: 1;
-
 }
+
+
+
+ .counterButton {
+    padding: 2px 8px 9px 8px !important;
+    margin: 5px 40px 5px 10px !important;
+    size: 5000px !important;
+    background-color: rgb(218, 218, 218) !important;
+    border: 1px !important;
+    border-radius: 10px !important;
+  
+    min-width: 30px  !important;
+    max-width: 300px !important;
+  }
+
+
