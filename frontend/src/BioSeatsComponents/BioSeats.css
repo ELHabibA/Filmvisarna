@@ -1,20 +1,18 @@
-/* Styling for the Saloon/Screen */
+/* Grundstil */
 
 .center-seats {
     display: flex;
     justify-content: center;
-    flex-direction: row;
-    flex-wrap: nowrap;
 }
 
 .saloon-container {
-    background-color: #071b25; /* Dark background for the container */
+    background-color: #071b25;
     padding: 20px;
     border-radius: 8px;
 }
 
 .screen {
-    background-color: #0a3048; /* Dark gray for the screen */
+    background-color: #0a3048;
     height: 30px;
     line-height: 30px;
     text-align: center;
@@ -23,38 +21,70 @@
     border-radius: 5px;
 }
 
-/* Styling for the seat buttons */
+/* Stil för sätesknapparna */
+
 .btn-primary {
     background-color: #8B6F47 !important;
-    /* Antic dark gold color */
     border-color: #8B6F47 !important;
 }
+
 .btn-secondary {
-    background-color: #b5972a !important; /* Antic dark gold color */
+    background-color: #b5972a !important;
     border-color: #8B6F47 !important;
 }
 
     .btn-primary:hover, .btn-secondary:hover {
-        background-color: #e1bb34 !important; /* Slightly lighter shade for hover */
+        background-color: #e1bb34 !important;
         border-color: #9D7F58 !important;
     }
 
 .btn:disabled {
-    background-color: #ebdaa0 !important; /* Dark gray indicating the seat is taken */
+    background-color: #ebdaa0 !important;
     border-color: #ebdaa0 !important;
 }
-@media (max-width: 576px) { /* Mobilvy */
+
+.seat-btn {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Responsiv design */
+
+@media (max-width: 576px) { /* Mobil */
     .seat-col {
-        padding: 1px !important; /* Minskar avståndet mellan sätena */
+        padding: 1px !important;
     }
 
     .seat-btn {
-        font-size: 0.6rem; /* Minskar textstorleken på knappen */
-        padding: 3px 6px; /* Minskar padding på knappen */
+        font-size: 0.6rem;
+        padding: 3px 6px;
     }
 }
 
+@media (min-width: 577px) and (max-width: 768px) { /* Surfplatta */
+    .seat-col {
+        padding: 2px !important;
+    }
 
+    .seat-btn {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+    }
+}
 
+@media (min-width: 667px) and (max-width: 992px) { /* Mellanstor skärm */
+    .saloon-container {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 10px;
+    }
 
+    .seat-col {
+        padding: 2px !important;
+    }
 
+    .seat-btn {
+        font-size: 0.8rem;
+        padding: 4px 8px;
+    }
+}
