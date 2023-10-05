@@ -31,12 +31,12 @@
 }
 
 .prev-button {
-    left: calc(31% - 100px);
+    left: calc(22.35% - 100px);
     /* Adjust the value to position the "previous" button */
 }
 
 .next-button {
-    right: calc(37% - 100px);
+    right: calc(33% - 100px);
     /* Adjust the value to position the "next" button */
 }
 

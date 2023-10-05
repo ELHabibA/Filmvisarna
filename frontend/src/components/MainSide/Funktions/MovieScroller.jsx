@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './MovieScroller.css';
+import '../../../sass/MovieScroller.css';
 
 function MovieScroller({ movieImages, movieIds }) {
     const [currentIndex, setCurrentIndex] = useState(0);

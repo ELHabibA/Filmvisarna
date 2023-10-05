@@ -10,7 +10,7 @@
 
 @media (max-width: 821px) {
   .navbar-collapse {
-    position:absolute;
+    position: absolute;
     right: 0;
   }
 }
@@ -26,7 +26,7 @@
 
 .navbar-collapse {
   .nav-link {
-    --bs-nav-link-color: #A26704; 
+    --bs-nav-link-color: #A26704;
     background-color: black;
     max-width: 200px;
     padding-left: 10px;
@@ -38,22 +38,23 @@
   min-width: 200px;
 }
 
-button:nth-child(1){
-  background-color:#A26704;
+button:nth-child(1) {
+  background-color: #A26704;
 }
 
 button:not(.seat-btn):nth-child(1) {
-    background-color: #A26704;
-    border: none;
-    border-radius: 25px;
-    size: 25px;
-    padding: 5px 32px;
-    text-align: center;
-    min-width: 140px;
-    max-width: 300px;
+  background-color: #A26704;
+  border: none;
+  border-radius: 25px;
+  size: 25px;
+  padding: 5px 32px;
+  text-align: center;
+  min-width: 140px;
+  max-width: 300px;
 }
+
 button:not(.seat-btn):nth-child(1):hover {
-    background-color: #ffffff;
+  background-color: #ffffff;
 }
 
 

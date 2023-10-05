@@ -1,7 +1,7 @@
 .image-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 1px;
 }
 
 /* Responsive styles for smaller screens (e.g., mobile) */
@@ -19,7 +19,7 @@
     align-items: center;
     justify-content: center;
     /* Center the image within the container */
-    padding: 10
+    padding: 12px;
 }
 
 .movie-image img {
