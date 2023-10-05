@@ -1,5 +1,6 @@
 
 const nodeMailer = require('nodemailer')
+const { email, password } = require('./loginCredentials');
 
 const html = `
     <h1> Filmvisarna </h1>
@@ -13,8 +14,8 @@ async function main(){
         port: 465,
         secure: true,
         auth:{
-            user:'mailadress@gmail.com',
-            pass: 'Lösenord',
+            user:'email',
+            pass: 'password',
         }
     });
 
