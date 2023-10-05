@@ -10,7 +10,7 @@ function BasicNavbar() {
   return (
     <Navbar expand="lg">
       <Container>
-        <Navbar.Brand as={Link} to="/Hem">
+        <Navbar.Brand as={Link} to="/">
           <img
             src="/logo.png"
             width="40"
