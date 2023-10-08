@@ -1,6 +1,4 @@
-.navbar-film,
-.navbar[data-bs-theme="dark"] {
-  --#{$prefix}navbar-color: #A26704;
+.navbar-film {
   --#{$prefix}navbar-hover-color: #{$navbar-dark-hover-color};
   --#{$prefix}navbar-disabled-color: #{$navbar-dark-disabled-color};
   --#{$prefix}navbar-active-color: #{$navbar-dark-active-color};
@@ -8,22 +6,57 @@
   --#{$prefix}navbar-brand-hover-color: #{$navbar-dark-brand-hover-color};
   --#{$prefix}navbar-toggler-border-color: #{$navbar-dark-toggler-border-color};
   --#{$prefix}navbar-toggler-icon-bg: #{escape-svg($navbar-dark-toggler-icon-bg)};
-  position: absolute;
 }
 
+@media (max-width: 984px) {
+  .navbar-collapse {
+    position: absolute;
+    right: 0;
+    background-color: black;
+  }
+}
+
+@media (min-width: 984px) {
+  .navbar-collapse {
+    display: flex;
+    position: sticky;
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+.navbar-collapse {
+  .nav-link {
+    --bs-nav-link-color: #A26704;
+    background-color: black;
+    --bs-nav-link-color: #A26704;
+    max-width: 200px;
+    padding-left: 10px;
+  }
+}
+
+.navbar-expand-lg .navbar-collapse {
+  top: 50px;
+  min-width: 200px;
+}
+
+button:nth-child(1) {
+  background-color: #A26704;
+}
 
 button:not(.seat-btn):nth-child(1) {
-    background-color: #A26704;
-    border: none;
-    border-radius: 25px;
-    size: 25px;
-    padding: 5px 32px;
-    text-align: center;
-    min-width: 140px;
-    max-width: 300px;
+  background-color: #A26704;
+  border: none;
+  border-radius: 25px;
+  size: 25px;
+  padding: 5px 32px;
+  text-align: center;
+  min-width: 140px;
+  max-width: 300px;
 }
+
 button:not(.seat-btn):nth-child(1):hover {
-    background-color: #ffffff;
+  background-color: #ffffff;
 }
 
 
@@ -64,5 +97,18 @@ button:nth-child(2) {
 
 .container-main {
   flex: 1;
+}
 
+
+
+.counterButton {
+  padding: 2px 8px 9px 8px !important;
+  margin: 5px 40px 5px 10px !important;
+  size: 5000px !important;
+  background-color: rgb(218, 218, 218) !important;
+  border: 1px !important;
+  border-radius: 10px !important;
+
+  min-width: 30px !important;
+  max-width: 300px !important;
 }
