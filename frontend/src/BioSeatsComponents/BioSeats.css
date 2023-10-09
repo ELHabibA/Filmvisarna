@@ -11,7 +11,7 @@
 }
 
 .screen {
-    background-color: white;
+    background-color: #d9d9d9;
     height: 20px;
     text-align: center;
     color: white;
@@ -22,24 +22,31 @@
 
 /* Stil för sätesknapparna */
 
-.btn-primary {
-    background-color: #8B6F47 !important;
+.seat-button-primary {
+    background-color: #8BA63E !important; /* Grön */
     border-color: #8B6F47 !important;
 }
 
-.btn-secondary {
-    background-color: #b5972a !important;
+.seat-button-secondary {
+    background-color: #b5972a !important; /* Guld */
     border-color: #8B6F47 !important;
 }
 
-    .btn-primary:hover, .btn-secondary:hover {
-        background-color: #e1bb34 !important;
+    .seat-button-primary:hover, .seat-button-secondary:hover {
+        background-color: #ffe44d !important; /* Ljusare guld */
         border-color: #9D7F58 !important;
+        transform: scale(1.1); /* Förstorar lite vid hover */
+    }
+
+    .seat-button-primary:active, .seat-button-secondary:active {
+        background-color: #ffd700 !important; /* Stark guld */
+        border-color: #9D7F58 !important;
+        transform: scale(0.95); /* Förminskar lite vid klick */
     }
 
 .btn:disabled {
-    background-color: #ebdaa0 !important;
-    border-color: #ebdaa0 !important;
+    background-color: #2d2a1f !important;
+    border-color: #2d2a1f !important;
 }
 
 .seat-btn {
@@ -63,6 +70,10 @@
         width: 4vw;
         height: 4vw;
     }
+
+    .seat-button-primary:hover, .seat-button-secondary:hover {
+        transform: scale(2.0); /* Större förstorning vid hover på mobil */
+    }
 }
 
 @media (min-width: 577px) and (max-width: 768px) { /* Surfplatta */
@@ -74,6 +85,10 @@
         font-size: 0.8rem;
         width: 5vw;
         height: 5vw;
+    }
+
+    .seat-button-primary:hover, .seat-button-secondary:hover {
+        transform: scale(1.5); /* Större förstorning vid hover på mobil */
     }
 }
 

@@ -59,9 +59,8 @@ function BioSeats() {
                     <Col key={seat.id} xs="auto" className="text-center seat-col">
                         <Button
                             variant={selectedSeats.includes(seat.id) ? "primary" : "secondary"}
-                            //disabled={bookedTickets.includes(seat.id)}
                             onClick={() => handleSeatSelection(seat.id)}
-                            className="seat-btn"
+                            className={`seat-btn ${selectedSeats.includes(seat.id) ? "seat-button-primary" : "seat-button-secondary"}`}
                         >
                             {seat.seatNumber}
                         </Button>
