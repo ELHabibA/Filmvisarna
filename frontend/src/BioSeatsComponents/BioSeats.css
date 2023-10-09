@@ -11,6 +11,7 @@
 }
 
 .screen {
+    background: linear-gradient(to bottom, #75755e, #5c5c4e);
     background-color: #75755e;
     height: 1rem;
     text-align: center;
