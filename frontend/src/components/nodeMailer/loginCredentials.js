@@ -1,4 +1,4 @@
 module.exports = {
-    email: 'mailadress@gmail.com',
-    password: 'Lösenord',
+    email: 'filmvisarnanodemailer@gmail.com',
+    password: 'nodemailer123',
 };
