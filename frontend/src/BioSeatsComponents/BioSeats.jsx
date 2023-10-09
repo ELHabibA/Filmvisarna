@@ -4,35 +4,41 @@ import { Button, Row, Col, Container } from "react-bootstrap";
 import "./BioSeats.css";
 import ticketsData from './Tickets.js';
 import { Link } from 'react-router-dom';
+import ChooseAge from '../components/ChooseAge';
 
 function BioSeats() {
-    // State för att hålla reda på bokade platser, valda platser och auditorium ID
+    // State fï¿½r att hï¿½lla reda pï¿½ bokade platser, valda platser och auditorium ID
     const [bookedTickets, setBookedTickets] = useState([]);
     const [selectedSeats, setSelectedSeats] = useState([]);
     const [auditoriumId, setAuditoriumId] = useState(1);
 
-    // Beräknar totalt antal biljetter med useMemo för att undvika onödiga beräkningar
+    const [sumFromChooseAge, setSumFromChooseAge] = useState(0);
+
+// Berï¿½knar totalt antal biljetter med useMemo fï¿½r att undvika onï¿½diga berï¿½kningar
     const totalTickets = useMemo(() =>
         ticketsData.kids + ticketsData.adults + ticketsData.elderly
         , []);
 
-    // useEffect som sätter manuellt bokade platser när komponenten monteras
+    const seatsSelected = selectedSeats.length > 0;
+
     useEffect(() => {
-        setBookedTickets([1, 2, 3, 15, 16, 44, 45, 23, 61, 72, 71, 77, 78]);
-    }, []);
+        console.log('Sum from ChooseAge:', sumFromChooseAge);
+        setBookedTickets([]);
+    }, [sumFromChooseAge]);
 
 
     const handleSeatSelection = (seatId) => {
-        setSelectedSeats(prev =>
-            selectedSeats.includes(seatId)
-                ? prev.filter(id => id !== seatId) // Om platsen redan är vald, avmarkera den
-                : (selectedSeats.length < totalTickets) ? [...prev, seatId] : prev // Annars, markera den om gränsen inte är nådd
+        setSelectedSeats((prev) =>
+            prev.includes(seatId) // Om platsen redan Ã¤r vald, avmarkera den
+                ? prev.filter((id) => id !== seatId)
+                : prev.length < sumFromChooseAge
+                ? [...prev, seatId]
+                : prev
         );
     };
 
-
     const renderSeats = () => {
-        // Filtrera ut platserna för det aktuella auditoriet
+        // Filtrera ut platserna fï¿½r det aktuella auditoriet
         const seatsForCurrentAuditorium = auditoriumsData.filter(seat => seat.auditoriumId === auditoriumId);
 
         // Gruppera platserna per rad
@@ -53,7 +59,7 @@ function BioSeats() {
                     <Col key={seat.id} xs="auto" className="text-center seat-col">
                         <Button
                             variant={selectedSeats.includes(seat.id) ? "primary" : "secondary"}
-                            disabled={bookedTickets.includes(seat.id)}
+                            //disabled={bookedTickets.includes(seat.id)}
                             onClick={() => handleSeatSelection(seat.id)}
                             className="seat-btn"
                         >
@@ -68,6 +74,7 @@ function BioSeats() {
     // Rendera screen och knappar 
     return (
         <Container className="saloon-container mt-5">
+            <ChooseAge onSumChange={setSumFromChooseAge} />
             <div className="screen mb-5">Screen</div>
             {renderSeats()}
             <Row className="mt-3 justify-content-center">

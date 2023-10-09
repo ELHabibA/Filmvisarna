@@ -5,7 +5,6 @@ import ChooseAge from './components/ChooseAge'
 const Booking = () => {
     return (
         <>
-            <ChooseAge />
             <BioSeats />
         </>
     )
