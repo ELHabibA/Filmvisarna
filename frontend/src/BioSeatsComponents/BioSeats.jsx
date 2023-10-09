@@ -75,7 +75,7 @@ function BioSeats() {
     return (
         <Container className="saloon-container mt-5">
             <ChooseAge onSumChange={setSumFromChooseAge} />
-            <div className="screen mb-5">Screen</div>
+            <div className="screen mb-5"></div>
             {renderSeats()}
             <Row className="mt-3 justify-content-center">
                 <Col xs="auto">
