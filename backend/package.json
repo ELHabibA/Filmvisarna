@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "'NodeJS backend for connection between MySQL database and React-frontend'",
   "main": "index.js",
+  "type": "module",
   "dependencies": {
     "accepts": "^1.3.8",
     "array-flatten": "^1.1.1",
@@ -67,6 +68,7 @@
     "unpipe": "^1.0.0",
     "utils-merge": "^1.0.1",
     "vary": "^1.1.2"
+    
   },
   "scripts": {
     "test": "\"echo \\\"Error: no test specified\\\" && exit 1\""

@@ -1,4 +1,3 @@
-
 import nodeMailer from "nodemailer";
 import { email, password } from './loginCredentials.js';
 
@@ -24,7 +23,7 @@ async function main(){
 
     const info = await transporter.sendMail({
         from: 'Filmvisarna <'+email+'>',
-        to: 'hakansson.hampus@gmail.com',
+        to: 'dinEmail@gmail.com',
         subject: 'Tack för din bokning!',
         html,
         text,
