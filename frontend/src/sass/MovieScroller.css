@@ -6,7 +6,6 @@
     justify-content: center;
     position: relative;
     height: auto;
-    /* Adjust the height as needed */
     padding-top: 2px;
 }
 
@@ -22,22 +21,18 @@
     font-size: 24px;
     cursor: pointer;
     color: white;
-    /* Add this to make the text white */
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     z-index: 1;
-    /* Add this to control the stacking order */
 }
 
 .prev-button {
-    left: calc(22.35% - 100px);
-    /* Adjust the value to position the "previous" button */
+    left: 5%;
 }
 
 .next-button {
-    right: calc(33% - 100px);
-    /* Adjust the value to position the "next" button */
+    right: 15%;
 }
 
 .image-container {
@@ -46,37 +41,65 @@
     justify-content: space-between;
     max-width: 100%;
     position: relative;
-    /* Make sure it's a positioned element for absolute positioning */
 }
 
 .center-image {
     width: 360px;
-    /* Adjust the width of the center image */
-    height: 280px;
-    /* Maintain aspect ratio and make it responsive */
+    /* Allow the center image to adjust based on its actual dimensions */
+    max-height: 280px;
+    /* Set a maximum height */
     padding: 5px;
+    /* Maintain aspect ratio and cover the container */
 }
-
 
 .left-side-image,
 .right-side-image {
-    max-width: 150px;
-    /* Match the width of the center image */
-    height: 180px;
-    /* Match the height of the center image */
+    max-width: 20%;
+    /* Adjust the width of the side images */
+    max-height: 180px;
+    /* Adjust the height of the side images */
     transform-style: preserve-3d;
-    /* Enable 3D transformations */
     perspective: 1000px;
-    /* Set the perspective to create the illusion of depth */
 }
 
-/* Apply fixed rotation and tilt to left and right images */
 .left-side-image {
     transform: rotateY(-60deg) rotateX(12deg) translateZ(55px);
-    /* Rotate and tilt the left-side image */
 }
 
 .right-side-image {
     transform: rotateY(60deg) rotateX(12deg) translateZ(55px);
-    /* Rotate and tilt the right-side image */
+}
+
+/* Responsive styles for smaller screens (e.g., mobile) */
+@media screen and (max-width: 767px) {
+    .movie-scroller {
+        flex-direction: column;
+        /* Stack elements vertically on mobile */
+    }
+
+    .prev-button {
+        font-size: 20px;
+        left: 7px;
+    }
+
+    .next-button {
+        font-size: 20px;
+        right: 65px;
+    }
+
+
+    .center-image {
+        width: 100%;
+        /* Center image takes full width on mobile */
+        max-height: auto;
+        /* Reset max-height for mobile */
+    }
+
+    .left-side-image,
+    .right-side-image {
+        max-width: 25%;
+        /* Side images take full width on mobile */
+        max-height: auto;
+        /* Reset max-height for mobile */
+    }
 }
