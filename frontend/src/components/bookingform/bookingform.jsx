@@ -31,24 +31,12 @@ export default function BookingForm() {
         callback: doAfterSend
       })}>
         <Row>
-          <Col sm={12}>
-            <div className='bg-secondary rounded p-3'>
-              <h3>Fyll i dina uppgifter</h3>
+          <Col sm={true}>
+            <div className='bg-secondary rounded p-3 mt-3'>
+              <h2>Dina uppgifter</h2>
               {[
 
-                ['input', 'firstName', 'Förnamn'],
-
-                ['input', 'lastName', 'Efternamn'],
-
-                ['input', 'phone', 'Telefonnummer',
-                  {
-                    type: 'tel',
-                    minLength: 8,
-                    error: x => /^\d*$/.test(x) ? '' :
-                      'Ange telefonnumret med endast siffror!'
-                  }
-                ],
-
+              
                 ['input', 'email', 'E-post', { type: 'email' }],
 
 
