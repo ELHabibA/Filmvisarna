@@ -68,6 +68,10 @@ return new Promise(resolve => {
 //   res.json(result);
 // });
 
+
+
+
+//GET routes - INGEN SÄKERHET PÅ DESSA
 app.get('/api/:tableName', async (req, res) => {
   let result = await dbQuery(`SELECT * FROM ${req.params.tableName}`);
   res.json(result);
@@ -76,4 +80,11 @@ app.get('/api/:tableName', async (req, res) => {
 app.get('/api/:tableName/:id', async (req, res) => {
   let result = await dbQuery(`SELECT * FROM ${req.params.tableName} WHERE id = :id`, req.params);
   res.json(result);
+});
+
+//POST new ticketType - fungerar ej säker
+app.post('/newtype', async function (req, res) {
+  const { name, price } = req.body;
+  let reqBody = await dbQuery('INSERT INTO ticketType(name, price) VALUES (?, ?)', [name, price])
+  res.json(reqBody);
 });
