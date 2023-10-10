@@ -45,6 +45,7 @@
     "mysql": "^2.18.1",
     "mysql2": "^3.6.1",
     "negotiator": "^0.6.3",
+    "nodemailer": "^6.9.6",
     "object-assign": "^4.1.1",
     "object-inspect": "^1.12.3",
     "on-finished": "^2.4.1",
