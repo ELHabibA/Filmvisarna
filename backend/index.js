@@ -1,5 +1,4 @@
 const express = require('express');
-//const mysql = require('mysql');
 const db = require('./db.js');
 const connection = require('./db.js');
 
@@ -35,13 +34,46 @@ return new Promise(resolve => {
   });
 }
 
-async function runExampleQueries() {
+// async function runExampleQueries() {
 
-  // query with no parameters
-  let result1 = await dbQuery(
-    'SELECT * FROM ticketType'
-  );
-  console.log('\n', result1);
-}
+//   // query with no parameters
+//   let result1 = await dbQuery(
+//     'SELECT * FROM ticketType'
+//   );
+//   console.log('\n', result1);
 
- runExampleQueries();
+//   let result2 = await dbQuery(
+//     'SELECT * FROM auditorium'
+//   );
+//   console.log('\n', result2);
+
+//   let result3 = await dbQuery(
+//     'SELECT * FROM dbFilm.movies WHERE title = :title',
+//     {title:'Barbie'}
+//   );
+//   console.log('\n', result3);
+  
+// }
+
+//  runExampleQueries();
+
+
+// app.get('/api/movies', async (req, res) => {
+//   let result = await dbQuery('SELECT * FROM movies');
+//   res.json(result);
+// });
+
+// app.get('/api/movies/:id', async (req, res) => {
+//   let result = await dbQuery('SELECT * FROM movies WHERE id = :id', req.params);
+//   res.json(result);
+// });
+
+app.get('/api/:tableName', async (req, res) => {
+  let result = await dbQuery(`SELECT * FROM ${req.params.tableName}`);
+  res.json(result);
+});
+
+app.get('/api/:tableName/:id', async (req, res) => {
+  let result = await dbQuery(`SELECT * FROM ${req.params.tableName} WHERE id = :id`, req.params);
+  res.json(result);
+});
