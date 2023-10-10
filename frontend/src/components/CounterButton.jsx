@@ -26,8 +26,9 @@ function CounterButton({onUpdate}) {
     return (
         <>
        
-            <button className="counterButton" onClick={addPerson}><HiPlus /></button>
-            <button className="counterButton" onClick={removePerson}><HiMinus /></button> {count} st
+            
+            <button className="counterButton" onClick={removePerson}><HiMinus /></button>
+            <button className="counterButton" onClick={addPerson}><HiPlus /></button> {count} st
 
        </>         
     );
