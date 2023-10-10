@@ -7,6 +7,7 @@
     position: relative;
     height: auto;
     padding-top: 2px;
+    padding-bottom: 20px;
 }
 
 .movie-scroller .prev-button {
@@ -18,13 +19,14 @@
 .next-button {
     background-color: transparent;
     border: none;
-    font-size: 24px;
+    font-size: 30px;
     cursor: pointer;
     color: white;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     z-index: 1;
+
 }
 
 .prev-button {
@@ -70,6 +72,23 @@
     transform: rotateY(60deg) rotateX(12deg) translateZ(55px);
 }
 
+/* Add the media query for desktop view (reset rotation) */
+@media screen and (min-width: 768px) {
+
+    .movie-scroller {
+        flex-direction: row;
+        /* Ensure horizontal layout for desktop */
+
+    }
+
+
+    .left-side-image,
+    .right-side-image {
+        transform: rotateY(0deg) rotateX(0deg) translateZ(0px);
+        /* Reset rotation and translation for the side images on desktop */
+    }
+}
+
 /* Responsive styles for smaller screens (e.g., mobile) */
 @media screen and (max-width: 767px) {
     .movie-scroller {
@@ -86,7 +105,6 @@
         font-size: 20px;
         right: 65px;
     }
-
 
     .center-image {
         width: 100%;

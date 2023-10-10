@@ -1,0 +1,53 @@
+/* Style for the "Idag" section */
+.idag-container {
+    width: 100%;
+    /* Full width */
+    padding: 15px;
+    /* Reduce padding for a more compact size */
+    position: relative;
+    /* Relative position to overlap the image grid */
+    top: 0;
+    /* Adjust the top position as needed */
+    left: 0;
+    /* Place it on the left side */
+    overflow-x: hidden;
+    /* Add horizontal scroll if content exceeds width */
+    white-space: nowrap;
+    /* Prevent images from wrapping to the next line */
+    z-index: 2;
+    /* Set z-index higher than the image grid */
+    border-top: 1px solid #ccc;
+    /* Add a top border with minimum padding */
+    border-bottom: 1px solid #ccc;
+    /* Add a bottom border with minimum padding */
+    padding: 10px 5px;
+    /* Add padding to the top and bottom (10px) and reduce padding to the left and right (5px) */
+}
+
+/* Style the content title for "Idag" */
+.idag-container .content-title {
+    font-size: 28px;
+    /* Use the same font size as "Se Idag" */
+    margin-bottom: 5px;
+    /* Use the same margin */
+    position: relative;
+    /* Set a relative position for fine-tuning */
+}
+
+/* Style the movie entries for "Idag" */
+.idag-container .movie {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 25px;
+    /* Add margin between images */
+    width: calc(25% - 10px);
+    /* Calculate width for 4 images in a row with margin */
+}
+
+/* Style the movie images for "Idag" */
+.idag-container .movie img {
+    width: 75%;
+    /* Make the images fill the container */
+    height: auto;
+    /* Maintain aspect ratio */
+}
