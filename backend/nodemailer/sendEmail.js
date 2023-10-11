@@ -4,12 +4,22 @@ import { email as fromEmail, password } from './loginCredentials.js';
 export default async function sendEmail({ header, email, title, ticketType, seats, price }) {
 
     const html = `
-    <h1>${header} </h1>
-    <p> Här kommer din bokning </p><hr/>
-    <p>Titel: ${title}</p><hr/>
-    <p>Biljetter: ${ticketType}</p><hr/> 
-    <p>Stolar: ${seats}</p><hr/>
-    <p>Pris: ${price}</p>
+    
+    <body style="background-color: #181619;">
+    <font color="#DDA74F">
+    <header>
+        <h1>${header} </h1>
+        <h3> Här kommer din bokning </h3><hr/>
+    </header>
+    <body>
+        <p>Titel: ${title}</p>
+        <p>Biljetter: ${ticketType}</p>
+        <p>Stolar: ${seats}</p>
+        <p>Pris: ${price}</p><hr/>
+    </body>
+    <footer>
+        Filmvisarna AB
+    </footer>
 `;
     const text = `Filmvisarna - Här kommer din bokning`;
 
