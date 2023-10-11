@@ -12,6 +12,9 @@
 # .env
 
 
+# Login email
+#loginCredentials.js
+
 # User-specific files
 *.suo
 *.user
