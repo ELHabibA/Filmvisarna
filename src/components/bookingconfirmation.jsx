@@ -1,5 +1,5 @@
 import { Container, Row, Col, Image, Button } from "react-bootstrap";
-import BookingNumber from '../BookingNumber';
+
 import { Link } from 'react-router-dom';
 
 
@@ -37,7 +37,7 @@ function BookingConfirmation() {
 
                     <div className="fw-bold mb-2">Bokningsnummer</div>
                     <div className="mb-3">
-                        <BookingNumber/>
+                        {/* <BookingNumber/> */}
                     </div>
 
                     <div className="fw-bold mb-2">Platser</div>
