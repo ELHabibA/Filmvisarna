@@ -12,7 +12,7 @@ import BecomeMember from './BecomeMember.jsx';
 import LogIn from './LogIn.jsx';
 import MoviePage from './MoviePage.jsx';
 import FinalizeBooking from './FinalizeBooking.jsx';
-import BookingConfirmation from './components/bookingconfirmation/bookingconfirmation.jsx';
+import BookingConfirmation from './components/bookingconfirmation.jsx'
 
 
 
