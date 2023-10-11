@@ -1,6 +1,7 @@
-const express = require('express');
-const db = require('./db.js');
-const connection = require('./db.js');
+import express from 'express';
+import db from './db.js';
+import connection from './db.js';
+import { func } from 'prop-types';
 
 
 const app = express();
@@ -50,4 +51,14 @@ app.post('/newtype', async function (req, res) {
   const { name, price } = req.body;
   let reqBody = await dbQuery('INSERT INTO ticketType(name, price) VALUES (?, ?)', [name, price])
   res.json(reqBody);
+});
+
+//Hur få med bokningsnummer screeningId och userID i detta?
+app.post('/newbooking', async function (req, res) {
+  const { email } = req.body;
+  
+  const result = await dbQuery('INSERT INTO bookings ( email) VALUES (?)', [email]);
+
+  
+ res.json({ message: 'Bokning skapad framgångsrikt!' });
 });
