@@ -1,0 +1,113 @@
+/* Grundstil */
+
+.center-seats {
+    display: flex;
+    justify-content: center;
+}
+
+.saloon-container {
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.screen {
+    background: linear-gradient(to bottom, #75755e, #5c5c4e);
+    background-color: #75755e;
+    height: 1rem;
+    text-align: center;
+    color: white;
+    margin-top: 5rem;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+/* Stil för sätesknapparna */
+
+.seat-button-primary {
+    background-color: #f1f1f1 !important; /* Grön */
+    border-color: #8B6F47 !important;
+}
+
+.seat-button-secondary {
+    background-color: #9C7A44 !important; /* Guld */
+    border-color: #8B6F47 !important;
+}
+
+    .seat-button-primary:hover, .seat-button-secondary:hover {
+        background-color: #ffe44d !important; /* Ljusare guld */
+        border-color: #9D7F58 !important;
+        transform: scale(1.1); /* Förstorar lite vid hover */
+    }
+
+    .seat-button-primary:active, .seat-button-secondary:active {
+        background-color: #ffd700 !important; /* Stark guld */
+        border-color: #9D7F58 !important;
+        transform: scale(0.95); /* Förminskar lite vid klick */
+    }
+
+.btn:disabled {
+    background-color: #2d2a1f !important;
+    border-color: #2d2a1f !important;
+}
+
+.seat-btn {
+    transition: all 0.3s ease-in-out;
+    width: 3vw;
+    height: 3vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Responsiv design */
+
+@media (max-width: 576px) { /* Mobil */
+    .seat-col {
+        padding: 1px !important;
+    }
+
+    .seat-btn {
+        font-size: 0.6rem;
+        width: 4vw;
+        height: 4vw;
+    }
+
+    .seat-button-primary:hover, .seat-button-secondary:hover {
+        transform: scale(2.0); /* Större förstorning vid hover på mobil */
+    }
+}
+
+@media (min-width: 577px) and (max-width: 768px) { /* Surfplatta */
+    .seat-col {
+        padding: 2px !important;
+    }
+
+    .seat-btn {
+        font-size: 0.8rem;
+        width: 5vw;
+        height: 5vw;
+    }
+
+    .seat-button-primary:hover, .seat-button-secondary:hover {
+        transform: scale(1.5); /* Större förstorning vid hover på mobil */
+    }
+}
+
+@media (min-width: 667px) and (max-width: 992px) { /* Mellanstor skärm */
+    .saloon-container {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 10px;
+    }
+
+    .seat-col {
+        padding: 2px !important;
+    }
+
+    .seat-btn {
+        font-size: 0.8rem;
+        width: 5vw;
+        height: 5vw;
+    }
+}
