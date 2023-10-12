@@ -32,6 +32,7 @@
 
 /* Style the movie entries */
 .movie {
+    margin-top: 15px;
     display: flex;
     align-items: center;
     margin-bottom: 15px;
