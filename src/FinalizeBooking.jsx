@@ -11,12 +11,11 @@ function FinalizeBooking() {
 
         <Container className="mt-5">
             <Row>
-                <Col md={6} className="mb-3">
+                <Col md={true} className="mb-3">
                     <BookingSummary />
-                </Col>
-                <Col md={6} className="mb-3">
                     <BookingForm />
                 </Col>
+
             </Row>
         </Container>
     )

@@ -3,7 +3,7 @@
         "id": 1,
         "title": "Barbie",
         "genre": "Fantasy",
-        "ageRating": "15+",
+        "ageRating": "11+",
         "releaseDate": "2023",
         "duration": "1 timme 54 minuter",
         "language": "Engelska",
@@ -15,12 +15,12 @@
             "Alexandra Ship"
         ],
         "description": "En live-actionfilm baserad på den populära Barbie-franchisen. I rollerna ser vi Margot Robbie som Barbie och Ryan Gosling som Ken. Regi av Greta Gerwig.",
-        "poster": "https://play-lh.googleusercontent.com/PEz2VIjIs5IEB-bxlLAVnYSKKEqeWmlX8jB2EZpIZAMwfpOVAhWV05z23XoOCk3_7emlhoeZkSQ2Vu4FvXjF=w480-h960-rw",
+        "poster": "https://image.tmdb.org/t/p/original/cgYg04miVQUAG2FKk3amSnnHzOp.jpg",
         "trailerURL": "https://www.youtube.com/embed/pBk4NYhWNMM?si=nXHzuJn7o457hhzL"
     },
     {
         "id": 2,
-        "title": "Grand turismo",
+        "title": "Gran turismo",
         "genre": "Action",
         "ageRating": "15+",
         "releaseDate": "2023",
@@ -37,14 +37,14 @@
             "Connor Swindells"
         ],
         "description": "Baserad på den sanna historien om tonåringen Jann Mardenborough, vars skicklighet inom TV-spelet Gran Turismo gjorde att han en serie Nissan-tävlingar och blev en professionell raceförare.",
-        "poster": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRM65rFHgq_VkLpSCtKDvZ5IRaAoFzMRVQZN3YlVom1RonkILBx",
+        "poster": "https://www.sonypictures.com/sites/default/files/styles/max_560x840/public/title-key-art/granturismo_onesheet_1400x2100_pvod.jpg?itok=pbRXb8o8",
         "trailerURL": "https://www.youtube.com/embed/GVPzGBvPrzw?si=K9slV8LfflfqJfL2"
     },
     {
         "id": 3,
         "title": "Oppenheimer",
-        "genre": "Animerat",
-        "ageRating": "11+",
+        "genre": "Drama",
+        "ageRating": "15+",
         "releaseDate": "2023",
         "duration": "3 timme",
         "language": "Engelska",
@@ -58,13 +58,13 @@
             "Rami Malek"
         ],
         "description": "Berättelsen om den amerikanske vetenskapsmannen J. Robert Oppenheimer och hans roll i utvecklingen av atombomben.",
-        "poster": "https://pbs.twimg.com/media/FvUVt3hXgAAxP1H?format=jpg&name=900x900",
+        "poster": "https://i.ebayimg.com/images/g/74gAAOSw40Vkex3q/s-l1200.webp",
         "trailerURL": "https://www.youtube.com/embed/uYPbbksJxIg?si=yl3eLxFaov3JhqFg"
     },
     {
         "id": 4,
-        "title": "Mission impossible - Dead Reckoning part 1",
-        "genre": "Drama",
+        "title": "Mission impossible - Fallout",
+        "genre": "Thriller",
         "ageRating": "15+",
         "releaseDate": "2023",
         "duration": "2 timme 43 minuter",
@@ -86,7 +86,7 @@
     {
         "id": 5,
         "title": "Die Hard 2",
-        "genre": "Skräck",
+        "genre": "Action",
         "ageRating": "15+",
         "releaseDate": "1990",
         "duration": "2 timme 4 minuter",
@@ -104,7 +104,7 @@
     {
         "id": 6,
         "title": "En man som heter Ove",
-        "genre": "Romantik",
+        "genre": "Drama",
         "ageRating": "15+",
         "releaseDate": "2015",
         "duration": "1 timme 56 minuter",
@@ -116,14 +116,14 @@
             "Filip Berg"
         ],
         "description": "59-årige Ove är kvarterets griniga man som flera år tidigare avsatts som ordförande i bostadsrättsföreningen, men han kunde inte bry sig ett dugg om att bli avsatt och tittar därför över kvarteret med järnhand. När gravida Parvaneh och hennes familj flyttar in i radhuset mittemot och av misstag backar in i Oves brevlåda visar det sig vara en oväntad vänskap. En dramakomedi om oväntad vänskap, kärlek och vikten av att omge sig med rätt verktyg.",
-        "poster": "https://www.movienewsletters.net/photos/SWE_223348R1.jpg",
+        "poster": "https://m.media-amazon.com/images/M/MV5BMjE0NDUyOTc2MV5BMl5BanBnXkFtZTgwODk2NzU3OTE@._V1_.jpg",
         "trailerURL": "https://www.youtube.com/embed/eFYUX9l-m5I?si=eR_CMRIBlPebNbMZ"
     },
     {
         "id": 7,
         "title": "Saw X",
-        "genre": "Komedi",
-        "ageRating": "Ingen åldergräns",
+        "genre": "Skräck",
+        "ageRating": "15+",
         "releaseDate": "2023",
         "duration": "1 timme 58 minuter",
         "language": "Engelska",
@@ -142,8 +142,8 @@
     {
         "id": 8,
         "title": "Ruby-Havsmonstret",
-        "genre": "Äventyr",
-        "ageRating": "15+",
+        "genre": "Animerat",
+        "ageRating": "10+",
         "releaseDate": "2023",
         "duration": "1timme 31min",
         "language": "Engelska",
@@ -160,8 +160,8 @@
     {
         "id": 9,
         "title": "Super Mario Bros",
-        "genre": "Thriller",
-        "ageRating": "ingen åldergrans",
+        "genre": "Animerat",
+        "ageRating": "10+",
         "releaseDate": "2023",
         "duration": "1timme 32min",
         "language": "Engelska",
@@ -177,8 +177,8 @@
     },
     {
         "id": 10,
-        "title": "the Nun 2",
-        "genre": "Musik",
+        "title": "The Nun 2",
+        "genre": "Skräck",
         "ageRating": "15+",
         "releaseDate": "2023",
         "duration": "1timme 50min",
@@ -196,7 +196,7 @@
     {
         "id": 11,
         "title": "the Equalizer 3-Final chapter",
-        "genre": "Sci-fi",
+        "genre": "Thriller",
         "ageRating": "15+",
         "releaseDate": "2023",
         "duration": "1timme 49min",
@@ -218,8 +218,8 @@
     {
         "id": 12,
         "title": "Vem är du, Mamma mu?",
-        "genre": "Familj",
-        "ageRating": "11+",
+        "genre": "Animerat",
+        "ageRating": "10+",
         "releaseDate": "2023",
         "duration": "1timme 6min",
         "language": "Engelska",
@@ -238,7 +238,7 @@
     {
         "id": 13,
         "title": "De ostyriga",
-        "genre": "Dokumentär",
+        "genre": "Drama",
         "ageRating": "15+",
         "releaseDate": "2022",
         "duration": "2timme 15min",
@@ -251,15 +251,15 @@
             "Jessica Dinnage",
             "Danica Curcic"
         ],
-        "description": "Köpenhamn bubblar av förändringens vindar när jazzmusiken sveper genom mellankrigstidens Europa. Maren, äldsta dottern i ett fattigt hushåll, insuper det nya med stor entusiasm, men hennes ungdomliga trotsighet och livslust ses inte med blida ögon av omgivningen. Genom barnavårdsnämnden inststitutionaliseras hon på ön Sprogø, där man samlat unga kvinnor som anklagats för lösdriveri eller sexuell omättlighet. Hon bildar snart ett oskiljaktigt band med Sørine, och tillsammans börjar de göra uppror - med långtgående konsekvenser.",
-        "poster": "https://bio.nu/wp-content/uploads/2023/01/unruly-bio.webp",
+        "description": "",
+        "poster": "https://d2qpwwz51er3b0.cloudfront.net/folketsbio/wp-content/uploads/2023/09/16145522/de-ostyriga-a4.jpg",
         "trailerURL": "https://www.youtube.com/embed/_52vtiRg97E?si=NkO5Y7YdlBmGcHkd"
     },
     {
         "id": 14,
         "title": "After everything",
-        "genre": "Barn",
-        "ageRating": "7+",
+        "genre": "Romantik",
+        "ageRating": "15+",
         "releaseDate": "2023",
         "duration": "1timme 33min",
         "language": "Dansk",
@@ -275,7 +275,7 @@
     {
         "id": 15,
         "title": "Jesus revolution",
-        "genre": "Thriller",
+        "genre": "Drama",
         "ageRating": "15+",
         "releaseDate": "2023",
         "duration": "2timme ",
@@ -290,5 +290,23 @@
         "description": "Den unge Greg Laurie söker efter det som är rätt och sant på helt fel ställen ända tills han möter Lonnie Frisbee, en karismatisk hippie-gatupredikant. Tillsammans med pastor Chuck Smith öppnar de kyrkdörrarna i Smiths tynande församling för en oväntad väckelse av radikal nyfunnen kärlek som TIME Magazine valde att kalla en Jesus Revolution. Filmen bygger på ett historiskt skeende på 1970-talet, då ett stort antal hippies byter ut droger mot en nyfunnen tro på Jesus. Skeendet börjar i södra Kalifornien, men får senare en världsvid spridning.",
         "poster": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTyzecegWFCBPpb3CPaun_QCPCVHPapycMWYIqByv4qWsri8wFn",
         "trailerURL": "https://www.youtube.com/embed/MuhhQpE4Mas?si=c33y7oU7YPDLTrqi"
+    },
+    {
+        "id": 16,
+        "title": "Meg 2: The Trench",
+        "genre": "Action",
+        "ageRating": "15+",
+        "releaseDate": "2023",
+        "duration": "1timme 56min ",
+        "language": "Engelska",
+        "directör": "Ben Wheatley",
+        "cast": [
+            "Jason Statham",
+            "Jing Wu",
+            "Shuya Sophia Cai"
+        ],
+        "description": "Ett forskarlag stöter på flera hot medan de utforskar havets djup, inklusive en illvillig gruvdrift.",
+        "poster": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ8B2ys9H6igYTFDk6VOedsF7RUiAYZaPvZY0qtLLEBKIHS4W1l",
+        "trailerURL": "https://www.youtube.com/embed/JujTYiDlu7g?si=m9qXM4EVWkhYYeW1"
     }
 ]
