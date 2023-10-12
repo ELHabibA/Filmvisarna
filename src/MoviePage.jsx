@@ -13,7 +13,7 @@ const MoviePage = () => {
 
     const posterStyle = {
         maxWidth: '100%',
-        maxHeight: '70vh', 
+        maxHeight: '50vh', 
         objectFit: 'contain', 
     };
 
@@ -41,7 +41,7 @@ const MoviePage = () => {
                 <div className="col-md-6 mt-2">
                     <iframe
                         width="100%"
-                        height="500"
+                        height="350"
                         src={movie.trailerURL} 
                         title="Movie Trailer"
                         frameBorder="0"
@@ -53,13 +53,34 @@ const MoviePage = () => {
                 <div className="col-md-6">
                     <h1 className="my-4"></h1>
                     <ul>
-                        <li>Genre: {movie.genre}</li>
-                        <li>Åldersgräns: {movie.ageRating}</li>
-                        <li>Premiär: {movie.releaseDate}</li>
-                        <li>Längd: {movie.duration}</li>
-                        <li>Språk: {movie.language}</li>
-                        <li>Regissör: {movie.director}</li>
-                        <li>Skådespelare: {movie.cast.join(', ')}</li>
+                            <li style={{ display: 'flex' }}>
+                            <span style={{ width: '150px' }}>Genre:</span>
+                            <span>{movie.genre}</span>
+                        </li>
+                        <li style={{ display: 'flex' }}>
+                            <span style={{ width: '150px' }}>Åldersgräns:</span>
+                            <span>{movie.ageRating}</span>
+                        </li>
+                        <li style={{ display: 'flex' }}>
+                            <span style={{ width: '150px' }}>Premiär:</span>
+                            <span>{movie.releaseDate}</span>
+                        </li>
+                        <li style={{ display: 'flex' }}>
+                            <span style={{ width: '150px' }}>Längd:</span>
+                            <span>{movie.duration}</span>
+                        </li>
+                        <li style={{ display: 'flex' }}>
+                            <span style={{ width: '150px' }}>Språk:</span>
+                            <span>{movie.language}</span>
+                        </li>
+                        <li style={{ display: 'flex' }}>
+                            <span style={{ width: '150px' }}>Regissör:</span>
+                            <span>{movie.director}</span>
+                        </li>
+                        <li style={{ display: 'flex' }}>
+                        <span style={{ width: '150px' }}>Skådespelare:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        {movie.cast.join(', ')} 
+                        </li>
                     </ul>
                 </div>
                 <div className="col-md-6">
