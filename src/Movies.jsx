@@ -3,38 +3,9 @@ import { Link, useParams, useLocation } from 'react-router-dom';
 import moviesData from './components/data/movies.json';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Col from 'react-bootstrap/Col';
+import MoviesList from './MoviesList';
 
 const Movies = () => {
-    
-         //const [moviesDatan, setMoviesData] = useState([{}]);
-
-    // useEffect(() => {
-    //     fetch("/api/movies").then(response => response.json
-    //     ).then(
-    //         data => {
-    //             setMoviesData(data)
-    //         }
-    //     )
-    // }, []);
-     const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(true); // Deklarera loading-variabeln
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('/api/movies');
-        const data = await response.json();
-        setMovies(data);
-        setLoading(false); // När datan är hämtad, sätt loading till false
-      } catch (error) {
-        console.error('Error fetching data:', error);
-        setLoading(false); // Om det uppstår ett fel, sätt loading till false
-      }
-    };
-
-
-    fetchData();
-  }, []);
     
     const linkStyle = {
         textDecoration: 'none',
@@ -132,18 +103,7 @@ const Movies = () => {
                 }}
             />
             <h1>Filmer</h1>
-            <div>
-      <h2>Movie List</h2>
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <ul>
-          {movies.map((movie) => (
-            <li key={movie.id}>{movie.title}</li>
-          ))}
-        </ul>
-      )}
-    </div>
+            <MoviesList />
             <div>
                 {/* Filtrering för ålder */}
                 <Col xs={12} sm={6} md={4} lg={3} style={{ marginBottom: '15px' }}>
