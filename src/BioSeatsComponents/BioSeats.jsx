@@ -59,11 +59,10 @@ function BioSeats() {
                     <Col key={seat.id} xs="auto" className="text-center seat-col">
                         <Button
                             variant={selectedSeats.includes(seat.id) ? "primary" : "secondary"}
-                            //disabled={bookedTickets.includes(seat.id)}
                             onClick={() => handleSeatSelection(seat.id)}
-                            className="seat-btn"
+                            className={`seat-btn ${selectedSeats.includes(seat.id) ? "seat-button-primary" : "seat-button-secondary"}`}
                         >
-                            {seat.seatNumber}
+                            {/*seat.seatNumber*/}
                         </Button>
                     </Col>
                 ))}
@@ -75,7 +74,7 @@ function BioSeats() {
     return (
         <Container className="saloon-container mt-5">
             <ChooseAge onSumChange={setSumFromChooseAge} />
-            <div className="screen mb-5">Screen</div>
+            <div className="screen mb-5"></div>
             {renderSeats()}
             <Row className="mt-3 justify-content-center">
                 <Col xs="auto">
