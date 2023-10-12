@@ -38,7 +38,7 @@
 .idag-container .movie {
     display: inline-block;
     vertical-align: top;
-    margin-right: 25px;
+    margin-right: 15px;
     /* Add margin between images */
     width: calc(25% - 10px);
     /* Calculate width for 4 images in a row with margin */
@@ -50,4 +50,16 @@
     /* Make the images fill the container */
     height: auto;
     /* Maintain aspect ratio */
+}
+
+/* Style for the text under each image in the "Idag" section */
+.image-text {
+    text-align: left;
+    /* Center-align the text */
+    font-size: 13px;
+    /* Adjust the font size as needed */
+    color: whitesmoke;
+    /* Text color */
+    margin-top: 15px;
+    /* Add some spacing from the image */
 }

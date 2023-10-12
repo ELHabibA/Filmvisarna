@@ -36,7 +36,24 @@ function MainLayout() {
         // You can use the Link component for this purpose
     };
     // Specific IDs for "Idag" section
-    const idagMovieIds = [1, 12, 7, 10];
+    const idagMovies = [
+        {
+            id: 1,
+            text: ['Sal A', 'Tid: 10:00', 'Sal B', 'Tid: 13:00', 'Ålder: 5+'],
+        },
+        {
+            id: 12,
+            text: ['Sal B', 'Tid: 10:00', 'Sal A', 'Tid: 13:00', 'Ålder: 5+'],
+        },
+        {
+            id: 7,
+            text: ['Sal A', 'Tid: 16:00', 'Sal B', 'Tid: 20:00', 'Ålder: 15+'],
+        },
+        {
+            id: 10,
+            text: ['Sal B', 'Tid: 16:00', 'Sal A', 'Tid: 20:00', 'Ålder: 15+'],
+        },
+    ];
 
     const [showKidsContainer, setShowKidsContainer] = useState(true);
     const [showSeIdagContainer, setShowSeIdagContainer] = useState(true);
@@ -101,7 +118,7 @@ function MainLayout() {
                     />
                     {showKidsContainer && (
                         <div className="kids-container">
-                            <h2 className="content-title">Idag För Barn 7+</h2>
+                            <h2 className="content-title">Idag För Barn 5+</h2>
                             <div className="movie-info">
                                 {/* Movie title and showtime for kids' content */}
                                 <div className="movie">
@@ -119,14 +136,17 @@ function MainLayout() {
                         </div>
                     )}
                 </div>
-                {/* Idag section with specific images based on IDs */}
+                {/* Idag section with specific images and text based on IDs */}
                 <div className="idag-container">
                     <h2 className="content-title">Idag på Bio</h2>
                     <div className="movie-info">
-                        {idagMovieIds.map((id, index) => (
-                            <Link to={`/detaljsidan/${id}`} key={index}>
+                        {idagMovies.map((movie, index) => (
+                            <Link to={`/detaljsidan/${movie.id}`} key={index}>
                                 <div className="movie">
-                                    <img src={movieImages[id - 1]} alt={`Movie ${id}`} />
+                                    <img src={movieImages[movie.id - 1]} alt={`Movie ${movie.id}`} />
+                                    {movie.text.map((line, i) => (
+                                        <div key={i} className="image-text">{line}</div>
+                                    ))}
                                 </div>
                             </Link>
                         ))}

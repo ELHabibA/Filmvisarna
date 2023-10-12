@@ -23,7 +23,7 @@ function BasicNavbar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
         <Navbar.Collapse id="basic-navbar-nav">
-          <Container> 
+          <Container>
             <Nav className="navbar-film">
               {filteredPages.map((page) => (
                 <Nav.Link key={page.path} as={Link} to={page.path}>
