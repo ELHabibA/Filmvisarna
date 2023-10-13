@@ -1,0 +1,61 @@
+/* Adjust the size of the Se Idag section test*/
+.se-idag-container {
+    width: 200px;
+    /* Set the desired width */
+    padding: 5px;
+    /* Reduce padding for a more compact size */
+    background-color: #f0f0f083;
+    /* Optional: Set a background color */
+    border: 1px solid #ccc;
+    /* Optional: Add a border */
+    border-radius: 15px;
+    /* Optional: Add rounded corners */
+    position: fixed;
+    /* Fixed position to keep it on the left side */
+    top: 200;
+    left: 0;
+    bottom: 200;
+    /* Set top, left, and bottom to 0 for full height */
+    overflow-y: auto;
+    /* Add vertical scroll if content exceeds height */
+    z-index: 2;
+    /* Set z-index higher than movie scroller */
+}
+
+/* Style the content title */
+.content-title {
+    font-size: 20px;
+    /* Reduce the font size */
+    margin-bottom: 5px;
+    /* Reduce margin at the bottom */
+}
+
+/* Style the movie entries */
+.movie {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    /* Reduce margin between movie entries */
+}
+
+/* Style the movie titles */
+.movie-title {
+    font-size: 12px;
+    /* Reduce the font size */
+    margin-right: 15px;
+    /* Reduce margin to the right of the title */
+}
+
+/* Style the showtime text */
+.showtime {
+    font-size: 15px;
+    /* Reduce the font size */
+}
+
+@media (max-width: 1023px) {
+    .se-idag-container {
+        display: none;
+        /* Hide the container on mobile devices */
+    }
+}
