@@ -33,7 +33,12 @@ export class RestApi {
     );
   }
 
-  addRoutes(...classes) {
+  async addRoutes(...classes) {
+
+    // our own special routes goes first
+    global.server = server;
+    await import("../specialRoutes/start.js");
+
     // loop through classes containing routes and add them
     for (let _class of classes) {
       let instance = new _class();
@@ -49,6 +54,7 @@ export class RestApi {
         }
       }
     }
+  
     // if no route matches the query...
     this.server.all('/api/*', (req, res) => {
       res.status(this.settings.errorStatus);
