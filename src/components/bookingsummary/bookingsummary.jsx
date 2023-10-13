@@ -1,5 +1,5 @@
 import { Container, Row, Col, Image } from "react-bootstrap";
-import BookingNumber from '../BookingNumber';
+
 
 function BookingSummary() {
     return (
@@ -15,7 +15,6 @@ function BookingSummary() {
                     <div className="fw-bold mb-3">Biljetter</div>
                     <div className="mb-4">
                         
-                        <div>Bokningsnummer: <BookingNumber /></div>
                         <div>2 st vuxna</div>
                         <div>1 st barn</div>
                         <div>1 st pensionär</div>
