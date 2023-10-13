@@ -16,6 +16,7 @@ function MovieScroller({ movieImages, movieIds }) {
 
     return (
         <div className="movie-scroller-container">
+            <h2 className="scroller-title">Aktuellt</h2> {/* Add your title here */}
             <div className="movie-scroller">
                 <button className="prev-button" onClick={handlePrevClick}>&lt;</button>
                 <div className="image-container">
