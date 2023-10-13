@@ -33,7 +33,7 @@ const Movies = () => {
     const [genreButtonColor, setGenreButtonColor] = useState('primary');
     const [genreButtonText, setGenreButtonText] = useState('Välj genre');
 
-    // Alla filmer, inklusive filtrering
+    // Alla filmer, inklusive filtrering1
     const [allMovies, setAllMovies] = useState(moviesData);
 
     // Deklarera variabler för unika genrer
