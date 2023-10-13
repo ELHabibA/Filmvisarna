@@ -11,6 +11,8 @@
 # Inloggningsdetaljer till  db ligger här
 # .env
 
+# You really should't put things here vite!!!
+.vite
 
 # Login email
 #loginCredentials.js
