@@ -1,0 +1,72 @@
+/* Weekly section specific styles */
+.weekly-container {
+    width: 200px;
+    /* Set the desired width */
+    padding: 5px;
+    /* Reduce padding for a more compact size */
+    background-color: #f0f0f083;
+    /* Optional: Set a background color */
+    border: 1px solid #ccc;
+    /* Optional: Add a border */
+    border-radius: 15px;
+    /* Optional: Add rounded corners */
+    position: fixed;
+    /* Fixed position to keep it on the left side */
+    top: 0;
+    /* Set top to 0 for full height */
+    left: 0;
+    bottom: 0;
+    /* Set bottom to 0 for full height */
+    overflow-y: auto;
+    /* Add vertical scroll if content exceeds height */
+    z-index: 2;
+    /* Set z-index higher than movie scroller */
+}
+
+/* Style the content title */
+.weekly-container .content-title {
+    font-size: 20px;
+    /* You can adjust the font size */
+    margin-bottom: 5px;
+    /* You can adjust the margin */
+}
+
+/* Style the movie rows */
+.weekly-container .movie-rows {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Style each movie row */
+.weekly-container .movie-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Style the movie entries */
+.weekly-container .movie {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    /* You can adjust the margin */
+}
+
+/* Style the movie images */
+.weekly-container .movie img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Style the image text */
+.weekly-container .image-text {
+    padding-top: 20px;
+    text-align: center;
+    font-size: 16px;
+    /* You can adjust the font size */
+}
+
+/* Add more styles as needed */
