@@ -1,3 +1,6 @@
+import bookingNumber from '../utilities/bookingNumber.js';
+
+
 import { runQuery } from "../classes/dbEngineSpecific/MySQLQuery.js";
 const app = global.server;
 
@@ -7,3 +10,6 @@ app.get("/api/ourOwnRoute", async (req, res) => {
     res.json(result);
 });
 
+app.get('/api/bookingNumber', (req, res) => {
+    res.json({ bookingNumber: bookingNumber() });
+});
