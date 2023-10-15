@@ -87,6 +87,11 @@ const MoviePage = () => {
                     <h2></h2>
                     <p>{movie.description}</p>
                 </div>
+                <div className="vertical-section">
+                     <hr className="hr" />
+                <h1 className="my-4">Showtimes</h1>
+                {/* Add your movie showtimes content here */}
+            </div>
             </div>
         </div>
     );
