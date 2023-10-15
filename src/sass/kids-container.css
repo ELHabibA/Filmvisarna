@@ -1,0 +1,62 @@
+/* Style for the mirrored "For Kids" container */
+.kids-container {
+    width: 200px;
+    /* Set the desired width */
+    padding: 5px;
+    /* Reduce padding for a more compact size */
+    background-color: #f0f0f083;
+    /* Optional: Set a background color */
+    border: 1px solid #ccc;
+    /* Optional: Add a border */
+    border-radius: 15px;
+    /* Optional: Add rounded corners */
+    position: fixed;
+    /* Fixed position to keep it on the left side */
+    top: 200;
+    /* Adjust the top position as needed */
+    right: 0;
+    /* Place it on the left side */
+    bottom: 200;
+    /* Set bottom to 0 for full height */
+    overflow-y: auto;
+    /* Add vertical scroll if content exceeds height */
+    z-index: 2;
+    /* Set z-index higher than the movie scroller */
+}
+
+/* Style the mirrored content title for kids */
+.content-title {
+    font-size: 20px;
+    /* Use the same font size as "Se Idag" */
+    margin-bottom: 5px;
+    /* Use the same margin */
+}
+
+/* Style the mirrored movie entries for kids */
+.movie {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    /* Use the same margin */
+}
+
+/* Style the mirrored movie titles for kids */
+.movie-title {
+    font-size: 12px;
+    /* Use the same font size */
+    margin-right: 15px;
+    /* Use the same margin */
+}
+
+/* Style the mirrored showtime text for kids */
+.showtime {
+    font-size: 15px;
+    /* Use the same font size */
+}
+
+@media (max-width: 1023px) {
+    .kids-container {
+        display: none;
+        /* Hide the container on mobile devices */
+    }
+}
