@@ -105,21 +105,21 @@ const MoviePage = () => {
             )}
           </ul>
         </div>
-                        <div className="col-md-6">
-                            <h2></h2>
-                            <p>{movie.description.description}</p>
-                        </div>
-                    </div>
-                    <hr className="hr" />
-                    <div className="vertical-section">
-                        <h1 className="my-4">Showtimes</h1>
-                        {/* Add your movie showtimes content here */}
-                    </div>
-                </div>
-            ) : (
-                <p>Movie not found</p>
-            )}
+        <div className="col-md-6">
+                <h2></h2>
+                <p>{movie.description.description}</p>
+            </div>
         </div>
+        <hr className="hr" />
+        <div className="vertical-section">
+            <h1 className="my-4">Showtimes</h1>
+            {/* Add your movie showtimes content here */}
+        </div>
+    </div>
+    ) : (
+    <p>Movie not found</p>
+    )}
+    </div>
     );
 };
 
