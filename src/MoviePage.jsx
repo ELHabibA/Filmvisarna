@@ -110,11 +110,6 @@ const MoviePage = () => {
                 <p>{movie.description.description}</p>
             </div>
         </div>
-        <hr className="hr" />
-        <div className="vertical-section">
-            <h1 className="my-4">Showtimes</h1>
-            {/* Add your movie showtimes content here */}
-        </div>
     </div>
     ) : (
     <p>Movie not found</p>
