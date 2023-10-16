@@ -23,16 +23,8 @@ function FinalizeBooking(props) {
                     <BookingSummary />
                 </Modal.Header>
                 <Modal.Body>
-                    <BookingForm />
+                    <BookingForm handleClose={handleClose}/>
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Avbryt
-                    </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                        Boka
-                    </Button>
-                </Modal.Footer>
             </Modal>
         </>
     )
