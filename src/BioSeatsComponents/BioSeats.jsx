@@ -5,16 +5,19 @@ import "./BioSeats.css";
 import ticketsData from './Tickets.js';
 import { Link } from 'react-router-dom';
 import ChooseAge from '../components/ChooseAge';
+import FinalizeBooking from "../FinalizeBooking.jsx";
 
 function BioSeats() {
-    // State f�r att h�lla reda p� bokade platser, valda platser och auditorium ID
+    // State får att hålla reda på bokade platser, valda platser och auditorium ID
     const [bookedTickets, setBookedTickets] = useState([]);
     const [selectedSeats, setSelectedSeats] = useState([]);
     const [auditoriumId, setAuditoriumId] = useState(1);
 
+    const [showModal, setShowModal] = useState(false);
+
     const [sumFromChooseAge, setSumFromChooseAge] = useState(0);
 
-// Ber�knar totalt antal biljetter med useMemo f�r att undvika on�diga ber�kningar
+    // Beräknar totalt antal biljetter med useMemo f�r att undvika on�diga ber�kningar
     const totalTickets = useMemo(() =>
         ticketsData.kids + ticketsData.adults + ticketsData.elderly
         , []);
@@ -32,8 +35,8 @@ function BioSeats() {
             prev.includes(seatId) // Om platsen redan är vald, avmarkera den
                 ? prev.filter((id) => id !== seatId)
                 : prev.length < sumFromChooseAge
-                ? [...prev, seatId]
-                : prev
+                    ? [...prev, seatId]
+                    : prev
         );
     };
 
@@ -73,6 +76,7 @@ function BioSeats() {
     // Rendera screen och knappar 
     return (
         <Container className="saloon-container mt-5">
+            <FinalizeBooking showModal={showModal} setShowModal={setShowModal} />
             <ChooseAge onSumChange={setSumFromChooseAge} />
             <div className="screen mb-5"></div>
             {renderSeats()}
@@ -81,9 +85,7 @@ function BioSeats() {
                     <Button onClick={() => setAuditoriumId(auditoriumId === 1 ? 2 : 1)}>Toggle Auditorium</Button>
                 </Col>
                 <Col xs="auto">
-                    <Link to="/Finalize-booking">
-                        <Button>{'Forts' + String.fromCharCode(228) + 'tt Bokningen'}</Button>
-                    </Link>
+                    <Button onClick={() => setShowModal(true)}>Fortsätt bokningen</Button>
                 </Col>
             </Row>
         </Container>
