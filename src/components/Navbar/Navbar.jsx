@@ -5,7 +5,8 @@ import { pages } from '../../main';
 
 function BasicNavbar() {
 
-  const filteredPages = pages.filter((page) => page.path !== '/detaljsidan');
+  const excludedPaths = ['/detaljsidan', '/boka/:selectedDate'];
+  const filteredPages = pages.filter((page) => !excludedPaths.includes(page.path));
 
   return (
     <Navbar expand="lg">
