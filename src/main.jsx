@@ -13,6 +13,7 @@ import LogIn from './LogIn.jsx';
 import MoviePage from './MoviePage.jsx';
 import FinalizeBooking from './FinalizeBooking.jsx';
 import BookingConfirmation from './components/bookingconfirmation.jsx'
+import CancelBooking from './CancelBooking.jsx'
 
 
 
@@ -31,7 +32,8 @@ export const pages = [
   { path: '/loggain', label: 'Logga in', element: <LogIn /> },
   { path: '/detaljsidan/:movieId', label: '', element: <MoviePage /> },
   { path: '/finalize-booking', label: '', element: <FinalizeBooking /> }, // Ta bort sedan, kunder/externa användare ska inte kunna se denna sida utan att ha valt film.
-  { path: '/bokningsbekraftelse', label: '', element: <BookingConfirmation /> } // Ta bort sedan, kunder/externa användare ska inte kunna se denna sida utan att ha valt film.
+    { path: '/bokningsbekraftelse', label: '', element: <BookingConfirmation /> }, // Ta bort sedan, kunder/externa användare ska inte kunna se denna sida utan att ha valt film.
+    { path: '/avbokning', label: '', element: <CancelBooking /> } 
 ];
 
 const router = createBrowserRouter([
