@@ -40,6 +40,24 @@ app.post('/api/makeBooking', async (req, res) => {
     res.json({ makeBooking: "ROUTEN FINNS", "data you sent": dataFromUser, bookingNumber, user, result });
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 app.get('/api/seats', async (req, res) => {
     
     // Kör en query för att hämta alla säten från 'seats' tabellen i din databas
