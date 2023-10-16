@@ -5,7 +5,6 @@ import BasicNavbar from "./components/Navbar/Navbar";
 import Background from './components/MainSide/Background';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useEffect } from 'react';
-import JoinButtons from './JoinButtons';
 
 export default function App() {
 
@@ -23,7 +22,6 @@ export default function App() {
   return (
     <>
 
-      <JoinButtons /> 
       <BasicNavbar />
       <Container className="mt-5 body">
         <Row>
