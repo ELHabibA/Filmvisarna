@@ -3,8 +3,10 @@ import { Link, useParams, useLocation } from 'react-router-dom';
 import moviesData from './components/data/movies.json';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Col from 'react-bootstrap/Col';
+import MoviesList from './MoviesList';
 
 const Movies = () => {
+    
     const linkStyle = {
         textDecoration: 'none',
         color: 'white',
@@ -139,38 +141,10 @@ const Movies = () => {
                         </Dropdown.Menu>
                     </Dropdown>
                 </Col>
+                            
                 {/*Film - lista*/}
-                <div className="movie-list">
-                    {filteredMovies.map((movie) => (
-                        <div key={movie.id} className="movie-item" style={{ marginBottom: '10px' }}>
-                            <Link to={`/detaljsidan/${movie.id}`} style={linkStyle}>
-                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
-                                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                                        <div style={{ marginRight: '20px' }}>
-                                            <img
-                                                src={movie.poster}
-                                                alt="Movie Poster"
-                                                className="img-fluid"
-                                                style={{
-                                                    width: '150px',
-                                                    height: 'auto',
-                                                    border: '2px solid black',
-                                                }}
-                                            />
-                                        </div>
-                                        <div>
-                                            <h2 style={{ fontSize: '20px', marginBottom: '5px' }}>{movie.title}</h2>
-                                            <p style={{ margin: 0, fontSize: '16px' }}>{movie.genre} I {movie.duration} I {movie.ageRating}</p>
-                                        </div>
-                                    </div>
-                                    <Link to={`/detaljsidan/${movie.id}`}>
-                                        <button className="btn btn-primary" style={{ marginLeft: '10px' }}>Detaljer</button>
-                                    </Link>
-                                </div>
-                            </Link>
-
-                        </div>
-                    ))}
+                <div>
+                    <MoviesList />
                 </div>
             </div>
         </div>

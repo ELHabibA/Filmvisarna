@@ -1,23 +1,29 @@
-import { Container } from "react-bootstrap";
-import Image from 'react-bootstrap/Image';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import BookingForm from "./components/bookingform/bookingform";
 import BookingSummary from "./components/bookingsummary/bookingsummary";
+import { useState } from "react";
+import { Button, Modal } from "react-bootstrap";
 
 
-function FinalizeBooking() {
+
+
+function FinalizeBooking(props) {
+
+    const { showModal, setShowModal } = props;
+
+    const handleClose = () => setShowModal(false);
+    
+
     return (
-
-        <Container className="mt-5">
-            <Row>
-                <Col md={true} className="mb-3">
+        <>
+            <Modal show={showModal}>
+                <Modal.Header>
                     <BookingSummary />
-                    <BookingForm />
-                </Col>
-
-            </Row>
-        </Container>
+                </Modal.Header>
+                <Modal.Body>
+                    <BookingForm handleClose={handleClose}/>
+                </Modal.Body>
+            </Modal>
+        </>
     )
 }
 

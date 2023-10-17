@@ -3,6 +3,7 @@ import { Button, Row, Col, Container } from "react-bootstrap";
 import "./BioSeats.css";
 import { Link } from 'react-router-dom';
 import ChooseAge from '../components/ChooseAge';
+import FinalizeBooking from "../FinalizeBooking.jsx";
 
 function BioSeats() {
     const [selectedSeats, setSelectedSeats] = useState([]);
@@ -64,6 +65,7 @@ function BioSeats() {
 
     return (
         <Container className="saloon-container mt-5">
+            <FinalizeBooking showModal={showModal} setShowModal={setShowModal} />
             <ChooseAge onSumChange={setSumFromChooseAge} />
             <div className="screen mb-5"></div>
             {renderSeats()}
