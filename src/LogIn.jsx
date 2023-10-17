@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Container, Card, Button, Form } from 'react-bootstrap';
 
 const LogIn = () => {
+
+  const history = useHistory();
   const inputStyle = { color: 'black' };
   const placeholderStyle = { color: 'black' };
   const inputFieldStyle = { background: 'white', color: 'black', borderColor: '#272A31' };
@@ -40,13 +42,8 @@ const LogIn = () => {
         throw new Error('Login failed. Please try again.');
       }
 
-      const data = await response.json();
-
-      if (data.error) {
-        setLoginError(data.error);
-      } else {
-        // Redirect or perform other actions upon successful login
-      }
+      // Redirect to the movies page upon successful login
+      history.push('/Filmer');
     } catch (error) {
       console.error('Error during login:', error);
       setLoginError('Login failed. Please try again.');
