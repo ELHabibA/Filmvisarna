@@ -56,7 +56,6 @@ function BioSeats() {
                             onClick={() => handleSeatSelection(seat.id)}
                             className={`seat-btn ${selectedSeats.includes(seat.id) ? "seat-button-primary" : "seat-button-secondary"}`}
                         >
-                            {seat.seatNumber}
                         </Button>
                     </Col>
                 ))}
