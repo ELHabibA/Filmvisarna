@@ -8,16 +8,6 @@ import { useEffect } from 'react';
 
 export default function App() {
 
-  useEffect(() => {
-    (async () => { 
-      // wait for data from rest api
-      let rawData = await fetch('/api/movies');
-      // wait for unpacking data from json to js data structure
-      let data = await rawData.json();
-      console.log("ALL ZE MOVIES", data)
-    })();
-  },[]);
-
 
   return (
     <>

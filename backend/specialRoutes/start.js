@@ -18,7 +18,6 @@ app.get('/api/bookingNumber', (req, res) => {
 app.post('/api/makeBooking', async (req, res) => { 
     let dataFromUser = req.body;
 
-
     let bookingNumber = getBookingNumber();
 
     let { email, screeningId } = req.body;
@@ -38,4 +37,20 @@ app.post('/api/makeBooking', async (req, res) => {
         { bookingNumber, userId: user.id, screeningId });
 
     res.json({ makeBooking: "ROUTEN FINNS", "data you sent": dataFromUser, bookingNumber, user, result });
+});
+
+//Delete booking
+app.delete('/api/bookings', async (req, res) => {
+
+    const { email, bookingNumber } = req.body;
+
+  
+        const result = await runQuery(
+            'DELETE bookings FROM bookings INNER JOIN users ON bookings.userId = users.id WHERE bookings.bookingNumber = :bookingNumber AND users.email = :email',
+            { email, bookingNumber }
+        );
+
+        res.json(result);
+        
+    
 });
