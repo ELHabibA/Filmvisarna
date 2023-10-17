@@ -4,7 +4,7 @@ import Col from 'react-bootstrap/Col';
 import { useFormHelper } from '../../hooks/useFormHelper';
 
 
-export default function BookingForm() {
+export default function BookingForm({handleClose}) {
 
   const {
     formState,
@@ -18,6 +18,7 @@ export default function BookingForm() {
 
   function doAfterSend(serverResponse) {
     console.log('serverResponse', serverResponse);
+    handleClose();
   }
 
   return <>
@@ -58,10 +59,10 @@ export default function BookingForm() {
 
             ['button', '_reset', '', {
               type: 'reset',
-              onClick: () => setFormState({}),
+              onClick: () => {setFormState({}); handleClose()},
               className: 'btn-secondary mx-3',
               nolabel: true
-            }, 'Töm fälten']
+            }, 'Avbryt']
 
           ].map(elData => createInputElement(...elData))
           }</Col>
