@@ -46,11 +46,10 @@ app.get('/api/seats', async (req, res) => {
     
     // Kör en query för att hämta alla säten från 'seats' tabellen i din databas
     let result = await runQuery('SELECT * FROM seats');
-    // Skicka tillbaka resultatet som JSON till klienten
     res.json(result);
-    //Delete booking
 });
 
+ //Delete booking
 app.delete('/api/bookings', async (req, res) => {
 
     const { email, bookingNumber } = req.body;
