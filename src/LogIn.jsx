@@ -11,8 +11,8 @@ const LogIn = () => {
   const loginHeaderText = 'Log In';
 
   const initialLoginData = {
-    'E-mail': '',
-    'Password': '',
+    email: '', // Update the field names to match your form
+    password: '', // Update the field names to match your form
   };
 
   const [loginData, setLoginData] = useState(initialLoginData);
@@ -25,15 +25,9 @@ const LogIn = () => {
 
   const handleLogin = async () => {
     setIsLoggingIn(true);
-
-    // Clear previous login error
     setLoginError('');
 
-    // You can add your login logic here, e.g., using an API request.
-
     try {
-      // Replace this with your actual login logic
-      // Example: Call an authentication API endpoint
       const response = await fetch('/api/login', {
         method: 'POST',
         headers: {
@@ -46,7 +40,13 @@ const LogIn = () => {
         throw new Error('Login failed. Please try again.');
       }
 
-      // Redirect to a success page or perform other actions
+      const data = await response.json();
+
+      if (data.error) {
+        setLoginError(data.error);
+      } else {
+        // Redirect or perform other actions upon successful login
+      }
     } catch (error) {
       console.error('Error during login:', error);
       setLoginError('Login failed. Please try again.');
@@ -62,15 +62,13 @@ const LogIn = () => {
           <h2 style={inputStyle}>{loginHeaderText}</h2>
           <Form className="rectangle-form">
             {[
-              { field: 'E-post', label: 'Enter your E-mail' },
-              { field: 'Lösenord', label: 'Enter your Password' },
+              { field: 'email', label: 'Enter your E-mail' },
+              { field: 'password', label: 'Enter your Password' },
             ].map(({ field, label }) => (
               <Form.Group key={field}>
-                <Form.Label style={placeholderStyle}>
-                  {field}
-                </Form.Label>
+                <Form.Label style={placeholderStyle}>{field}</Form.Label>
                 <Form.Control
-                  type={field === 'Password' ? 'password' : 'text'}
+                  type={field === 'password' ? 'password' : 'text'}
                   style={inputFieldStyle}
                   placeholder={label}
                   value={loginData[field]}
@@ -86,7 +84,7 @@ const LogIn = () => {
             {isLoggingIn ? 'Logging in...' : 'Log In'}
           </Button>
           <p className="text-muted">
-            Inte medlem ? <Link to="/blimedlem">Bli medlem</Link>
+            Not a member? <Link to="/blimedlem">Become a member</Link>
           </p>
         </Card.Footer>
       </Card>
@@ -95,3 +93,4 @@ const LogIn = () => {
 };
 
 export default LogIn;
+
