@@ -10,6 +10,7 @@ function BioSeats() {
     const [auditoriumId, setAuditoriumId] = useState(1);
     const [seatsData, setSeatsData] = useState([]); 
     const [sumFromChooseAge, setSumFromChooseAge] = useState(0);
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         fetch('/api/seats')
