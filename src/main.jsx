@@ -5,7 +5,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 //Här importerar vi alla sidor som kommer vilja använda i routingen
 import App from './App.jsx';
 import Home from './Home.jsx';
-import Movies from './Movies.jsx';
+import Movies from './components/Filmer/Movies.jsx';
+import MovieItem from './components/Filmer/MovieItem.jsx';
+import MovieFilter from './components/Filmer/MovieFilter.jsx';
 import ContactUs from './ContactUs.jsx';
 import Booking from './Booking.jsx';
 import BecomeMember from './BecomeMember.jsx';
