@@ -111,3 +111,19 @@ button:nth-child(2) {
   min-width: 30px !important;
   max-width: 300px !important;
 }
+
+.posterMoviesList {
+  max-width: '15px' !important;
+  max-height: 'auto';
+  border: '2px solid black';
+
+}
+
+.moviesListCard {
+   flex: 33.33 33.33 33.33%;
+}
+
+.movie-container {
+  display: flex;
+  flex-wrap: wrap;
+}
