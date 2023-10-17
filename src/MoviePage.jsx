@@ -6,6 +6,9 @@ const MoviePage = () => {
   const [loading, setLoading] = useState(true);
   const [screeningDates, setScreeningDates] = useState([]);
   const [selectedDate, setSelectedDate] = useState('');
+  const [selectedScreening, setSelectedScreening] = useState(null);
+  const [screeningsData, setScreeningData] = useState([]);
+
 
   const { movieId } = useParams();
 
@@ -18,6 +21,7 @@ const MoviePage = () => {
 
         const screeningsResponse = await fetch('/api/screenings');
         const screeningsData = await screeningsResponse.json();
+        setScreeningData(screeningsData);
 
         const uniqueDates = Array.from(new Set(screeningsData.map(screening => screening.time.split('T')[0])));
         setScreeningDates(uniqueDates);
@@ -50,17 +54,30 @@ const MoviePage = () => {
             </div>
             <div className="col-md-6 text-md-end">
               <div>
-                <label>Se våra visningar här:</label>
-                <select value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)}>
+                <label>Välj visning att boka här:</label>
+                <select
+                  value={selectedDate}
+                  onChange={(e) => {
+                    setSelectedDate(e.target.value);
+                    const selectedScreening = screeningsData.find(screening => screening.time.split('T')[0] === e.target.value);
+                    setSelectedScreening(selectedScreening);
+                  }}
+                >
                   <option value="">Välj datum</option>
                   {screeningDates.map((date) => (
-                    <option key={date} value={date}>
-                      {date}
-                    </option>
+                    <optgroup key={date} label={date}>
+                      {screeningsData
+                        .filter(screening => screening.time.split('T')[0] === date)
+                        .map((screening) => (
+                          <option key={screening.id} value={date}>
+                            {`Auditorium ${screening.auditorium_id}, ${screening.time}`}
+                          </option>
+                        ))}
+                    </optgroup>
                   ))}
                 </select>
-                {selectedDate && (
-                  <Link to={`/boka/${movieId}/${selectedDate}`}>
+                {selectedScreening && (
+                  <Link to={`/boka/${selectedScreening.id}`}>
                     <button className="btn btn-primary">Boka biljetter</button>
                   </Link>
                 )}

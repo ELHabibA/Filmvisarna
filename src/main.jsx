@@ -28,7 +28,7 @@ import CancelBooking from './CancelBooking.jsx'
 export const pages = [
     { path: '/', label: 'Hem', element: <Home /> },
     { path: '/Filmer', label: 'Filmer', element: <Movies /> },
-    { path: '/boka/:movieId/:selectedDate', label: 'Boka', element: <Booking /> },
+    { path: '/boka/:screeningId', label: 'Boka', element: <Booking /> },
     { path: '/kontakt', label: 'Kontakta oss', element: <ContactUs /> },
     { path: '/blimedlem', label: 'Bli medlem', element: <BecomeMember /> },
     { path: '/loggain', label: 'Logga in', element: <LogIn /> },

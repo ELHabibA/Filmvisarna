@@ -3,28 +3,36 @@ import { useParams } from 'react-router-dom';
 import BioSeats from './BioSeatsComponents/BioSeats';
 
 const Booking = () => {
-    const { selectedDate, movieId } = useParams();
+    const { screeningId } = useParams();
+    const [screening, setScreening] = useState(null);
     const [movie, setMovie] = useState(null);
 
     useEffect(() => {
         const fetchMovieDetails = async () => {
             try {
-                // Fetch movie details based on movieId
-                const response = await fetch(`/api/movies/${movieId}`);
-                const movieData = await response.json();
+                const response = await fetch(`/api/screenings/${screeningId}`);
+                const screeningData = await response.json();
+
+                const movieResponse = await fetch(`/api/movies/${screeningData.movies_id}`);
+                const movieData = await movieResponse.json();
                 setMovie(movieData);
+                setScreening(screeningData);
             } catch (error) {
                 console.error('Error fetching movie details:', error);
             }
         };
 
         fetchMovieDetails();
-    }, [movieId]);
+    }, [screeningId]);
 
     return (
         <>
             <h2>{movie ? `Boka biljetter för ${movie.title}` : 'Loading...'}</h2>
-            <p>Valt datum: {selectedDate}</p>
+            {screening && (
+                <p>
+                    Vald visning: Auditorium {screening.auditorium_id}, {screening.time}
+                </p>
+            )}
             <BioSeats />
         </>
     );
