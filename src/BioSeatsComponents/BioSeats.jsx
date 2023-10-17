@@ -74,9 +74,7 @@ function BioSeats() {
                     <Button onClick={() => setAuditoriumId(auditoriumId === 1 ? 2 : 1)}>Toggle Auditorium</Button>
                 </Col>
                 <Col xs="auto">
-                    <Link to="/Finalize-booking">
-                        <Button>Fortsätt Bokningen</Button>
-                    </Link>
+                    <Button onClick={() => setShowModal(true)}>Fortsätt bokningen</Button>
                 </Col>
             </Row>
         </Container>
