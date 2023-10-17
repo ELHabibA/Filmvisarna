@@ -76,18 +76,56 @@ const MoviePage = () => {
                 style={posterStyle}
               />
             </div>
-            <div className="col-md-6 mt-2">
-              <iframe
-                width="100%"
-                height="350"
-                src={movie.description.trailerURL}
-                title="Movie Trailer"
-                frameBorder="0"
-                allowFullScreen
-              ></iframe>
+            <div className="col-md-6">
+              <div className="row">
+                <div className="col-md-12 mt-2">
+                  <iframe
+                    width="100%"
+                    height="350"
+                    src={movie.description.trailerURL}
+                    title="Movie Trailer"
+                    frameBorder="0"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+                <div className="col-md-12 mt-2">
+                  <p>{movie.description.description}</p>
+                </div>
+              </div>
             </div>
           </div>
           <div className="row">
+            <div className="col-md-6">
+              <div className="col-md-12">
+                <h2></h2>
+                <ul>
+                  <li style={{ display: 'flex' }}>
+                    <span style={{ width: '150px' }}>Genre:</span>
+                    <span>{movie.description.genre}</span>
+                  </li>
+                  <li style={{ display: 'flex' }}>
+                    <span style={{ width: '150px' }}>Åldersgräns:</span>
+                    <span>{movie.description.ageRating}</span>
+                  </li>
+                  <li style={{ display: 'flex' }}>
+                    <span style={{ width: '150px' }}>Premiär:</span>
+                    <span>{movie.description.releaseDate}</span>
+                  </li>
+                  <li style={{ display: 'flex' }}>
+                    <span style={{ width: '150px' }}>Längd:</span>
+                    <span>{movie.description.duration}</span>
+                  </li>
+                  <li style={{ display: 'flex' }}>
+                    <span style={{ width: '150px' }}>Språk:</span>
+                    <span>{movie.description.language}</span>
+                  </li>
+                  <li style={{ display: 'flex' }}>
+                    <span style={{ width: '150px' }}>Regissör:</span>
+                    <span>{movie.description.director}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
             <div className="col-md-6">
               {selectedDate && (
                 <div className="col-md-6">
@@ -102,10 +140,6 @@ const MoviePage = () => {
                   ) : null}
                 </div>
               )}
-            </div>
-            <div className="col-md-6">
-              <h2></h2>
-              <p>{movie.description.description}</p>
             </div>
           </div>
         </div>
