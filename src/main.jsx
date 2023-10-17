@@ -25,7 +25,7 @@ import BookingConfirmation from './components/bookingconfirmation.jsx'
 export const pages = [
     { path: '/', label: 'Hem', element: <Home /> },
     { path: '/Filmer', label: 'Filmer', element: <Movies /> },
-    { path: '/boka/:selectedDate', label: 'Boka', element: <Booking /> },
+    { path: '/boka/:movieId/:selectedDate', label: 'Boka', element: <Booking /> },
     { path: '/kontakt', label: 'Kontakta oss', element: <ContactUs /> },
     { path: '/blimedlem', label: 'Bli medlem', element: <BecomeMember /> },
     { path: '/loggain', label: 'Logga in', element: <LogIn /> },

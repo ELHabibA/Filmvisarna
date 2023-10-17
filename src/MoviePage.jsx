@@ -60,7 +60,7 @@ const MoviePage = () => {
                   ))}
                 </select>
                 {selectedDate && (
-                  <Link to={`/boka/${selectedDate}`}>
+                  <Link to={`/boka/${movieId}/${selectedDate}`}>
                     <button className="btn btn-primary">Boka biljetter</button>
                   </Link>
                 )}
