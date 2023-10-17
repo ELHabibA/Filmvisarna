@@ -6,31 +6,36 @@ import React, { useState } from "react";
 function CancelBooking() {
   const [bookingNumber, setBookingNumber] = useState('');
   const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
 
   const handleCancelBooking = async () => {
+    console.log("hej hej");
     try {
-      const response = await fetch('/api/bookings', {
+      const response = await (await fetch('/api/bookings', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email, bookingNumber }),
-      });
+      })).json();
 
-      if (response.ok) {
+      console.log(response);
+
+      if (response.affectedRows) {
         // Handle success, e.g., show a success message to the user
-        console.log('Booking deleted successfully');
+        setMessage('Booking deleted successfully');
       } else {
         // Handle error, e.g., show an error message to the user
-        console.error('Failed to delete booking');
+        setMessage('Failed to delete booking');
       }
     } catch (error) {
-      console.error('An error occurred:', error);
+      setMessage('An error occurred:', error);
     }
   };
 
   return (
     <Container sm={true} md={true} lg={true} className="bg-secondary p-4 rounded square">
+      {!message ? <>
       <h1 className="mb-4">Avbokning</h1>
       <p className="mb-5">För din säkerhet behöver du fylla i både bokningsnummer och e-postadress.</p>
       <Row className="p-4 rounded square">
@@ -49,9 +54,15 @@ function CancelBooking() {
       </Row>
       <Row>
         <Col className='tradeMarkFooter m-2 mt-4'><Link to="/"><div><Button >Avbryt</Button></div></Link></Col>
-        <Col className='tradeMarkFooter m-2 mt-4'><Link to="/"><div><Button onClick={handleCancelBooking}>Avboka</Button></div></Link></Col>
+        <Col className='tradeMarkFooter m-2 mt-4'><div><Button onClick={handleCancelBooking}>Avboka</Button></div></Col>
       </Row>
-    </Container>
+    </> : <>
+    <Row>
+      <Col>
+      {message}
+      </Col>
+      </Row></>
+}</Container>
   );
 }
 

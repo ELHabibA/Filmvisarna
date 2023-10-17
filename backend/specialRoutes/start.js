@@ -44,14 +44,13 @@ app.delete('/api/bookings', async (req, res) => {
 
     const { email, bookingNumber } = req.body;
 
-    try {
+  
         const result = await runQuery(
             'DELETE bookings FROM bookings INNER JOIN users ON bookings.userId = users.id WHERE bookings.bookingNumber = :bookingNumber AND users.email = :email',
             { email, bookingNumber }
         );
 
-        res.json({ message: "Booking deleted successfully", result });
-    } catch (error) {
-        res.status(500).json({ error: "An error occurred while deleting the booking" });
-    }
+        res.json(result);
+        
+    
 });
