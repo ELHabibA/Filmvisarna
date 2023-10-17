@@ -7,7 +7,6 @@ function BookingSummary() {
 
             <Row>
                 <Col sm={12} className="bg-secondary p-3 rounded">
-                    <Image src="holder.js/200x200" rounded />
                     <div className="fw-bold mb-3">Titel</div>
                     <div className="mb-4">Oppenheimer</div>
                     <div className="fw-bold mb-3">Datum</div>
