@@ -1,11 +1,11 @@
 import React from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { pages } from '../../main';
 
 function BasicNavbar() {
 
-  const excludedPaths = ['/detaljsidan', '/boka/:screeningId'];
+  const excludedPaths = ['/detaljsidan', '/boka/:screeningId', '/avbokning', '/bokningsbekraftelse', '/detaljsidan/:movieId', '/finalize-booking'];
   const filteredPages = pages.filter((page) => !excludedPaths.includes(page.path));
 
   return (
@@ -27,9 +27,13 @@ function BasicNavbar() {
           <Container>
             <Nav className="navbar-film">
               {filteredPages.map((page) => (
-                <Nav.Link key={page.path} as={Link} to={page.path}>
+                <NavLink
+                  key={page.path}
+                  to={page.path}
+                  className="nav-link"
+                >
                   {page.label}
-                </Nav.Link>
+                </NavLink>
               ))}
             </Nav>
           </Container>

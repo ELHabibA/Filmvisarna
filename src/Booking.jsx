@@ -25,12 +25,14 @@ const Booking = () => {
         fetchMovieDetails();
     }, [screeningId]);
 
+    const formattedDateTime = screening ? new Date(screening.time).toLocaleString('sv-SE').slice(0, -3) : '';
+
     return (
         <>
             <h2>{movie ? `Boka biljetter för ${movie.title}` : 'Loading...'}</h2>
             {screening && (
                 <p>
-                    Vald visning: Auditorium {screening.auditorium_id}, {screening.time}
+                    Vald visning: Sal {screening.auditorium_id}, {formattedDateTime}
                 </p>
             )}
             <BioSeats />

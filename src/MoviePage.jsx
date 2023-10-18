@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 
 const MoviePage = () => {
   const [movie, setMovie] = useState(null);
@@ -9,14 +9,16 @@ const MoviePage = () => {
   const [selectedScreening, setSelectedScreening] = useState(null);
   const [screeningsData, setScreeningData] = useState([]);
 
+  const navigate = useNavigate();
 
-  const { movieId } = useParams();
+  let { movieId } = useParams();
+  movieId = +movieId; // from string to number
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`/api/movies/${movieId}`);
-        const movieData = await response.json();
+        const movieResponse = await fetch(`/api/movies/${movieId}`);
+        const movieData = await movieResponse.json();
         setMovie(movieData);
 
         const screeningsResponse = await fetch('/api/screenings');
@@ -36,6 +38,19 @@ const MoviePage = () => {
     fetchData();
   }, [movieId]);
 
+  const renderScreeningOptions = () => {
+    // Get screenings for this movie
+    let screenings = screeningsData.filter(x => x.movies_id === movieId);
+    return screenings.map(({ id, time }) => <option key={id} value={id}>
+      {new Date(time).toLocaleString('sv-SE').slice(0, -3)}
+    </option>);
+  }
+
+  function gotoScreening({ target }) {
+    navigate('/boka/' + target.value);
+  }
+
+
   const posterStyle = {
     maxWidth: '100%',
     maxHeight: '50vh',
@@ -54,27 +69,13 @@ const MoviePage = () => {
             </div>
             <div className="col-md-6 text-md-end">
               <div>
-                <label>Välj visning att boka här:</label>
+                <label className='p-2'>Välj visning att boka här: </label>
                 <select
                   value={selectedDate}
-                  onChange={(e) => {
-                    setSelectedDate(e.target.value);
-                    const selectedScreening = screeningsData.find(screening => screening.time.split('T')[0] === e.target.value);
-                    setSelectedScreening(selectedScreening);
-                  }}
+                  onChange={gotoScreening}
                 >
                   <option value="">Välj datum</option>
-                  {screeningDates.map((date) => (
-                    <optgroup key={date} label={date}>
-                      {screeningsData
-                        .filter(screening => screening.time.split('T')[0] === date)
-                        .map((screening) => (
-                          <option key={screening.id} value={date}>
-                            {`Auditorium ${screening.auditorium_id}, ${screening.time}`}
-                          </option>
-                        ))}
-                    </optgroup>
-                  ))}
+                  {renderScreeningOptions()}
                 </select>
                 {selectedScreening && (
                   <Link to={`/boka/${selectedScreening.id}`}>
