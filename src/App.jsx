@@ -4,24 +4,13 @@ import "./sass/main.scss";
 import BasicNavbar from "./components/Navbar/Navbar";
 import Background from './components/MainSide/Background';
 import { Container, Row, Col } from 'react-bootstrap';
-import { useEffect } from 'react';
+import MovieFetch from './components/MovieFetch';
 
 export default function App() {
+  const movies = MovieFetch();
 
-  useEffect(() => {
-    (async () => { 
-      // wait for data from rest api
-      let rawData = await fetch('/api/movies');
-      // wait for unpacking data from json to js data structure
-      let data = await rawData.json();
-      console.log("ALL ZE MOVIES", data)
-    })();
-  },[]);
-
-
-  return (
+  return !movies.length ? null : (
     <>
-
       <BasicNavbar />
       <Container className="mt-5 body">
         <Row>
@@ -29,7 +18,7 @@ export default function App() {
             <Container className="col-12">
               <Row>
                 <Col>
-                  <Outlet />
+                  <Outlet context={{ movies }} />
                 </Col>
               </Row>
               <Background />

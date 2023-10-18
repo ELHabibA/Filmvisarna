@@ -1,58 +1,52 @@
-import React, { useState, useEffect, useMemo } from "react";
-import auditoriumsData from "./SeatsData.js";
+import React, { useState, useEffect } from "react";
 import { Button, Row, Col, Container } from "react-bootstrap";
 import "./BioSeats.css";
-import ticketsData from './Tickets.js';
 import { Link } from 'react-router-dom';
 import ChooseAge from '../components/ChooseAge';
+import FinalizeBooking from "../FinalizeBooking.jsx";
 
 function BioSeats() {
-    // State f�r att h�lla reda p� bokade platser, valda platser och auditorium ID
-    const [bookedTickets, setBookedTickets] = useState([]);
     const [selectedSeats, setSelectedSeats] = useState([]);
     const [auditoriumId, setAuditoriumId] = useState(1);
-
+    const [seatsData, setSeatsData] = useState([]); 
     const [sumFromChooseAge, setSumFromChooseAge] = useState(0);
-
-// Ber�knar totalt antal biljetter med useMemo f�r att undvika on�diga ber�kningar
-    const totalTickets = useMemo(() =>
-        ticketsData.kids + ticketsData.adults + ticketsData.elderly
-        , []);
-
-    const seatsSelected = selectedSeats.length > 0;
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
-        console.log('Sum from ChooseAge:', sumFromChooseAge);
-        setBookedTickets([]);
-    }, [sumFromChooseAge]);
-
+        fetch('/api/seats')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Seats Data:', data);  // Log data for debugging
+                setSeatsData(data);
+            })
+            .catch(error => console.error('There was a problem with your fetch operation:', error));
+    }, []);
 
     const handleSeatSelection = (seatId) => {
         setSelectedSeats((prev) =>
-            prev.includes(seatId) // Om platsen redan är vald, avmarkera den
+            prev.includes(seatId)
                 ? prev.filter((id) => id !== seatId)
-                : prev.length < sumFromChooseAge
-                ? [...prev, seatId]
-                : prev
+                : [...prev, seatId]
         );
     };
 
     const renderSeats = () => {
-        // Filtrera ut platserna f�r det aktuella auditoriet
-        const seatsForCurrentAuditorium = auditoriumsData.filter(seat => seat.auditoriumId === auditoriumId);
+        // Modified this line to match the attribute name from the data
+        const seatsForCurrentAuditorium = seatsData.filter(seat => seat.auditorium_id === auditoriumId);
 
-        // Gruppera platserna per rad
+        // Log for debugging purposes
+        console.log('Seats for current auditorium:', seatsForCurrentAuditorium);
+
         const groupedSeats = seatsForCurrentAuditorium.reduce((acc, seat) => {
             (acc[seat.rowNumber] || (acc[seat.rowNumber] = [])).push(seat);
             return acc;
         }, {});
 
-        // Sortera platserna per rad
-        for (let row in groupedSeats) {
-            groupedSeats[row].sort((a, b) => a.seatNumber - b.seatNumber);
-        }
-
-        // Rendera platserna som knappar
         return Object.keys(groupedSeats).map(rowNumber => (
             <Row key={rowNumber} className="mb-2 center-seats flex-row">
                 {groupedSeats[rowNumber].map(seat => (
@@ -62,7 +56,6 @@ function BioSeats() {
                             onClick={() => handleSeatSelection(seat.id)}
                             className={`seat-btn ${selectedSeats.includes(seat.id) ? "seat-button-primary" : "seat-button-secondary"}`}
                         >
-                            {/*seat.seatNumber*/}
                         </Button>
                     </Col>
                 ))}
@@ -70,9 +63,9 @@ function BioSeats() {
         ));
     };
 
-    // Rendera screen och knappar 
     return (
         <Container className="saloon-container mt-5">
+            <FinalizeBooking showModal={showModal} setShowModal={setShowModal} />
             <ChooseAge onSumChange={setSumFromChooseAge} />
             <div className="screen mb-5"></div>
             {renderSeats()}
@@ -81,9 +74,7 @@ function BioSeats() {
                     <Button onClick={() => setAuditoriumId(auditoriumId === 1 ? 2 : 1)}>Toggle Auditorium</Button>
                 </Col>
                 <Col xs="auto">
-                    <Link to="/Finalize-booking">
-                        <Button>{'Forts' + String.fromCharCode(228) + 'tt Bokningen'}</Button>
-                    </Link>
+                    <Button onClick={() => setShowModal(true)}>Fortsätt bokningen</Button>
                 </Col>
             </Row>
         </Container>

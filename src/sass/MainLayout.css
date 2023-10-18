@@ -1,13 +1,13 @@
 .image-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 1px;
 }
 
 /* Responsive styles for smaller screens (e.g., mobile) */
 @media screen and (max-width: 767px) {
     .image-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         /* Set to one column for mobile */
     }
 }

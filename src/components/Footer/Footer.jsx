@@ -1,6 +1,6 @@
 import { Container, Row, Button, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import BookingNumber from '../BookingNumber'
+
 
 export default function Footer() {
     return (

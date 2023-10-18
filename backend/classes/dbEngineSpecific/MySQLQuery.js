@@ -16,6 +16,7 @@ class MySQLQuery {
 
   static connect(dbCredentials) {
     db = mysql.createPool(dbCredentials);
+    global.db = db;
   }
 
   static runQuery(query, params = {}) {
