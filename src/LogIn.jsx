@@ -19,7 +19,7 @@ const Login = () => {
 
 
   const navigate = useNavigate();
-  
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -33,7 +33,7 @@ const Login = () => {
       console.error(response.error);
     } else {
       // Go to movies page on successful login
-      navigate('/Filmer');
+      navigate('/filmer');
     }
   };
 
