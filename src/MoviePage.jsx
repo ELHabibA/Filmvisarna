@@ -5,6 +5,16 @@ const MoviePage = () => {
     const [movie, setMovie] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    const cardStyle = {
+      backgroundColor: 'rgba(211, 211, 211, 0.6)',
+      maxWidth: '1000px',
+      margin: '0 auto',
+      display: 'flex',
+      flexDirection: 'column',
+      borderRadius: '10px',
+      padding: '20px', // Add some padding to space the content from the edges
+    };
+
     const { movieId } = useParams();
 
     useEffect(() => {
@@ -30,11 +40,12 @@ const MoviePage = () => {
     };
 
     return (
+      
         <div>
             {loading ? (
                 <p>Loading...</p>
             ) : movie ? (
-                <div>
+              <div className="white-card" style={cardStyle}> {/* Add the white card styling */}
                     <div className="row align-items-center">
                         <div className="col-md-6">
                             <h1 className="my-4">{movie.title}</h1>
@@ -46,7 +57,7 @@ const MoviePage = () => {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-md-6">
+                        <div className="col-md-4">
                             <img
                                 src={movie.description.poster}
                                 alt="Movie Poster"
@@ -54,7 +65,7 @@ const MoviePage = () => {
                                 style={posterStyle}
                             />
                         </div>
-                        <div className="col-md-6 mt-2">
+                        <div className="col-md-8 mt-2">
                             <iframe
                                 width="100%"
                                 height="350"
@@ -66,7 +77,7 @@ const MoviePage = () => {
                         </div>
       </div>
       <div className="row">
-        <div className="col-md-6">
+        <div className="col-md-4">
           <h1 className="my-4"></h1>
           <ul>
             {movie && (
@@ -105,7 +116,7 @@ const MoviePage = () => {
             )}
           </ul>
         </div>
-        <div className="col-md-6">
+        <div className="col-md-8">
                 <h2></h2>
                 <p>{movie.description.description}</p>
             </div>
