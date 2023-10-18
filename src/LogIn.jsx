@@ -17,6 +17,7 @@ async function postData(url = "", data = {}) {
 
 const Login = () => {
 
+  const cardStyle = { backgroundColor: 'rgba(211, 211, 211, 0.6)', maxWidth: '600px', margin: '0 auto' };
 
   const navigate = useNavigate();
 
@@ -39,7 +40,7 @@ const Login = () => {
 
   return (
     <Container className="mt-5">
-      <Card>
+      <Card style={cardStyle}>
         <Card.Body className="text-center">
           <h2>Logga In</h2>
           <Form className="rectangle-form">
