@@ -1,57 +1,40 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Card, Button, Form } from 'react-bootstrap';
+import {useNavigate} from 'react-router-dom';
 
-const LogIn = () => {
-  const inputStyle = { color: 'black' };
-  const placeholderStyle = { color: 'black' };
-  const inputFieldStyle = { background: 'white', color: 'black', borderColor: '#272A31' };
+async function postData(url = "", data = {}) {
+
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  return response.json();
+}
+
+const Login = () => {
+
   const cardStyle = { backgroundColor: 'rgba(211, 211, 211, 0.6)', maxWidth: '600px', margin: '0 auto' };
 
-  const loginHeaderText = 'Log In';
+  const navigate = useNavigate();
 
-  const initialLoginData = {
-    email: '', // Update the field names to match your form
-    password: '', // Update the field names to match your form
-  };
-
-  const [loginData, setLoginData] = useState(initialLoginData);
-  const [isLoggingIn, setIsLoggingIn] = useState(false);
-  const [loginError, setLoginError] = useState('');
-
-  const handleInputChange = (fieldName, value) => {
-    setLoginData({ ...loginData, [fieldName]: value });
-  };
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleLogin = async () => {
-    setIsLoggingIn(true);
-    setLoginError('');
+    const data = { email, password };
+    const response = await postData('/api/login', data);
 
-    try {
-      const response = await fetch('/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(loginData),
-      });
-
-      if (!response.ok) {
-        throw new Error('Login failed. Please try again.');
-      }
-
-      const data = await response.json();
-
-      if (data.error) {
-        setLoginError(data.error);
-      } else {
-        // Redirect or perform other actions upon successful login
-      }
-    } catch (error) {
-      console.error('Error during login:', error);
-      setLoginError('Login failed. Please try again.');
-    } finally {
-      setIsLoggingIn(false);
+    console.log("DA LOGIN RESPONSE", response)
+    if (response.error) {
+      // Handle login error 
+      console.error(response.error);
+    } else {
+      // Go to movies page on successful login
+      navigate('/');
     }
   };
 
@@ -59,32 +42,34 @@ const LogIn = () => {
     <Container className="mt-5">
       <Card style={cardStyle}>
         <Card.Body className="text-center">
-          <h2 style={inputStyle}>{loginHeaderText}</h2>
+          <h2>Logga In</h2>
           <Form className="rectangle-form">
-            {[
-              { field: 'email', label: 'Enter your E-mail' },
-              { field: 'password', label: 'Enter your Password' },
-            ].map(({ field, label }) => (
-              <Form.Group key={field}>
-                <Form.Label style={placeholderStyle}>{field}</Form.Label>
-                <Form.Control
-                  type={field === 'password' ? 'password' : 'text'}
-                  style={inputFieldStyle}
-                  placeholder={label}
-                  value={loginData[field]}
-                  onChange={(e) => handleInputChange(field, e.target.value)}
-                />
-              </Form.Group>
-            ))}
+            <Form.Group>
+              <Form.Label>E-post</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="E-post"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Lösenord</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Lösenord"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Form.Group>
           </Form>
-          {loginError && <p className="text-danger">{loginError}</p>}
         </Card.Body>
         <Card.Footer className="text-center">
-          <Button variant="primary" onClick={handleLogin} disabled={isLoggingIn}>
-            {isLoggingIn ? 'Logging in...' : 'Log In'}
+          <Button variant="primary" onClick={handleLogin}>
+            Logga In
           </Button>
-          <p className="text-muted">
-            Not a member? <Link to="/blimedlem">Become a member</Link>
+          <p className="mt-3">
+            Inte medlem? <Link to="/blimedlem">Bli Medlem</Link>
           </p>
         </Card.Footer>
       </Card>
@@ -92,5 +77,4 @@ const LogIn = () => {
   );
 };
 
-export default LogIn;
-
+export default Login;
