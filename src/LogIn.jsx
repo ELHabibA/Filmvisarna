@@ -34,7 +34,7 @@ const Login = () => {
       console.error(response.error);
     } else {
       // Go to movies page on successful login
-      navigate('/filmer');
+      navigate('/');
     }
   };
 
