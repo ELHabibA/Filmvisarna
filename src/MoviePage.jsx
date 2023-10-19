@@ -50,6 +50,15 @@ const MoviePage = () => {
     navigate('/boka/' + target.value);
   }
 
+  const cardStyle = {
+    backgroundColor: 'rgba(211, 211, 211, 0.6)',
+    maxWidth: '1000px',
+    margin: '0 auto',
+    display: 'flex',
+    flexDirection: 'column',
+    borderRadius: '10px',
+    padding: '20px',
+  };
 
   const posterStyle = {
     maxWidth: '100%',
@@ -59,64 +68,62 @@ const MoviePage = () => {
 
   return (
     <div>
-      {loading ? (
-        <p>Loading...</p>
-      ) : movie ? (
-        <div>
-          <div className="row align-items-center">
-            <div className="col-md-6">
-              <h1 className="my-4">{movie.title}</h1>
-            </div>
-            <div className="col-md-6 text-md-end">
-              <div>
-                <label className='p-2'>Välj visning att boka här: </label>
-                <select
-                  value={selectedDate}
-                  onChange={gotoScreening}
-                >
-                  <option value="">Välj datum</option>
-                  {renderScreeningOptions()}
-                </select>
-                {selectedScreening && (
-                  <Link to={`/boka/${selectedScreening.id}`}>
-                    <button className="btn btn-primary">Boka biljetter</button>
-                  </Link>
-                )}
-              </div>
+    {loading ? (
+      <p>Loading...</p>
+    ) : movie ? (
+      <div className="white-card" style={cardStyle}> {/* Add the white card styling */}
+                  <div className="row align-items-center">
+                  <div className="col-md-6">
+            <h1 className="my-4">{movie.title}</h1>
+          </div>
+          <div className="col-md-6 text-md-end">
+            <div>
+              <label className='p-2'>Välj visning att boka här: </label>
+              <select
+                value={selectedDate}
+                onChange={gotoScreening}
+              >
+                <option value="">Välj datum</option>
+                {renderScreeningOptions()}
+              </select>
+              {selectedScreening && (
+                <Link to={`/boka/${selectedScreening.id}`}>
+                  <button className="btn btn-primary">Boka biljetter</button>
+                </Link>
+              )}
             </div>
           </div>
-          <div className="row">
-            <div className="col-md-6">
-              <img
-                src={movie.description.poster}
-                alt="Movie Poster"
-                className="img-fluid"
-                style={posterStyle}
-              />
-            </div>
-            <div className="col-md-6">
-              <div className="row">
-                <div className="col-md-12 mt-2">
-                  <iframe
-                    width="100%"
-                    height="350"
-                    src={movie.description.trailerURL}
-                    title="Movie Trailer"
-                    frameBorder="0"
-                    allowFullScreen
-                  ></iframe>
-                </div>
-                <div className="col-md-12 mt-2">
-                  <p>{movie.description.description}</p>
-                </div>
-              </div>
-            </div>
+        </div>
+        <div className="row">
+          <div className="col-md-8 mt-2">
+            <iframe
+              width="100%"
+              height="385"
+              src={movie.description.trailerURL}
+              title="Movie Trailer"
+              frameBorder="0"
+              allowFullScreen
+            ></iframe>
           </div>
-          <div className="row">
-            <div className="col-md-6">
-              <div className="col-md-12">
-                <h2></h2>
-                <ul>
+          <div className="col-md-4">
+            <img
+              src={movie.description.poster}
+              alt="Movie Poster"
+              className="img-fluid"
+              style={posterStyle}
+            />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-8">
+            <h2></h2> 
+            <p>{movie.description.description}</p>
+          </div>
+          <div className="col-md-4">
+            <h1 className="my-4"></h1> 
+            <ul>
+              {movie && (
+                <>
                   <li style={{ display: 'flex' }}>
                     <span style={{ width: '150px' }}>Genre:</span>
                     <span>{movie.description.genre}</span>
@@ -141,31 +148,36 @@ const MoviePage = () => {
                     <span style={{ width: '150px' }}>Regissör:</span>
                     <span>{movie.description.director}</span>
                   </li>
-                </ul>
-              </div>
-            </div>
-            <div className="col-md-6">
-              {selectedDate && (
-                <div className="col-md-6">
-                  {movie.screenings && movie.screenings.length > 0 ? (
-                    <ul>
-                      {movie.screenings
-                        .filter((screening) => screening.time.split('T')[0] === selectedDate)
-                        .map((screening) => (
-                          <li key={screening.id}>{screening.time}</li>
-                        ))}
-                    </ul>
-                  ) : null}
-                </div>
+                  <li style={{ display: 'flex' }}>
+                    <span style={{ width: '150px' }}></span>
+                    <span>{movie.cast}</span>
+                  </li>
+                </>
               )}
-            </div>
+            </ul>
           </div>
         </div>
-      ) : (
-        <p>Movie not found</p>
-      )}
-    </div>
-  );
+        <div className="col-md-6">
+          {selectedDate && (
+            <div className="col-md-6">
+              {screenings.length > 0 ? (
+                <ul>
+                  {screenings
+                    .filter((screening) => screening.time.split('T')[0] === selectedDate)
+                    .map((screening) => (
+                      <li key={screening.id}>{screening.time}</li>
+                    ))}
+                </ul>
+              ) : null}
+            </div>
+          )}
+        </div>
+      </div>
+    ) : (
+      <p>Movie not found</p>
+    )}
+  </div>
+);
 };
 
 export default MoviePage;
