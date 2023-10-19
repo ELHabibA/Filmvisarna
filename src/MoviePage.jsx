@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
+import convertHours from './utilities/convertHours';
 
 const MoviePage = () => {
   const [movie, setMovie] = useState(null);
@@ -138,7 +139,7 @@ const MoviePage = () => {
                   </li>
                   <li style={{ display: 'flex' }}>
                     <span style={{ width: '150px' }}>Längd:</span>
-                    <span>{movie.description.duration}</span>
+                    <span>{movie.description && convertHours(movie.description.duration)}</span>
                   </li>
                   <li style={{ display: 'flex' }}>
                     <span style={{ width: '150px' }}>Språk:</span>
