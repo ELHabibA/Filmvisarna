@@ -16,15 +16,15 @@
             .then(data => setSeatsData(data))
             .catch(error => console.error(error));
     }, []);
-
+        
     const isSeatBooked = (seat) => {
         return bookings.some(booking => {
             return booking.movieTitle === selectedMovieTitle &&
                    booking.screeningTime === selectedScreeningTime &&
                    booking.seatNumbers.split(',').includes(String(seat.id));
         });
-    };
-
+        };
+        
     const handleSeatSelection = (seatId) => {
         setSelectedSeats((prevSeats) => {
             if (prevSeats.length < sum) {
@@ -39,12 +39,13 @@
             }
         });
         };
-            useEffect(() => {
+
+        useEffect(() => {
             if (selectedSeats.length > sum) {
                 setSelectedSeats(prevSeats => prevSeats.slice(0, sum));
             }
-        }, [sum]);
-
+            }, [sum]);
+        
         const renderSeats = () => {
             // Modified this line to match the attribute name from the data
             const seatsForCurrentAuditorium = seatsData.filter(seat => seat.auditorium_id === auditoriumId);
@@ -56,6 +57,7 @@
                 (acc[seat.rowNumber] || (acc[seat.rowNumber] = [])).push(seat);
                 return acc;
             }, {});
+
 
             return Object.keys(groupedSeats).map(rowNumber => (
                 <Row key={rowNumber} className="mb-2 center-seats flex-row">
