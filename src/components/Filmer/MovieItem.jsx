@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './../../sass/movies.css';
+import convertHours from '../../utilities/convertHours.jsx';
 
-const MovieItem = ({ movie }) => {
+function MovieItem({ movie }) {
+  const time = convertHours(movie.description.duration);
   return (
     <div className="movie-item">
       <Link to={`/detaljsidan/${movie.id}`} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
@@ -15,7 +17,7 @@ const MovieItem = ({ movie }) => {
         </div>
         <div className="movie-info" style={{ marginLeft: '10px' }}>
           <h2 className="movie-title">{movie.title}</h2>
-          <p className="movie-description">{movie.description.genre} I {movie.description.duration} I {movie.description.ageRating}</p>
+          <p className="movie-description">{movie.description.genre} I { time}I {movie.description.ageRating}</p>
         </div>
         <Link to={`/detaljsidan/${movie.id}`} style={{ marginLeft: 'auto' }}>
           <button className="btn btn-primary">Detaljer</button>
