@@ -11,7 +11,7 @@ function ChooseAge({ onSumChange }) {
     const [kids, setKids] = useState(0);
     const [retired, setRetired] = useState(0);
     const [sum, setSum] = useState(0);
-   
+    
     useSetSumAndPrice(adults, kids, retired, onSumChange);
     let price = (adults * 140 + kids * 80 + retired * 120);
 
@@ -21,7 +21,6 @@ function ChooseAge({ onSumChange }) {
             <Container className="col-lg-6 bg-secondary rounded p-3">
                 <p className="text-center">Välj biljetter</p>
                 <Row><Col>Vuxen 140kr:</Col><Col><CounterButton onUpdate={(newValue) => updateValue('adults', newValue, setAdults, setKids, setRetired)}  max={sum}/></Col></Row>
-                
                 <hr />
                 <Row><Col>Barn 80kr:</Col><Col><CounterButton onUpdate={(newValue) => updateValue('kids', newValue, setAdults, setKids, setRetired)} max={sum}/></Col></Row>
                 <hr />

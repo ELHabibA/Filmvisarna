@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import BioSeats from './BioSeatsComponents/BioSeats';
+import ChooseAge from '../src/components/ChooseAge';
 
 const Booking = () => {
     const { screeningId } = useParams();
     const [screening, setScreening] = useState(null);
     const [movie, setMovie] = useState(null);
+    const [sum, setSum] = useState(0);
 
     useEffect(() => {
         const fetchMovieDetails = async () => {
@@ -29,13 +31,17 @@ const Booking = () => {
 
     return (
         <>
+           
+            
             <h2>{movie ? `Boka biljetter för ${movie.title}` : 'Loading...'}</h2>
             {screening && (
                 <p>
                     Vald visning: Sal {screening.auditorium_id}, {formattedDateTime}
                 </p>
             )}
-            <BioSeats />
+            <ChooseAge onSumChange={setSum} />
+            <BioSeats sum={sum} />
+
         </>
     );
 };

@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Button, Row, Col, Container } from "react-bootstrap";
 import "./BioSeats.css";
-import { Link } from 'react-router-dom';
-import ChooseAge from '../components/ChooseAge';
 import FinalizeBooking from "../FinalizeBooking.jsx";
+import Booking from "../Booking";
 
-function BioSeats() {
+function BioSeats({ sum }) {
     const [selectedSeats, setSelectedSeats] = useState([]);
     const [auditoriumId, setAuditoriumId] = useState(1);
     const [seatsData, setSeatsData] = useState([]); 
-    const [sumFromChooseAge, setSumFromChooseAge] = useState(0);
+    //const [sumFromChooseAge, setSumFromChooseAge] = useState(0);
     const [showModal, setShowModal] = useState(false);
 
+ 
     useEffect(() => {
         fetch('/api/seats')
             .then(response => {
@@ -27,13 +27,25 @@ function BioSeats() {
             .catch(error => console.error('There was a problem with your fetch operation:', error));
     }, []);
 
-    const handleSeatSelection = (seatId) => {
-        setSelectedSeats((prev) =>
-            prev.includes(seatId)
-                ? prev.filter((id) => id !== seatId)
-                : [...prev, seatId]
-        );
+const handleSeatSelection = (seatId) => {
+    setSelectedSeats((prevSeats) => {
+        if (prevSeats.length < sum) {
+           
+            return prevSeats.includes(seatId)
+                ? prevSeats.filter((id) => id !== seatId)
+                : [...prevSeats, seatId];
+        } else {
+             //Gör något annat än en alert??
+            alert("Du kan inte boka fler platser än tillåtet!");
+            return prevSeats;
+        }
+    });
     };
+        useEffect(() => {
+        if (selectedSeats.length > sum) {
+            setSelectedSeats(prevSeats => prevSeats.slice(0, sum));
+        }
+    }, [sum]);
 
     const renderSeats = () => {
         // Modified this line to match the attribute name from the data
@@ -66,7 +78,7 @@ function BioSeats() {
     return (
         <Container className="saloon-container mt-5">
             <FinalizeBooking showModal={showModal} setShowModal={setShowModal} />
-            <ChooseAge onSumChange={setSumFromChooseAge} />
+            {/* <ChooseAge onSumChange={setSumFromChooseAge} /> */}<p>Sum från ChooseAge: {sum}</p>
             <div className="screen mb-5"></div>
             {renderSeats()}
             <Row className="mt-3 justify-content-center">
