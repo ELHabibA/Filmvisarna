@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import ChooseAge from "./ChooseAge";
-import BioSeats from "../BioSeatsComponents/BioSeats";
+// import React, { useState } from "react";
+// import ChooseAge from "./ChooseAge";
+// import BioSeats from "../BioSeatsComponents/BioSeats";
 
-function SumOfSeats() {
-    const [sum, setSum] = useState(0);
+// function SumOfSeats() {
+//     const [sum, setSum] = useState(0);
 
-    return (
-        <>
-            <ChooseAge setSum={setSum} />
-            <BioSeats sum={sum} />
-        </>
+//     return (
+//         <>
+//             <ChooseAge setSum={setSum} />
+//             <BioSeats sum={sum} />
+//         </>
 
-    );
-}
+//     );
+// }
 
-export default SumOfSeats;
+// export default SumOfSeats;
