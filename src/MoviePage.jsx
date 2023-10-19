@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 
 const MoviePage = () => {
-    const [movie, setMovie] = useState(null);
-    const [loading, setLoading] = useState(true);
+  const [movie, setMovie] = useState(null);
+  const [loading, setLoading] = useState(true);
 
     const cardStyle = {
       backgroundColor: 'rgba(211, 211, 211, 0.6)',
@@ -14,30 +14,58 @@ const MoviePage = () => {
       borderRadius: '10px',
       padding: '20px',
     };
+  const [screeningDates, setScreeningDates] = useState([]);
+  const [selectedDate, setSelectedDate] = useState('');
+  const [selectedScreening, setSelectedScreening] = useState(null);
+  const [screeningsData, setScreeningData] = useState([]);
 
-    const { movieId } = useParams();
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch(`/api/movies/${movieId}`);
-                const movieData = await response.json();
-                setMovie(movieData);
-                setLoading(false);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-                setLoading(false);
-            }
-        };
+  let { movieId } = useParams();
+  movieId = +movieId; // from string to number
 
-        fetchData();
-    }, [movieId]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const movieResponse = await fetch(`/api/movies/${movieId}`);
+        const movieData = await movieResponse.json();
+        setMovie(movieData);
 
-    const posterStyle = {
-        maxWidth: '100%',
-        maxHeight: '50vh',
-        objectFit: 'contain',
+        const screeningsResponse = await fetch('/api/screenings');
+        const screeningsData = await screeningsResponse.json();
+        setScreeningData(screeningsData);
+
+        const uniqueDates = Array.from(new Set(screeningsData.map(screening => screening.time.split('T')[0])));
+        setScreeningDates(uniqueDates);
+
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setLoading(false);
+      }
     };
+
+    fetchData();
+  }, [movieId]);
+
+  const renderScreeningOptions = () => {
+    // Get screenings for this movie
+    let screenings = screeningsData.filter(x => x.movies_id === movieId);
+    return screenings.map(({ id, time }) => <option key={id} value={id}>
+      {new Date(time).toLocaleString('sv-SE').slice(0, -3)}
+    </option>);
+  }
+
+  function gotoScreening({ target }) {
+    navigate('/boka/' + target.value);
+  }
+
+
+  const posterStyle = {
+    maxWidth: '100%',
+    maxHeight: '50vh',
+    objectFit: 'contain',
+  };
 
         return (
                   <div>
