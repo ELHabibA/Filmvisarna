@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Button, Row, Col, Container } from "react-bootstrap";
 import "./BioSeats.css";
-import { Link } from 'react-router-dom';
-import ChooseAge from '../components/ChooseAge';
 import FinalizeBooking from "../FinalizeBooking.jsx";
+import Booking from "../Booking";
 
-function BioSeats() {
+function BioSeats({ sum }) {
     const [selectedSeats, setSelectedSeats] = useState([]);
     const [auditoriumId, setAuditoriumId] = useState(1);
     const [seatsData, setSeatsData] = useState([]); 
-    const [sumFromChooseAge, setSumFromChooseAge] = useState(0);
+    //const [sumFromChooseAge, setSumFromChooseAge] = useState(0);
     const [showModal, setShowModal] = useState(false);
     const [bookings, setBookings] = useState([]); // Ny state-variabel för bokningar
 
+ 
     useEffect(() => {
         fetch('/api/seats')
             .then(response => response.json())
@@ -25,32 +25,38 @@ function BioSeats() {
             .catch(error => console.error(error));
     }, []);
 
-  const isSeatBooked = (seat) => {
+    const isSeatBooked = (seat, movieTitle, screeningTime, auditoriumName) => {
     const booked = bookings.some(booking => {
-        const isSameAuditorium = booking.name === "Stora Salongen"; // Modify as needed
-        const isSameScreeningTime = booking.screeningTime === "2023-10-08T08:00:00.000Z"; // Modify as needed
+        const isSameMovie = booking.movieTitle === movieTitle;
+        const isSameAuditorium = booking.name === auditoriumName;
+        const isSameScreeningTime = booking.screeningTime === screeningTime;
         const isSeatBooked = booking.seatNumbers.split(',').includes(String(seat.id));
         
-        if (isSameAuditorium && isSameScreeningTime && isSeatBooked) {
-            console.log(`Seat ${seat.id} is booked`);
-        }
-        
-        return isSameAuditorium && isSameScreeningTime && isSeatBooked;
+        return isSameMovie && isSameAuditorium && isSameScreeningTime && isSeatBooked;
     });
-
-    if (!booked) {
-        console.log(`Seat ${seat.id} is not booked`);
-    }
     
     return booked;
 };
-    const handleSeatSelection = (seatId) => {
-        setSelectedSeats((prev) =>
-            prev.includes(seatId)
-                ? prev.filter((id) => id !== seatId)
-                : [...prev, seatId]
-        );
+
+const handleSeatSelection = (seatId) => {
+    setSelectedSeats((prevSeats) => {
+        if (prevSeats.length < sum) {
+           
+            return prevSeats.includes(seatId)
+                ? prevSeats.filter((id) => id !== seatId)
+                : [...prevSeats, seatId];
+        } else {
+             //Gör något annat än en alert??
+            alert("Du kan inte boka fler platser än tillåtet!");
+            return prevSeats;
+        }
+    });
     };
+        useEffect(() => {
+        if (selectedSeats.length > sum) {
+            setSelectedSeats(prevSeats => prevSeats.slice(0, sum));
+        }
+    }, [sum]);
 
     const renderSeats = () => {
         // Modified this line to match the attribute name from the data
@@ -85,7 +91,6 @@ function BioSeats() {
     return (
         <Container className="saloon-container mt-5">
             <FinalizeBooking showModal={showModal} setShowModal={setShowModal} />
-            <ChooseAge onSumChange={setSumFromChooseAge} />
             <div className="screen mb-5"></div>
             {renderSeats()}
             <Row className="mt-3 justify-content-center">
