@@ -11,22 +11,39 @@ function BioSeats() {
     const [seatsData, setSeatsData] = useState([]); 
     const [sumFromChooseAge, setSumFromChooseAge] = useState(0);
     const [showModal, setShowModal] = useState(false);
+    const [bookings, setBookings] = useState([]); // Ny state-variabel för bokningar
 
     useEffect(() => {
         fetch('/api/seats')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok ' + response.statusText);
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Seats Data:', data);  // Log data for debugging
-                setSeatsData(data);
-            })
-            .catch(error => console.error('There was a problem with your fetch operation:', error));
+            .then(response => response.json())
+            .then(data => setSeatsData(data))
+            .catch(error => console.error(error));
+
+        fetch('/api/bookingsNice')
+            .then(response => response.json())
+            .then(data => setBookings(data))
+            .catch(error => console.error(error));
     }, []);
 
+  const isSeatBooked = (seat) => {
+    const booked = bookings.some(booking => {
+        const isSameAuditorium = booking.name === "Stora Salongen"; // Modify as needed
+        const isSameScreeningTime = booking.screeningTime === "2023-10-08T08:00:00.000Z"; // Modify as needed
+        const isSeatBooked = booking.seatNumbers.split(',').includes(String(seat.id));
+        
+        if (isSameAuditorium && isSameScreeningTime && isSeatBooked) {
+            console.log(`Seat ${seat.id} is booked`);
+        }
+        
+        return isSameAuditorium && isSameScreeningTime && isSeatBooked;
+    });
+
+    if (!booked) {
+        console.log(`Seat ${seat.id} is not booked`);
+    }
+    
+    return booked;
+};
     const handleSeatSelection = (seatId) => {
         setSelectedSeats((prev) =>
             prev.includes(seatId)
@@ -52,10 +69,12 @@ function BioSeats() {
                 {groupedSeats[rowNumber].map(seat => (
                     <Col key={seat.id} xs="auto" className="text-center seat-col">
                         <Button
-                            variant={selectedSeats.includes(seat.id) ? "primary" : "secondary"}
-                            onClick={() => handleSeatSelection(seat.id)}
+                            variant={selectedSeats.includes(seat.id) ? "primary" : isSeatBooked(seat) ? "dark" : "secondary"}
+                            onClick={() => !isSeatBooked(seat) && handleSeatSelection(seat.id)}
                             className={`seat-btn ${selectedSeats.includes(seat.id) ? "seat-button-primary" : "seat-button-secondary"}`}
+                            disabled={isSeatBooked(seat)} // Inaktivera knappen om sätet är bokat
                         >
+                            {seat.id}
                         </Button>
                     </Col>
                 ))}
