@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { HiPlus, HiMinus } from "react-icons/hi2";
-import { FaMinus } from "react-icons/fa";
 
 function CounterButton({onUpdate}) {
     let [count, setCount] = useState(0);
