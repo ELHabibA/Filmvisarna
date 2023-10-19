@@ -67,7 +67,6 @@
                                 className={`seat-btn ${selectedSeats.includes(seat.id) ? "seat-button-primary" : "seat-button-secondary"}`}
                                 disabled={isSeatBooked(seat)} // Inaktivera knappen om sätet är bokat
                             >
-                                {seat.id}
                             </Button>
                         </Col>
                     ))}
