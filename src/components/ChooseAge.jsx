@@ -26,8 +26,8 @@ function ChooseAge({ onSumChange }) {
                 <hr />
                 <Row><Col>Pensionär 120kr:</Col><Col><CounterButton onUpdate={(newValue) => updateValue('retired', newValue, setAdults, setKids, setRetired)} max={sum}/></Col></Row>
                 <hr />
-                <p>Du vill beställa {adults + kids + retired} biljetter</p>
-                Totala priset: {price.toLocaleString('sv-SE')} kr
+                
+                 <p>Totala priset: {price.toLocaleString('sv-SE')} kr för {adults + kids + retired} biljetter</p>
             </Container>
             
         </>

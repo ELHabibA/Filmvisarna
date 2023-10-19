@@ -78,7 +78,6 @@ const handleSeatSelection = (seatId) => {
     return (
         <Container className="saloon-container mt-5">
             <FinalizeBooking showModal={showModal} setShowModal={setShowModal} />
-            {/* <ChooseAge onSumChange={setSumFromChooseAge} /> */}<p>Sum från ChooseAge: {sum}</p>
             <div className="screen mb-5"></div>
             {renderSeats()}
             <Row className="mt-3 justify-content-center">
