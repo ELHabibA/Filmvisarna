@@ -3,7 +3,7 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
 import { pages } from '../../main';
 
-function BasicNavbar() {
+function BasicNavbar({user}) {
 
   const excludedPaths = ['/detaljsidan', '/boka/:screeningId', '/avbokning', '/bokningsbekraftelse', '/detaljsidan/:movieId', '/finalize-booking'];
   const filteredPages = pages.filter((page) => !excludedPaths.includes(page.path));
@@ -26,7 +26,7 @@ function BasicNavbar() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Container>
             <Nav className="navbar-film">
-              {filteredPages.map((page) => (
+              {filteredPages.filter(x => user ? x.path !== '/loggain' && x.path !== '/blimedlem' : x.path !== '/minsida').map((page) => (
                 <NavLink
                   key={page.path}
                   to={page.path}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Card, Button, Form } from 'react-bootstrap';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useOutletContext} from 'react-router-dom';
 
 
 async function deleteFetch(url=""){
@@ -11,6 +11,8 @@ async function deleteFetch(url=""){
 
 const MyPage = () => {
 
+  const {setUser} = useOutletContext();
+
   const cardStyle = { backgroundColor: 'rgba(211, 211, 211, 0.6)', maxWidth: '600px', margin: '0 auto' };
   const navigate = useNavigate();
 
@@ -19,6 +21,7 @@ const MyPage = () => {
     try {
     
       await deleteFetch('/api/login');
+      setUser(null);
       navigate("/");
 
     } catch (error) {
