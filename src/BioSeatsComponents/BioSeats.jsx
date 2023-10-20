@@ -4,11 +4,11 @@
     import "./BioSeats.css";
     import FinalizeBooking from "../FinalizeBooking.jsx";
 
-    function BioSeats({ sum, bookings, selectedMovieTitle, selectedScreeningTime }) {
+    function BioSeats({ sum, bookings, selectedMovieTitle, selectedScreeningTime, auditoriumId }) {
         const [selectedSeats, setSelectedSeats] = useState([]);
-        const [auditoriumId, setAuditoriumId] = useState(1);
         const [seatsData, setSeatsData] = useState([]); 
         const [showModal, setShowModal] = useState(false);
+
     
     useEffect(() => {
         fetch('/api/seats')
@@ -34,7 +34,7 @@
                     : [...prevSeats, seatId];
             } else {
                 //Gör något annat än en alert??
-                alert("Du kan inte boka fler platser än tillåtet!");
+                alert("Du kan inte boka fler platser än antalet valda biljetter!");
                 return prevSeats;
             }
         });
@@ -82,9 +82,6 @@
                 <div className="screen mb-5"></div>
                 {renderSeats()}
                 <Row className="mt-3 justify-content-center">
-                    <Col xs="auto">
-                        <Button onClick={() => setAuditoriumId(auditoriumId === 1 ? 2 : 1)}>Toggle Auditorium</Button>
-                    </Col>
                     <Col xs="auto">
                         <Button onClick={() => setShowModal(true)}>Fortsätt bokningen</Button>
                     </Col>

@@ -37,20 +37,25 @@ const Booking = () => {
 
     return (
         <>
-            <h2>{movie ? `Boka biljetter för ${movie.title}` : 'Loading...'}</h2>
-            {screening && (
+        <h2>{movie ? `Boka biljetter för ${movie.title}` : 'Loading...'}</h2>
+        {screening ? (
+            <>
                 <p>
                     Vald visning: Sal {screening.auditorium_id}, {formattedDateTime}
                 </p>
-            )}
-            <ChooseAge onSumChange={setSum} />
-            <BioSeats 
-                sum={sum} 
-                bookings={bookings} 
-                selectedMovieTitle={movie ? movie.title : ''} 
-                selectedScreeningTime={screening ? screening.time : ''} 
-            />
-        </>
+                <ChooseAge onSumChange={setSum} />
+                <BioSeats 
+                    sum={sum}
+                    bookings={bookings}
+                    selectedMovieTitle={movie ? movie.title : ''}
+                    selectedScreeningTime={screening ? screening.time : ''}
+                    auditoriumId={screening.auditorium_id}
+                />
+            </>
+        ) : (
+            "Loading..." // Eller du kan använda en laddningsindikator här
+        )}
+    </>
     );
 };
 
