@@ -32,9 +32,9 @@ export default function BookingForm({handleClose}) {
         callback: doAfterSend
       })}>
         <Row>
-          <Col sm={true}>
+          <Col sm={12}>
             <div className='bg-secondary rounded p-3 mt-3'>
-              <h2>Dina uppgifter</h2>
+              <h4>Dina uppgifter</h4>
               {[
 
               
@@ -49,7 +49,7 @@ export default function BookingForm({handleClose}) {
 
 
         <Row>
-          <Col className='mt-3 mb-3'>{[
+          <Col sm={12} className='mt-3 mb-3'>{[
 
             ['button', '_submit', '', {
               type: 'submit',

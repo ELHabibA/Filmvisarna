@@ -7,6 +7,7 @@ const Booking = () => {
     const { screeningId } = useParams();
     const [screening, setScreening] = useState(null);
     const [movie, setMovie] = useState(null);
+    const [bookings, setBookings] = useState([]);
     const [sum, setSum] = useState(0);
 
     useEffect(() => {
@@ -17,8 +18,13 @@ const Booking = () => {
 
                 const movieResponse = await fetch(`/api/movies/${screeningData.movies_id}`);
                 const movieData = await movieResponse.json();
+                
+                const bookingsResponse = await fetch('/api/bookingsNice');
+                const bookingsData = await bookingsResponse.json();
+
                 setMovie(movieData);
                 setScreening(screeningData);
+                setBookings(bookingsData);
             } catch (error) {
                 console.error('Error fetching movie details:', error);
             }
@@ -31,18 +37,25 @@ const Booking = () => {
 
     return (
         <>
-           
-            
-            <h2>{movie ? `Boka biljetter för ${movie.title}` : 'Loading...'}</h2>
-            {screening && (
+        <h2>{movie ? `Boka biljetter för ${movie.title}` : 'Loading...'}</h2>
+        {screening ? (
+            <>
                 <p>
                     Vald visning: Sal {screening.auditorium_id}, {formattedDateTime}
                 </p>
-            )}
-            <ChooseAge onSumChange={setSum} />
-            <BioSeats sum={sum} />
-
-        </>
+                <ChooseAge onSumChange={setSum} />
+                <BioSeats 
+                    sum={sum}
+                    bookings={bookings}
+                    selectedMovieTitle={movie ? movie.title : ''}
+                    selectedScreeningTime={screening ? screening.time : ''}
+                    auditoriumId={screening.auditorium_id}
+                />
+            </>
+        ) : (
+            "Loading..." // Eller du kan använda en laddningsindikator här
+        )}
+    </>
     );
 };
 
