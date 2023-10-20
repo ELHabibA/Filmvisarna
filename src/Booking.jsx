@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import BioSeats from './BioSeatsComponents/BioSeats';
 import ChooseAge from '../src/components/ChooseAge';
-import BookingSummary from './components/bookingsummary/bookingsummary';
+
 
 const Booking = () => {
     const { screeningId } = useParams();
@@ -10,6 +10,7 @@ const Booking = () => {
     const [movie, setMovie] = useState(null);
     const [bookings, setBookings] = useState([]);
     const [sum, setSum] = useState(0);
+    const formattedDateTime = screening ? new Date(screening.time).toLocaleString('sv-SE').slice(0, -3) : '';
 
     useEffect(() => {
         const fetchMovieDetails = async () => {
@@ -34,20 +35,7 @@ const Booking = () => {
         fetchMovieDetails();
     }, [screeningId]);
 
-    const formattedDateTime = screening ? new Date(screening.time).toLocaleString('sv-SE').slice(0, -3) : '';
 
-    function populateBookingSummary(title, date, ticketType, seats, bookingNumber, price) {
-        title = movie ? movie.title : '';
-        date = screening ? screening.time : '';
-        ticketType = '';
-        seats = '';
-        bookingNumber = '';
-        price = '';
-
-        return {
-            populateBookingSummary
-        };
-    }
 
     return (
         <>

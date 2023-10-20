@@ -1,10 +1,9 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import populateBookingSummary from "../../Booking";
 
-function BookingSummary({ title, date, ticketType, seats, bookingNumber, price }) {
-    title = populateBookingSummary.title;
-    date = populateBookingSummary.date;
+
+function BookingSummary({ title, date, ticketType, seats, price }) {
+
 
 
     return (
@@ -19,8 +18,6 @@ function BookingSummary({ title, date, ticketType, seats, bookingNumber, price }
                     <div className="mb-4">{ticketType}</div>
                     <div className="fw-bold mb-3">Platser</div>
                     <div className="mb-4">{seats}</div>
-                    <div className="fw-bold mb-3">Bokningsnummer</div>
-                    <div className="mb-4">{bookingNumber}</div>
                     <hr />
                     <div className="fw-bold">Totalt: {price} kr</div>
                 </Col>
