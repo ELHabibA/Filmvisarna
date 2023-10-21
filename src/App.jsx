@@ -28,7 +28,7 @@ export default function App() {
             <Container className="col-12">
               <Row>
                 <Col>
-                  <Outlet context={{ movies, setUser }} />
+                  <Outlet context={{ movies, setUser, user }} />
                 </Col>
               </Row>
               <Background />
