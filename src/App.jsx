@@ -12,14 +12,12 @@ export default function App() {
 
   // check if user is logged and store in state var
   const [user, setUser] = useState(null);
-
   useEffect(() => {
     (async () => {
-      setUser(await(await fetch('/api/login')).json());
+      setUser(await fetch('/api/login').json());
     })();
   },[]);
 
-  console.log('Logged in user',user);
 
   return !movies.length ? null : (
     <>
