@@ -2,7 +2,7 @@
 .weekly-container {
     width: 200px;
     /* Set the desired width */
-    padding: 5px;
+    padding: 15px;
     /* Reduce padding for a more compact size */
     background-color: #f0f0f083;
     /* Optional: Set a background color */
@@ -70,3 +70,19 @@
 }
 
 /* Add more styles as needed */
+
+/* Example button styles */
+.custom-button {
+    background-color: #FF5733;
+    /* Change to your desired background color */
+    color: #FFFFFF;
+    /* Change to your desired text color */
+    padding: 10px 20px;
+    /* Adjust the padding as needed */
+    border: none;
+    border-radius: 5px;
+    /* Adjust border radius as needed */
+    cursor: pointer;
+    font-size: 16px;
+    /* Change to your desired font size */
+}

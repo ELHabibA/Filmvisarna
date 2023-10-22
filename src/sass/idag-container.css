@@ -26,7 +26,7 @@
 
 /* Style the content title for "Idag" */
 .idag-container .content-title {
-    font-size: 28px;
+    font-size: 32px;
     /* Use the same font size as "Se Idag" */
     margin-bottom: 5px;
     /* Use the same margin */
@@ -46,10 +46,13 @@
 
 /* Style the movie images for "Idag" */
 .idag-container .movie img {
-    width: 75%;
+    aspect-ratio: 21/32;
+    width: 100%;
     /* Make the images fill the container */
     height: auto;
     /* Maintain aspect ratio */
+    border: 3px solid #c98417;
+    /* Change the color and width to your preference */
 }
 
 /* Style for the text under each image in the "Idag" section */
@@ -61,5 +64,13 @@
     color: whitesmoke;
     /* Text color */
     margin-top: 15px;
+
     /* Add some spacing from the image */
+    /* Media query for desktop */
+    @media screen and (min-width: 768px) {
+        font-size: 20px;
+        /* Adjust font size for desktop */
+        /* Add any desktop-specific styles here */
+    }
+
 }
