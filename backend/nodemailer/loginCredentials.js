@@ -1,2 +1,2 @@
-export const email = 'filmvisarnanodemailer@gmail.com';
-export const password = 'rhys zwzt aygx nqni ';
+export const email = '';
+export const password = '';
