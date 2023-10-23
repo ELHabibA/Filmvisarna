@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import BioSeats from './BioSeatsComponents/BioSeats';
 import ChooseAge from '../src/components/ChooseAge';
-
+import useFormattedDateTime from './hooks/useFormattedDateTime';
 
 const Booking = () => {
     const { screeningId } = useParams();
@@ -10,7 +10,6 @@ const Booking = () => {
     const [movie, setMovie] = useState(null);
     const [bookings, setBookings] = useState([]);
     const [sum, setSum] = useState(0);
-    const formattedDateTime = screening ? new Date(screening.time).toLocaleString('sv-SE').slice(0, -3) : '';
 
     useEffect(() => {
         const fetchMovieDetails = async () => {
@@ -35,7 +34,8 @@ const Booking = () => {
         fetchMovieDetails();
     }, [screeningId]);
 
-
+    //const formattedDateTime = screening ? new Date(screening.time).toLocaleString('sv-SE').slice(0, -3) : '';
+    const formattedDateTime = useFormattedDateTime(screening);
 
     return (
         <>
@@ -52,7 +52,6 @@ const Booking = () => {
                         selectedMovieTitle={movie ? movie.title : ''}
                         selectedScreeningTime={screening ? screening.time : ''}
                         auditoriumId={screening.auditorium_id}
-                        screeningDate={formattedDateTime}
                     />
                 </>
             ) : (
