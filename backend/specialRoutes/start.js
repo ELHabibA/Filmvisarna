@@ -15,7 +15,7 @@ app.get('/api/bookingNumber', (req, res) => {
 });
 
 
-app.post('/api/makeBooking', async (req, res) => { 
+app.post('/api/makeBooking', async (req, res) => {
     let dataFromUser = req.body;
 
     let bookingNumber = getBookingNumber();
@@ -41,18 +41,27 @@ app.post('/api/makeBooking', async (req, res) => {
 
 
 
- //Delete booking
+//Delete booking
 app.delete('/api/bookings', async (req, res) => {
 
     const { email, bookingNumber } = req.body;
 
-  
-        const result = await runQuery(
-            'DELETE bookings FROM bookings INNER JOIN users ON bookings.userId = users.id WHERE bookings.bookingNumber = :bookingNumber AND users.email = :email',
-            { email, bookingNumber }
-        );
 
-        res.json(result);
-        
-    
+    const result = await runQuery(
+        'DELETE bookings FROM bookings INNER JOIN users ON bookings.userId = users.id WHERE bookings.bookingNumber = :bookingNumber AND users.email = :email',
+        { email, bookingNumber }
+    );
+
+    res.json(result);
+
+
 });
+/*
+// New API endpoint to fetch screening dates for a specific movie
+app.get("/api/screenings/:movieId", async (req, res) => {
+    const movieId = req.params.movieId;
+    // Replace the query with one that fetches screening times for the given movieId
+    let result = await runQuery('SELECT time FROM dbFilm.screenings WHERE movies_id = :movieId', { movieId: movieId });
+    res.json(result);
+});
+*/

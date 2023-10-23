@@ -25,8 +25,8 @@
 }
 
 /* Style the mirrored content title for kids */
-.content-title {
-    font-size: 20px;
+.content-Title {
+    font-size: 25px;
     /* Use the same font size as "Se Idag" */
     margin-bottom: 5px;
     /* Use the same margin */
@@ -34,23 +34,24 @@
 
 /* Style the mirrored movie entries for kids */
 .movie {
+    margin-top: 25px;
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
-    /* Use the same margin */
+    margin-bottom: 25px;
+    /* Reduce margin between movie entries */
 }
 
 /* Style the mirrored movie titles for kids */
-.movie-title {
-    font-size: 12px;
+.movie-Title {
+    font-size: 15px;
     /* Use the same font size */
-    margin-right: 15px;
+    margin-left: 5px;
     /* Use the same margin */
 }
 
 /* Style the mirrored showtime text for kids */
-.showtime {
-    font-size: 15px;
+.Showtime {
+    font-size: 18px;
     /* Use the same font size */
 }
 
