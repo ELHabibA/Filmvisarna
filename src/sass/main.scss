@@ -6,3 +6,10 @@
 
 // Import our own styling (one or several files)
 @import './own-styling.scss';
+
+// Alla CSS till Mainsidan
+@import './MainLayout.css';
+@import './kids-container.css';
+@import './Seidag.css';
+@import './idag-container.css';
+@import './MovieScroller.css';
