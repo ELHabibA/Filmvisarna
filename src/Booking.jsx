@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import BioSeats from './BioSeatsComponents/BioSeats';
 import ChooseAge from '../src/components/ChooseAge';
+import useFormattedDateTime from './hooks/useFormattedDateTime';
 
 const Booking = () => {
     const { screeningId } = useParams();
@@ -18,7 +19,7 @@ const Booking = () => {
 
                 const movieResponse = await fetch(`/api/movies/${screeningData.movies_id}`);
                 const movieData = await movieResponse.json();
-                
+
                 const bookingsResponse = await fetch('/api/bookingsNice');
                 const bookingsData = await bookingsResponse.json();
 
@@ -33,29 +34,30 @@ const Booking = () => {
         fetchMovieDetails();
     }, [screeningId]);
 
-    const formattedDateTime = screening ? new Date(screening.time).toLocaleString('sv-SE').slice(0, -3) : '';
+    //const formattedDateTime = screening ? new Date(screening.time).toLocaleString('sv-SE').slice(0, -3) : '';
+    const formattedDateTime = useFormattedDateTime(screening);
 
     return (
         <>
-        <h2>{movie ? `Boka biljetter för ${movie.title}` : 'Loading...'}</h2>
-        {screening ? (
-            <>
-                <p>
-                    Vald visning: Sal {screening.auditorium_id}, {formattedDateTime}
-                </p>
-                <ChooseAge onSumChange={setSum} />
-                <BioSeats 
-                    sum={sum}
-                    bookings={bookings}
-                    selectedMovieTitle={movie ? movie.title : ''}
-                    selectedScreeningTime={screening ? screening.time : ''}
-                    auditoriumId={screening.auditorium_id}
-                />
-            </>
-        ) : (
-            "Loading..." // Eller du kan använda en laddningsindikator här
-        )}
-    </>
+            <h2>{movie ? `Boka biljetter för ${movie.title}` : 'Loading...'}</h2>
+            {screening ? (
+                <>
+                    <p>
+                        Vald visning: Sal {screening.auditorium_id}, {formattedDateTime}
+                    </p>
+                    <ChooseAge onSumChange={setSum} />
+                    <BioSeats
+                        sum={sum}
+                        bookings={bookings}
+                        selectedMovieTitle={movie ? movie.title : ''}
+                        selectedScreeningTime={screening ? screening.time : ''}
+                        auditoriumId={screening.auditorium_id}
+                    />
+                </>
+            ) : (
+                "Loading..." // Eller du kan använda en laddningsindikator här
+            )}
+        </>
     );
 };
 
