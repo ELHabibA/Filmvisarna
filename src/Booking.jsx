@@ -52,6 +52,7 @@ const Booking = () => {
                         selectedMovieTitle={movie ? movie.title : ''}
                         selectedScreeningTime={screening ? screening.time : ''}
                         auditoriumId={screening.auditorium_id}
+                        screeningDatetime={formattedDateTime}
                     />
                 </>
             ) : (

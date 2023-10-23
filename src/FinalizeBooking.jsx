@@ -6,7 +6,7 @@ import Booking from "./Booking";
 
 
 
-function FinalizeBooking({ selectedMovieTitle, screeningDate, showModal, setShowModal }) {
+function FinalizeBooking({ selectedMovieTitle, screeningDatetime, showModal, setShowModal }) {
 
 
     const handleClose = () => setShowModal(false);
@@ -18,7 +18,7 @@ function FinalizeBooking({ selectedMovieTitle, screeningDate, showModal, setShow
                 <Modal.Header>
                     <BookingSummary
                         title={selectedMovieTitle}
-                        date={screeningDate}
+                        date={screeningDatetime}
                         ticketType=''
                         seats=''
                         bookingNumber=''

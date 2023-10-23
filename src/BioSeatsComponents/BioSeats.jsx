@@ -4,7 +4,7 @@ import { Button, Row, Col, Container } from "react-bootstrap";
 import "./BioSeats.css";
 import FinalizeBooking from "../FinalizeBooking.jsx";
 
-function BioSeats({ sum, bookings, selectedMovieTitle, selectedScreeningTime, auditoriumId, screeningDate }) {
+function BioSeats({ sum, bookings, selectedMovieTitle, selectedScreeningTime, auditoriumId, screeningDatetime }) {
     const [selectedSeats, setSelectedSeats] = useState([]);
     const [seatsData, setSeatsData] = useState([]);
     const [showModal, setShowModal] = useState(false);
@@ -78,7 +78,7 @@ function BioSeats({ sum, bookings, selectedMovieTitle, selectedScreeningTime, au
 
     return (
         <Container className="saloon-container mt-5">
-            <FinalizeBooking {...{ selectedMovieTitle, screeningDate, showModal, setShowModal }} />
+            <FinalizeBooking {...{ selectedMovieTitle, screeningDatetime, showModal, setShowModal }} />
             <div className="screen mb-5"></div>
             {renderSeats()}
             <Row className="mt-3 justify-content-center">
