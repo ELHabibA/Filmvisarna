@@ -2,10 +2,17 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
 
-function BookingSummary({ title, date, ticketType, seats, price }) {
+function BookingSummary({ title, date, price, ticketTypes, chosenSeats, seatsForCurrentAuditorium }) {
+    const { adults, kids, retired } = ticketTypes;
+    const niceTicketTypes = `${adults} st Vuxen, ${kids} st Barn, ${retired} st pensionär`;
+    const niceSeats = chosenSeats
+        .map(id => seatsForCurrentAuditorium.find(x => x.id === id))
+        .map(seat => `Rad: ${seat.rowNumber} Stol: ${seat.seatNumber} | `);
 
 
-
+    console.log('Niceseats:', niceSeats)
+    console.log('seatsForCurrentAuditorium:', seatsForCurrentAuditorium)
+    console.log('Chosen seats:', chosenSeats)
     return (
         <Container>
             <Row>
@@ -15,9 +22,9 @@ function BookingSummary({ title, date, ticketType, seats, price }) {
                     <div className="fw-bold mb-3">Datum</div>
                     <div className="mb-4">{date}</div>
                     <div className="fw-bold mb-3">Biljetter</div>
-                    <div className="mb-4">{ticketType}</div>
+                    <div className="mb-4">{niceTicketTypes}</div>
                     <div className="fw-bold mb-3">Platser</div>
-                    <div className="mb-4">{seats}</div>
+                    <div className="mb-4">{niceSeats}</div>
                     <hr />
                     <div className="fw-bold">Totalt: {price} kr</div>
                 </Col>

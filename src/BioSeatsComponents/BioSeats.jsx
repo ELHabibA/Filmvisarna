@@ -4,11 +4,14 @@ import { Button, Row, Col, Container } from "react-bootstrap";
 import "./BioSeats.css";
 import FinalizeBooking from "../FinalizeBooking.jsx";
 
-function BioSeats({ sum, bookings, selectedMovieTitle, selectedScreeningTime, auditoriumId, screeningDatetime }) {
+function BioSeats({ sum, bookings, selectedMovieTitle, selectedScreeningTime, auditoriumId, screeningDatetime, price, ticketTypes, chosenSeats, setChosenSeats }) {
     const [selectedSeats, setSelectedSeats] = useState([]);
     const [seatsData, setSeatsData] = useState([]);
     const [showModal, setShowModal] = useState(false);
 
+    useEffect(() => {
+        setChosenSeats(selectedSeats);
+    }, [selectedSeats]);
 
     useEffect(() => {
         fetch('/api/seats')
@@ -46,9 +49,11 @@ function BioSeats({ sum, bookings, selectedMovieTitle, selectedScreeningTime, au
         }
     }, [sum]);
 
+    const seatsForCurrentAuditorium = seatsData.filter(seat => seat.auditorium_id === auditoriumId);
+
     const renderSeats = () => {
         // Modified this line to match the attribute name from the data
-        const seatsForCurrentAuditorium = seatsData.filter(seat => seat.auditorium_id === auditoriumId);
+
 
         // Log for debugging purposes
         console.log('Seats for current auditorium:', seatsForCurrentAuditorium);
@@ -78,7 +83,17 @@ function BioSeats({ sum, bookings, selectedMovieTitle, selectedScreeningTime, au
 
     return (
         <Container className="saloon-container mt-5">
-            <FinalizeBooking {...{ selectedMovieTitle, screeningDatetime, showModal, setShowModal }} />
+            <FinalizeBooking {...{
+                selectedMovieTitle,
+                screeningDatetime,
+                showModal,
+                setShowModal,
+                price,
+                ticketTypes,
+                chosenSeats,
+                seatsForCurrentAuditorium
+            }} />
+
             <div className="screen mb-5"></div>
             {renderSeats()}
             <Row className="mt-3 justify-content-center">

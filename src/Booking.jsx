@@ -10,6 +10,10 @@ const Booking = () => {
     const [movie, setMovie] = useState(null);
     const [bookings, setBookings] = useState([]);
     const [sum, setSum] = useState(0);
+    const [price, setPrice] = useState(0);
+    const [ticketTypes, setticketTypes] = useState({});
+    const [chosenSeats, setChosenSeats] = useState(null);
+
 
     useEffect(() => {
         const fetchMovieDetails = async () => {
@@ -45,7 +49,7 @@ const Booking = () => {
                     <p>
                         Vald visning: Sal {screening.auditorium_id}, {formattedDateTime}
                     </p>
-                    <ChooseAge onSumChange={setSum} />
+                    <ChooseAge onSumChange={setSum} setPrice={setPrice} setticketTypes={setticketTypes} />
                     <BioSeats
                         sum={sum}
                         bookings={bookings}
@@ -53,6 +57,11 @@ const Booking = () => {
                         selectedScreeningTime={screening ? screening.time : ''}
                         auditoriumId={screening.auditorium_id}
                         screeningDatetime={formattedDateTime}
+                        price={price}
+                        ticketTypes={ticketTypes}
+                        setChosenSeats={setChosenSeats}
+                        chosenSeats={chosenSeats}
+
                     />
                 </>
             ) : (
