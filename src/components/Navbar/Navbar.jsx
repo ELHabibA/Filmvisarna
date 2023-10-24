@@ -5,7 +5,14 @@ import { pages } from '../../main';
 
 function BasicNavbar({user}) {
 
-  const excludedPaths = ['/detaljsidan', '/boka/:screeningId', '/avbokning', '/bokningsbekraftelse', '/detaljsidan/:movieId', '/finalize-booking'];
+  const excludedPaths = [
+    '/detaljsidan',
+    '/boka/:screeningId',
+    '/avbokning',
+    '/bokningsbekraftelse',
+    '/detaljsidan/:movieId',
+    '/finalize-booking'
+  ];
   const filteredPages = pages.filter((page) => !excludedPaths.includes(page.path));
 
   return (
