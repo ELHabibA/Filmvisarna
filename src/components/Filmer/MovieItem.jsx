@@ -17,11 +17,9 @@ function MovieItem({ movie }) {
         </div>
         <div className="movie-info" style={{ marginLeft: '10px' }}>
           <h2 className="movie-title">{movie.title}</h2>
-          <p className="movie-description">{movie.description.genre} I Längd: { time} I Åldersgräns: {movie.description.ageRating} år</p>
+          <p className="movie-description">{movie.description.genre} I Längd: {time} I Åldersgräns: {movie.description.ageRating} år</p>
         </div>
-        <Link to={`/detaljsidan/${movie.id}`} style={{ marginLeft: 'auto' }}>
-          <button className="btn btn-primary">Detaljer</button>
-        </Link>
+        <button className="btn btn-primary">Detaljer</button>
       </Link>
     </div>
   );

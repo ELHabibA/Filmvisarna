@@ -2,9 +2,11 @@
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useFormHelper } from '../../hooks/useFormHelper';
+import { useEffect } from 'react';
+import { useOutletContext } from 'react-router-dom';
 
 
-export default function BookingForm({handleClose}) {
+export default function BookingForm({ handleClose, email, setEmail }) {
 
   const {
     formState,
@@ -13,12 +15,25 @@ export default function BookingForm({handleClose}) {
     formIsValid,
   } = useFormHelper();
 
+  const { user } = useOutletContext();
+  useEffect(() => {
+    if (user) {
+      setFormState({ ...formState, email: user.email });
+    }
+  }, []);
+
   // debug
   console.log(JSON.stringify(formState, '', '  '));
+
+  // when formState changes setEmail from formState.email
+  useEffect(() => {
+    setEmail(formState.email)
+  }, [formState]);
 
   function doAfterSend(serverResponse) {
     console.log('serverResponse', serverResponse);
     handleClose();
+    setEmail = email;
   }
 
   return <>
@@ -37,8 +52,8 @@ export default function BookingForm({handleClose}) {
               <h4>Dina uppgifter</h4>
               {[
 
-              
-                ['input', 'email', 'E-post', { type: 'email' }],
+
+                ['input', 'email', 'E-post', { type: 'email', disabled: !!user }],
 
 
               ].map(elData => createInputElement(...elData))
@@ -59,7 +74,7 @@ export default function BookingForm({handleClose}) {
 
             ['button', '_reset', '', {
               type: 'reset',
-              onClick: () => {setFormState({}); handleClose()},
+              onClick: () => { setFormState({}); handleClose() },
               className: 'btn-secondary mx-3',
               nolabel: true
             }, 'Avbryt']

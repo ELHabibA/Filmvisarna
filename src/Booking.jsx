@@ -14,7 +14,6 @@ const Booking = () => {
     const [ticketTypes, setticketTypes] = useState({});
     const [chosenSeats, setChosenSeats] = useState(null);
 
-
     useEffect(() => {
         const fetchMovieDetails = async () => {
             try {
