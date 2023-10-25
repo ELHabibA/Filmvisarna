@@ -14,7 +14,7 @@ export default function App() {
   const [user, setUser] = useState(null);
   useEffect(() => {
     (async () => {
-      setUser(await fetch('/api/login').json());
+      setUser(await (await fetch('/api/login')).json());
     })();
   },[]);
 

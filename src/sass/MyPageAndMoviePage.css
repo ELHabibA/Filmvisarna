@@ -1,0 +1,34 @@
+/* MyPage.css */
+
+.my-page-card {
+  background-color: rgba(211, 211, 211, 0.6);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.text-color {
+  color: rgb(40, 35, 35); /* Change 'brown' to the desired text color */
+}
+
+.card-horizontal-line {
+  border-top: 0.5px solid #727070; /* Adjust line color and style as needed */
+  margin-top: 10px; /* Adjust the margin as needed */
+  margin-bottom: 10px; /* Adjust the margin as needed */
+}
+
+
+.text-left {
+  margin-bottom: 10px; /* Add space below "Bokningshistorik" */
+}
+
+
+/* MoviePage.css */
+.white-card {
+  background-color: rgba(211, 211, 211, 0.6);
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  padding: 20px;
+}
