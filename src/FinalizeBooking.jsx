@@ -1,26 +1,43 @@
 import BookingForm from "./components/bookingform/bookingform";
 import BookingSummary from "./components/bookingsummary/bookingsummary";
-import { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
+import Booking from "./Booking";
 
 
 
 
-function FinalizeBooking(props) {
+function FinalizeBooking({
+    selectedMovieTitle,
+    screeningDatetime,
+    showModal,
+    setShowModal,
+    price,
+    ticketTypes,
+    chosenSeats,
+    seatsForCurrentAuditorium
+}) {
 
-    const { showModal, setShowModal } = props;
 
     const handleClose = () => setShowModal(false);
-    
+    console.log(chosenSeats)
 
     return (
         <>
             <Modal show={showModal}>
                 <Modal.Header>
-                    <BookingSummary />
+                    <BookingSummary
+                        title={selectedMovieTitle}
+                        date={screeningDatetime}
+                        ticketTypes={ticketTypes}
+                        chosenSeats={chosenSeats}
+                        seatsForCurrentAuditorium={seatsForCurrentAuditorium}
+                        bookingNumber=''
+                        price={price}
+
+                    />
                 </Modal.Header>
                 <Modal.Body>
-                    <BookingForm handleClose={handleClose}/>
+                    <BookingForm handleClose={handleClose} />
                 </Modal.Body>
             </Modal>
         </>
