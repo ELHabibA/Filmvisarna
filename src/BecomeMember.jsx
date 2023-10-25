@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Card, Button, Form, Row, Col } from 'react-bootstrap';
-import { post } from './hooks/rest';
+import { RestPostRoutes } from '../backend/classes/dbTypeSpecific/SQL/RestPostRoutes';
 import { useFormHelper } from './hooks/useFormHelper';
 
 const initialRegistrationData = {
@@ -85,6 +85,8 @@ function BliMedlem() {
       return;
     }
 
+    const restPostRoutes = new RestPostRoutes();
+    const tableName = 'users'; // Byt ut detta med ditt faktiska tabellnamn
     const userData = {
       firstName: formState.Namn,
       lastName: formState.Efternamn,
@@ -92,9 +94,20 @@ function BliMedlem() {
       phoneNumber: formState.Telefonnummer,
       password: formState.Losenord,
     };
+    const queryParts = restPostRoutes.addRow.query;
+
+    const postRequest = {
+      method: 'POST', // Använd POST här
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userData),
+    };
 
     try {
-      const data = await post('users', userData);
+      const response = await fetch('http://localhost:5174/api/users', postRequest);
+      const data = await response.json();
+
 
       if (data.insertId) {
         setRegistrationSuccess('Registreringen lyckades. Välkommen!');
