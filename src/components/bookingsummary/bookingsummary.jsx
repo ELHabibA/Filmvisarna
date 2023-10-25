@@ -1,39 +1,35 @@
 import React from "react";
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
-function BookingSummary() {
-    const renderTicketInfo = () => (
-        <div>
-            <div>2 st vuxna</div>
-            <div>1 st barn</div>
-            <div>1 st pensionär</div>
-        </div>
-    );
 
-    const renderSeatInfo = () => (
-        <div>
-            <div>A1, A2, A3</div>
-        </div>
-    );
+function BookingSummary({ title, date, price, ticketTypes, chosenSeats, seatsForCurrentAuditorium }) {
+    const { adults, kids, retired } = ticketTypes;
+    const niceTicketTypes = `${adults} st Vuxen, ${kids} st Barn, ${retired} st pensionär`;
+    const niceSeats = chosenSeats
+        .map(id => seatsForCurrentAuditorium.find(x => x.id === id))
+        .map(seat => `Rad: ${seat.rowNumber} Stol: ${seat.seatNumber} | `);
 
+
+    console.log('Niceseats:', niceSeats)
+    console.log('seatsForCurrentAuditorium:', seatsForCurrentAuditorium)
+    console.log('Chosen seats:', chosenSeats)
     return (
         <Container>
             <Row>
                 <Col sm={12} className="bg-secondary p-3 rounded">
                     <div className="fw-bold mb-3">Titel</div>
-                    <div className="mb-4">Oppenheimer</div>
+                    <div className="mb-4">{title}</div>
                     <div className="fw-bold mb-3">Datum</div>
-                    <div className="mb-4">2023-10-05 19:30</div>
+                    <div className="mb-4">{date}</div>
                     <div className="fw-bold mb-3">Biljetter</div>
-                    <div className="mb-4">{renderTicketInfo()}</div>
+                    <div className="mb-4">{niceTicketTypes}</div>
                     <div className="fw-bold mb-3">Platser</div>
-                    <div className="mb-4">{renderSeatInfo()}</div>
+                    <div className="mb-4">{niceSeats}</div>
                     <hr />
-                    <div className="fw-bold">Totalt: 440 kr</div>
+                    <div className="fw-bold">Totalt: {price} kr</div>
                 </Col>
             </Row>
         </Container>
     );
 }
-
 export default BookingSummary;

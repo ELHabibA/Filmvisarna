@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Card, Button, Form } from 'react-bootstrap';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useOutletContext} from 'react-router-dom';
 
 async function postData(url = "", data = {}) {
 
@@ -16,6 +16,8 @@ async function postData(url = "", data = {}) {
 }
 
 const Login = () => {
+
+  const {setUser} = useOutletContext();
 
   const cardStyle = { backgroundColor: 'rgba(211, 211, 211, 0.6)', maxWidth: '600px', margin: '0 auto' };
 
@@ -34,6 +36,7 @@ const Login = () => {
       console.error(response.error);
     } else {
       // Go to movies page on successful login
+      setUser(response);
       navigate('/');
     }
   };
