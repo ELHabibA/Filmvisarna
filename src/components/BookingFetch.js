@@ -4,12 +4,12 @@ export default function BookingFetch({ user }) {
 
   const [bookings, setBookings] = useState([]);
 
-  const {id: userId} = user;
+  const {email: userEmail} = user;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`/api/bookings/userId/=/` + userId);
+        const response = await fetch(`/api/bookingsNice/email/=/` + userEmail);
         const bookingsListed = await response.json();
         setBookings(bookingsListed);
       } catch (error) {

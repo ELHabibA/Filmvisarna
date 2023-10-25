@@ -103,7 +103,7 @@ const MyPage = () => {
                 {futureBookings.length > 0 && (
                   <div>
                     {futureBookings.map((booking) => (
-                      <li key={booking.id} className="text-color">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{formatTimestamp(booking.timestamp)}</li>
+                      <li key={booking.id} className="text-color">{booking.movieTitle}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{formatTimestamp(booking.bookingTime)}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{booking.name}</li>
                     ))}
                   </div>
                 )}
@@ -112,7 +112,7 @@ const MyPage = () => {
                     <h5>Bokningshistorik:</h5>
                     <ul style={{ listStyleType: 'none' }}>
                       {pastBookings.map((booking) => (
-                        <li key={booking.id} className="text-color">{formatTimestamp(booking.timestamp)}</li>
+                        <li key={booking.id} className="text-color-2">{booking.movieTitle}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{formatTimestamp(booking.bookingTime)}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{booking.name}</li>
                       ))}
                     </ul>
                     <div>
