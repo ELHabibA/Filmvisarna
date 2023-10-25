@@ -7,22 +7,21 @@
 }
 
 .text-color {
-  color: rgb(40, 35, 35); /* Change 'brown' to the desired text color */
+  color: rgb(40, 35, 35); 
 }
 
 .text-color-2 {
-  color: rgb(55, 55, 55); /* Change 'brown' to the desired text color */
+  color: rgb(55, 55, 55); 
 }
 
 .card-horizontal-line {
-  border-top: 0.5px solid #727070; /* Adjust line color and style as needed */
-  margin-top: 10px; /* Adjust the margin as needed */
-  margin-bottom: 10px; /* Adjust the margin as needed */
+  border-top: 0.5px solid #727070; 
+  margin-top: 10px; 
+  margin-bottom: 10px; 
 }
 
-
 .text-left {
-  margin-bottom: 10px; /* Add space below "Bokningshistorik" */
+  margin-bottom: 10px; 
 }
 
 
