@@ -3,7 +3,8 @@ import { emailConfig } from "./emailConfig.js";
 import htmlTemplate from "./htmlTemplate.js";
 import textTemplate from "./textTemplate.js";
 import { email as fromEmail } from "./loginCredentials.js";
-
+import rawBooking from "./rawEmailBookingConfirmation.js"
+import rawCancellation from "./rawEmailCancelBookingConfirmation.js";
 
 
 async function sendEmail() {
@@ -12,10 +13,10 @@ async function sendEmail() {
 
     const info = await transporter.sendMail({
         from: `Filmvisarna <${fromEmail}>`,
-        to: 'hakansson.hampus@gmail.com',
+        to: 'unik2k11@gmail.com',
         subject: 'Tack för din bokning!',
         html: htmlTemplate,
-        text: textTemplate
+        text: rawBooking
     })
 
 
