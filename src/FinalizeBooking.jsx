@@ -1,9 +1,7 @@
 import BookingForm from "./components/bookingform/bookingform";
 import BookingSummary from "./components/bookingsummary/bookingsummary";
 import { Modal } from "react-bootstrap";
-import Booking from "./Booking";
-
-
+import { useState } from 'react';
 
 
 function FinalizeBooking({
@@ -17,9 +15,26 @@ function FinalizeBooking({
     seatsForCurrentAuditorium
 }) {
 
+    const [email, setEmail] = useState('');
 
     const handleClose = () => setShowModal(false);
-    console.log(chosenSeats)
+
+    const data = {
+        title: { selectedMovieTitle },
+        date: { screeningDatetime },
+        ticketTypes: { ticketTypes },
+        chosenSeats: { chosenSeats },
+        seatsForCurrentAuditorium: { seatsForCurrentAuditorium },
+        price: { price },
+        email: { email }
+    }
+
+
+    /*data = {
+        email, screeningId, seatsIds: []
+    }*/
+
+    // const response = postData('/api/makeBooking', data)
 
     return (
         <>
@@ -31,17 +46,32 @@ function FinalizeBooking({
                         ticketTypes={ticketTypes}
                         chosenSeats={chosenSeats}
                         seatsForCurrentAuditorium={seatsForCurrentAuditorium}
-                        bookingNumber=''
                         price={price}
+                        email={setEmail}
 
                     />
                 </Modal.Header>
                 <Modal.Body>
-                    <BookingForm handleClose={handleClose} />
+                    <BookingForm handleClose={handleClose} setEmail={setEmail} email={email} />
                 </Modal.Body>
             </Modal>
         </>
-    )
+    );
 }
 
 export default FinalizeBooking;
+
+
+async function postData(url = "", data = {}) {
+
+    const response = await fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    });
+    return response.json();
+}
+
+

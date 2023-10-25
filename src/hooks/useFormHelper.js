@@ -4,7 +4,7 @@ const bootstrapClassDict = {
     'input': 'form-control shadow-none',
     'select': 'form-select shadow-none',
     'button': 'btn btn-primary float-end px-4',
-    'label': 'col-md-6 col-xl-4 mb-4 p-3'
+    'label': 'col-md-12 col-xl-4 mb-4 p-3'
 };
 
 export function useFormHelper(options = {}) {
