@@ -14,8 +14,10 @@ function ChooseAge({ onSumChange, setPrice, setticketTypes }) {
 
     useSetSumAndPrice(adults, kids, retired, onSumChange, setticketTypes);
     let price = (adults * 140 + kids * 80 + retired * 120);
-    setPrice(price);
 
+    useEffect(() => {
+        setPrice(price);
+    }, [adults, kids, retired]);
 
     return (
         <>
