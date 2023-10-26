@@ -11,7 +11,7 @@ export default function Footer() {
             </Row>
             <Row className='tradeMarkFooter logoSize mx-auto d-block'><img src="../logo.png"></img></Row>
             <Row className='tradeMarkFooter'>
-                <p>Made by: Team 3 - Elia, Habib, Hampus, Tanya, Artur, Simon & Bobby</p>
+                <p>Team 3 - Elia, Habib, Hampus, Tanya, Artur, Simon & Bobby</p>
             </Row>
         </Container>
     );
