@@ -57,7 +57,7 @@ function FinalizeBooking({
             </Modal>
         </>
     );
-}
+};
 
 export default FinalizeBooking;
 
@@ -72,6 +72,6 @@ async function postData(url = "", data = {}) {
         body: JSON.stringify(data),
     });
     return response.json();
-}
+};
 
 
