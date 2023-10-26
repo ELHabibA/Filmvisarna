@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Container, Card, Button, Form } from 'react-bootstrap';
-import {useNavigate, useOutletContext} from 'react-router-dom';
+import {useNavigate, useOutletContext, Link } from 'react-router-dom';
 import './sass/MyPageAndMoviePage.css';
 
 async function postData(url = "", data = {}) {

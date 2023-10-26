@@ -1,6 +1,5 @@
 
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { Row, Col } from "react-bootstrap";
 import { useFormHelper } from '../../hooks/useFormHelper';
 import { useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';

@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import { Container, Card, Button } from 'react-bootstrap';
-import { useNavigate, useOutletContext } from 'react-router-dom';
+import { useNavigate, useOutletContext, Link } from 'react-router-dom';
 import BookingFetch from './components/BookingFetch';
 import './sass/MyPageAndMoviePage.css';
 

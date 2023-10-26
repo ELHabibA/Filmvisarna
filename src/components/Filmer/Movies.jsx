@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useParams, useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useLocation, useOutletContext } from 'react-router-dom';
 import MovieFilter from './MovieFilter';
 import MovieItem from './MovieItem';
 import './../../sass/movies.css';
-import { useOutletContext } from "react-router-dom";
+
 
 const Movies = () => {
 
