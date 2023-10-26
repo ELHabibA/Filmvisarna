@@ -16,11 +16,9 @@ app.get('/api/bookingNumber', (req, res) => {
 
 
 app.post('/api/makeBooking', async (req, res) => {
-    let dataFromUser = req.body;
 
-    let bookingNumber = getBookingNumber();
-
-    let { email, screeningId } = req.body;
+    // Data from request body
+    let { email, screeningId, seatIds, seatTypes } = req.body;
 
     // Check if email in users in DB
     let user = (await runQuery('SELECT * FROM users WHERE email = :email', { email }))[0];
@@ -31,13 +29,37 @@ app.post('/api/makeBooking', async (req, res) => {
         user = (await runQuery('SELECT * FROM users WHERE email = :email', { email }))[0];
     }
 
-    // Create booking (obs! ej stolarna/korstabell, bara huvubokningen)
+    // Create booking number
+    let bookingNumber = getBookingNumber();
+
+    // Create booking 
     let result = await runQuery(`INSERT INTO bookings (bookingNumber, screeningId, userId)
                     VALUES (:bookingNumber, :screeningId, :userId)`,
         { bookingNumber, userId: user.id, screeningId });
+    let bookingId = result.insertId;
+    
+    // Create seat data
+    let seats = [], seatIdsCopy = seatIds.slice();
+    for(let type in seatTypes){
+        for(let i = 0; i < seatTypes[type]; i++){
+            seats.push({bookingId, seatId: seatIdsCopy.shift(), ticketTypeId: +type});
+        }
+    }
+    
+    // Add the seats to th db
+    for (let {bookingId, seatId, ticketTypeId} of seats){
+       let result = await runQuery(`INSERT INTO ticketTypeXbookings (bookings_id, seats_id, ticketType_id)
+                    VALUES (:bookingId, :seatId, :ticketTypeId)`, { bookingId, seatId, ticketTypeId });
+        console.log("HMMMMMMMM",result, {bookingId, seatId, ticketTypeId} )
+    }
 
-    res.json({ makeBooking: "ROUTEN FINNS", "data you sent": dataFromUser, bookingNumber, user, result });
+    // Send email here!!!
+    
+
+    res.json({ bookingNumber });
 });
+
+
 
 
 

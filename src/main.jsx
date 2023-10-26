@@ -6,8 +6,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App.jsx';
 import Home from './Home.jsx';
 import Movies from './components/Filmer/Movies.jsx';
-import MovieItem from './components/Filmer/MovieItem.jsx';
-import MovieFilter from './components/Filmer/MovieFilter.jsx';
 import ContactUs from './ContactUs.jsx';
 import Booking from './Booking.jsx';
 import BecomeMember from './BecomeMember.jsx';
@@ -35,6 +33,7 @@ export const pages = [
   { path: '/kontakt', label: 'Kontakta oss', element: <ContactUs /> },
   { path: '/blimedlem', label: 'Bli medlem', element: <BecomeMember /> },
   { path: '/loggain', label: 'Logga in', element: <LogIn/>  },
+  { path: '/avbokning', label: '', element: <CancelBooking/>  },
   { path: '/minsida', label: 'Min Sida', element:  <MyPage />  },
   { path: '/detaljsidan/:movieId', label: '', element: <MoviePage /> },
   { path: '/finalize-booking', label: '', element: <FinalizeBooking /> }, // Ta bort sedan, kunder/externa användare ska inte kunna se denna sida utan att ha valt film.

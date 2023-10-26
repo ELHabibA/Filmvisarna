@@ -1,6 +1,5 @@
 import React from 'react';
-import { Col } from 'react-bootstrap';
-import Dropdown from 'react-bootstrap/Dropdown';
+import { Col, Dropdown } from 'react-bootstrap';
 import './../../sass/movies.css';
 
 

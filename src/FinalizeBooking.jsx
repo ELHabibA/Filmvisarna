@@ -1,9 +1,7 @@
 import BookingForm from "./components/bookingform/bookingform";
 import BookingSummary from "./components/bookingsummary/bookingsummary";
 import { Modal } from "react-bootstrap";
-import Booking from "./Booking";
-
-
+import { useState } from 'react';
 
 
 function FinalizeBooking({
@@ -14,12 +12,35 @@ function FinalizeBooking({
     price,
     ticketTypes,
     chosenSeats,
-    seatsForCurrentAuditorium
+    seatsForCurrentAuditorium,
+    screeningId
 }) {
 
+    const [email, setEmail] = useState('');
 
     const handleClose = () => setShowModal(false);
-    console.log(chosenSeats)
+
+    async function book(e) {
+        e.preventDefault(); // do not reload page
+        const data = {
+            email,
+            screeningId: +screeningId,
+            seatIds: chosenSeats,
+            seatTypes: Object.fromEntries(
+                Object.entries(ticketTypes).map(([key, val]) => {
+                    let dict = { adults: 1, kids: 2, retired: 3 };
+                    return [dict[key] + '', val];
+                }))
+        }
+        let result = await postData('/api/makeBooking', data);
+        console.log("RESULT OF BOOKING", result)
+    }
+
+    /*data = {
+        email, screeningId, seatsIds: []
+    }*/
+
+    // const response = postData('/api/makeBooking', data)
 
     return (
         <>
@@ -31,17 +52,32 @@ function FinalizeBooking({
                         ticketTypes={ticketTypes}
                         chosenSeats={chosenSeats}
                         seatsForCurrentAuditorium={seatsForCurrentAuditorium}
-                        bookingNumber=''
                         price={price}
+                        email={setEmail}
 
                     />
                 </Modal.Header>
                 <Modal.Body>
-                    <BookingForm handleClose={handleClose} />
+                    <BookingForm handleClose={handleClose} setEmail={setEmail} email={email} book={book} />
                 </Modal.Body>
             </Modal>
         </>
-    )
-}
+    );
+};
 
 export default FinalizeBooking;
+
+
+async function postData(url = "", data = {}) {
+
+    const response = await fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    });
+    return response.json();
+};
+
+

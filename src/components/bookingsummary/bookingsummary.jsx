@@ -9,10 +9,6 @@ function BookingSummary({ title, date, price, ticketTypes, chosenSeats, seatsFor
         .map(id => seatsForCurrentAuditorium.find(x => x.id === id))
         .map(seat => `Rad: ${seat.rowNumber} Stol: ${seat.seatNumber} | `);
 
-
-    console.log('Niceseats:', niceSeats)
-    console.log('seatsForCurrentAuditorium:', seatsForCurrentAuditorium)
-    console.log('Chosen seats:', chosenSeats)
     return (
         <Container>
             <Row>

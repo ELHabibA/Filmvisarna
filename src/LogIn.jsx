@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Container, Card, Button, Form } from 'react-bootstrap';
-import {useNavigate, useOutletContext} from 'react-router-dom';
+import {useNavigate, useOutletContext, Link } from 'react-router-dom';
+import './sass/MyPageAndMoviePage.css';
 
 async function postData(url = "", data = {}) {
 
@@ -19,8 +19,6 @@ const Login = () => {
 
   const {setUser} = useOutletContext();
 
-  const cardStyle = { backgroundColor: 'rgba(211, 211, 211, 0.6)', maxWidth: '600px', margin: '0 auto' };
-
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
@@ -30,7 +28,6 @@ const Login = () => {
     const data = { email, password };
     const response = await postData('/api/login', data);
 
-    console.log("DA LOGIN RESPONSE", response)
     if (response.error) {
       // Handle login error 
       console.error(response.error);
@@ -43,7 +40,7 @@ const Login = () => {
 
   return (
     <Container className="mt-5">
-      <Card style={cardStyle}>
+      <Card className="my-page-card">
         <Card.Body className="text-center">
           <h2>Logga In</h2>
           <Form className="rectangle-form">
