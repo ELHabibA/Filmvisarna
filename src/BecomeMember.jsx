@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Container, Card, Button, Form, Row, Col } from 'react-bootstrap';
 import { RestPostRoutes } from '../backend/classes/dbTypeSpecific/SQL/RestPostRoutes';
 import { useFormHelper } from './hooks/useFormHelper';
+import './sass/blimedlem.css';
+
 
 const initialRegistrationData = {
   Namn: '',
@@ -13,11 +15,6 @@ const initialRegistrationData = {
   Losenord: '',
   'Bekräfta Lösenord': ''
 };
-
-const inputStyle = { color: 'white' };
-const placeholderStyle = { color: 'white' };
-const inputFieldStyle = { background: 'black', color: 'white', borderColor: '#272A31' };
-const cardStyle = { backgroundColor: 'rgba(211, 211, 211, 0.6)', maxWidth: '600px', margin: '0 auto' };
 
 function BliMedlem() {
   const { formState, setFormState, createInputElement } = useFormHelper({
@@ -86,7 +83,7 @@ function BliMedlem() {
     }
 
     const restPostRoutes = new RestPostRoutes();
-    const tableName = 'users'; // Byt ut detta med ditt faktiska tabellnamn
+    const tableName = 'users';
     const userData = {
       firstName: formState.Namn,
       lastName: formState.Efternamn,
@@ -133,9 +130,9 @@ function BliMedlem() {
     <Container className="mt-5">
       <Row className="justify-content-center">
         <Col xs={12} sm={10} md={8} lg={6}>
-          <Card style={cardStyle}>
+          <Card className="card">
             <Card.Body className="text-center">
-              <h2 style={inputStyle}>{registrationHeaderText}</h2>
+              <h2>{registrationHeaderText}</h2>
               <Form className="rectangle-form">
                 {[
                   'Namn',
@@ -147,13 +144,13 @@ function BliMedlem() {
                   'Bekräfta Lösenord',
                 ].map((field) => (
                   <Form.Group key={field}>
-                    <Form.Label style={placeholderStyle}>
+                    <Form.Label className="placeholderStyle">
                       {field === 'Bekräfta Lösenord' ? 'Bekräfta Lösenord' : field}
                     </Form.Label>
                     <Form.Control
                       type={field === 'Losenord' || field === 'Bekräfta Lösenord' ? 'password' : 'text'}
-                      style={inputFieldStyle}
-                      placeholder={field === 'Losenord' ? 'Lösenord' : ` ${field}`}
+                      className="form-control"
+                      placeholder=""
                       value={formState[field]}
                       onChange={(e) => handleInputChange(field, e.target.value)}
                       autoComplete={field === 'Losenord' ? 'new-password' : ''}
@@ -171,8 +168,9 @@ function BliMedlem() {
                 {isRegistering ? 'Registrerar...' : 'Bli Medlem'}
               </Button>
               <p className="text-muted">
-                Redan Medlem? <Link to="/loggain">Logga in här</Link>
+                Redan Medlem? <Link to="/loggain" className="logga-in-link">Logga in här</Link>
               </p>
+
             </Card.Footer>
           </Card>
         </Col>
