@@ -70,7 +70,7 @@ const Login = () => {
             </Card.Body>
             <Card.Footer className="text-center">
               <Button variant="primary" onClick={handleLogin}>
-                Logga In
+                Logga in
               </Button>
               <p className="mt-3">
                 Inte medlem? <Link to="/blimedlem" className="become-member-link">Bli Medlem</Link>
