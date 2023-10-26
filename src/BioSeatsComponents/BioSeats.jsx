@@ -91,7 +91,10 @@ function BioSeats({ sum, bookings, selectedMovieTitle, selectedScreeningTime, au
             {renderSeats()}
             <Row className="mt-3 justify-content-center">
                 <Col xs="auto">
-                    <Button onClick={() => setShowModal(true)}>Fortsätt bokningen</Button>
+                    <Button
+                        onClick={() => setShowModal(true)}
+                        disabled={selectedSeats.length !== sum || sum === 0}>Fortsätt bokningen</Button>
+
                 </Col>
             </Row>
         </Container>
