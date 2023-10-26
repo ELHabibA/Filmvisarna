@@ -59,7 +59,7 @@ function BliMedlem() {
     }
 
     if (!validatePassword(formState.Losenord)) {
-      newFieldErrors['Losenord'] = 'Lösenordet måste innehålla minst åtta bokstäver, minst 1 stor bokstav, samt en  siffra och en tecken.';
+      newFieldErrors['Lösenord'] = 'Lösenordet måste innehålla minst åtta bokstäver, minst 1 stor bokstav, samt en  siffra och en tecken.';
     }
 
     if (formState.Losenord !== formState['Bekräfta Lösenord']) {
@@ -164,7 +164,7 @@ function BliMedlem() {
               {registrationError && <p className="text-danger">{registrationError}</p>}
             </Card.Body>
             <Card.Footer className="text-center">
-              <Button variant="primary" onClick={handleRegistration} disabled={isRegistering}>
+              <Button variant="primary" onClick={handleRegistration} disabled={isRegistering} className='mb-3'>
                 {isRegistering ? 'Registrerar...' : 'Bli Medlem'}
               </Button>
               <p className="text-muted">
