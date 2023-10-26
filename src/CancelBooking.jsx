@@ -1,7 +1,6 @@
 import { Container, Row, Col, Button, Form, Alert } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import React, { useState } from "react";
-import Alert from 'react-bootstrap/Alert';
 
 function CancelBooking() {
   const [bookingNumber, setBookingNumber] = useState('');
