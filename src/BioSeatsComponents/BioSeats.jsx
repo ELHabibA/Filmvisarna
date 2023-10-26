@@ -28,11 +28,10 @@ function BioSeats({ sum, bookings, selectedMovieTitle, selectedScreeningTime, au
 
     const handleSeatSelection = (seatId) => {
         setSelectedSeats((prevSeats) => {
-            if (prevSeats.length < sum) {
-
-                return prevSeats.includes(seatId)
-                    ? prevSeats.filter((id) => id !== seatId)
-                    : [...prevSeats, seatId];
+            if (prevSeats.includes(seatId)) {
+                return prevSeats.filter((id) => id !== seatId);
+            } else if (prevSeats.length < sum) {
+                return [...prevSeats, seatId];
             } else {
                 alert("Du kan inte boka fler platser än antalet valda biljetter!");
                 return prevSeats;
