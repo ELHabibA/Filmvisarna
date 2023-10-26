@@ -4,7 +4,7 @@ import { Button, Row, Col, Container } from "react-bootstrap";
 import "./BioSeats.css";
 import FinalizeBooking from "../FinalizeBooking.jsx";
 
-function BioSeats({ sum, bookings, selectedMovieTitle, selectedScreeningTime, auditoriumId, screeningDatetime, price, ticketTypes, chosenSeats, setChosenSeats }) {
+function BioSeats({ sum, bookings, selectedMovieTitle, selectedScreeningTime, auditoriumId, screeningDatetime, price, ticketTypes, chosenSeats, setChosenSeats, screeningId }) {
     const [selectedSeats, setSelectedSeats] = useState([]);
     const [seatsData, setSeatsData] = useState([]);
     const [showModal, setShowModal] = useState(false);
@@ -52,11 +52,6 @@ function BioSeats({ sum, bookings, selectedMovieTitle, selectedScreeningTime, au
     const seatsForCurrentAuditorium = seatsData.filter(seat => seat.auditorium_id === auditoriumId);
 
     const renderSeats = () => {
-        // Modified this line to match the attribute name from the data
-
-
-        // Log for debugging purposes
-        console.log('Seats for current auditorium:', seatsForCurrentAuditorium);
 
         const groupedSeats = seatsForCurrentAuditorium.reduce((acc, seat) => {
             (acc[seat.rowNumber] || (acc[seat.rowNumber] = [])).push(seat);
@@ -91,7 +86,8 @@ function BioSeats({ sum, bookings, selectedMovieTitle, selectedScreeningTime, au
                 price,
                 ticketTypes,
                 chosenSeats,
-                seatsForCurrentAuditorium
+                seatsForCurrentAuditorium,
+                screeningId
             }} />
 
             <div className="screen mb-5"></div>
