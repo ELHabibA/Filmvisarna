@@ -1,36 +1,31 @@
-import { Container, Row, Col, Image } from "react-bootstrap";
+import React from "react";
+import { Container, Row, Col } from "react-bootstrap";
 
 
-function BookingSummary() {
+function BookingSummary({ title, date, price, ticketTypes, chosenSeats, seatsForCurrentAuditorium }) {
+    const { adults, kids, retired } = ticketTypes;
+    const niceTicketTypes = `${adults} st Vuxen, ${kids} st Barn, ${retired} st pensionär`;
+    const niceSeats = chosenSeats
+        .map(id => seatsForCurrentAuditorium.find(x => x.id === id))
+        .map(seat => `Rad: ${seat.rowNumber} Stol: ${seat.seatNumber} | `);
+
     return (
         <Container>
-
             <Row>
                 <Col sm={12} className="bg-secondary p-3 rounded">
-                    <Image src="holder.js/200x200" rounded />
                     <div className="fw-bold mb-3">Titel</div>
-                    <div className="mb-4">Oppenheimer</div>
+                    <div className="mb-4">{title}</div>
                     <div className="fw-bold mb-3">Datum</div>
-                    <div className="mb-4">2023-10-05 19:30</div>
+                    <div className="mb-4">{date}</div>
                     <div className="fw-bold mb-3">Biljetter</div>
-                    <div className="mb-4">
-                        
-                        <div>2 st vuxna</div>
-                        <div>1 st barn</div>
-                        <div>1 st pensionär</div>
-                    </div>
+                    <div className="mb-4">{niceTicketTypes}</div>
                     <div className="fw-bold mb-3">Platser</div>
-                    <div className="mb-4">
-                        <div>A1, A2, A3</div>
-                    </div>
+                    <div className="mb-4">{niceSeats}</div>
                     <hr />
-                    <div className="fw-bold">Totalt: 440 kr</div>
-
+                    <div className="fw-bold">Totalt: {price} kr</div>
                 </Col>
             </Row>
         </Container>
-
-    )
+    );
 }
-
 export default BookingSummary;

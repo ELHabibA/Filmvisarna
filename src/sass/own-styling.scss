@@ -1,11 +1,21 @@
 .navbar-film {
-  --#{$prefix}navbar-hover-color: #{$navbar-dark-hover-color};
   --#{$prefix}navbar-disabled-color: #{$navbar-dark-disabled-color};
   --#{$prefix}navbar-active-color: #{$navbar-dark-active-color};
   --#{$prefix}navbar-brand-color: #{$navbar-dark-brand-color};
   --#{$prefix}navbar-brand-hover-color: #{$navbar-dark-brand-hover-color};
   --#{$prefix}navbar-toggler-border-color: #{$navbar-dark-toggler-border-color};
   --#{$prefix}navbar-toggler-icon-bg: #{escape-svg($navbar-dark-toggler-icon-bg)};
+  font-family: 'Noto Sans Tagalog', sans-serif;
+
+  :hover {
+    color: #A76B09;
+    text-decoration: underline;
+  }
+
+  .nav-link.active {
+    color: #E3E5E0;
+    text-decoration: underline;
+  }
 }
 
 @media (max-width: 984px) {
@@ -28,7 +38,7 @@
 
 .navbar-collapse {
   .nav-link {
-    --bs-nav-link-color: #A26704;
+    --bs-nav-link-color: #DDA74F;
     max-width: 200px;
     padding-left: 10px;
   }
@@ -56,6 +66,7 @@ button:not(.seat-btn):nth-child(1) {
 
 button:not(.seat-btn):nth-child(1):hover {
   background-color: #ffffff;
+  color: #5a5a5a;
 }
 
 
@@ -120,7 +131,7 @@ button:nth-child(2) {
 }
 
 .moviesListCard {
-   flex: 33.33 33.33 33.33%;
+  flex: 33.33 33.33 33.33%;
 }
 
 .movie-container {

@@ -1,10 +1,11 @@
 
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { Row, Col } from "react-bootstrap";
 import { useFormHelper } from '../../hooks/useFormHelper';
+import { useEffect } from 'react';
+import { useOutletContext } from 'react-router-dom';
 
 
-export default function BookingForm({handleClose}) {
+export default function BookingForm({ handleClose, email, setEmail, book }) {
 
   const {
     formState,
@@ -13,32 +14,40 @@ export default function BookingForm({handleClose}) {
     formIsValid,
   } = useFormHelper();
 
+  const { user } = useOutletContext();
+  useEffect(() => {
+    if (user) {
+      setFormState({ ...formState, email: user.email });
+    }
+  }, []);
+
   // debug
   console.log(JSON.stringify(formState, '', '  '));
+
+  // when formState changes setEmail from formState.email
+  useEffect(() => {
+    setEmail(formState.email)
+  }, [formState]);
 
   function doAfterSend(serverResponse) {
     console.log('serverResponse', serverResponse);
     handleClose();
+    setEmail = email;
   }
 
   return <>
     <>
 
 
-      <form onSubmit={event => sendForm({
-        event,
-        route: 'users',
-        body: formState,
-        callback: doAfterSend
-      })}>
+      <form onSubmit={book}>
         <Row>
-          <Col sm={true}>
+          <Col sm={12}>
             <div className='bg-secondary rounded p-3 mt-3'>
-              <h2>Dina uppgifter</h2>
+              <h4>Dina uppgifter</h4>
               {[
 
-              
-                ['input', 'email', 'E-post', { type: 'email' }],
+
+                ['input', 'email', 'E-post', { type: 'email', disabled: !!user }],
 
 
               ].map(elData => createInputElement(...elData))
@@ -49,7 +58,7 @@ export default function BookingForm({handleClose}) {
 
 
         <Row>
-          <Col className='mt-3 mb-3'>{[
+          <Col sm={12} className='mt-3 mb-3'>{[
 
             ['button', '_submit', '', {
               type: 'submit',
@@ -59,7 +68,7 @@ export default function BookingForm({handleClose}) {
 
             ['button', '_reset', '', {
               type: 'reset',
-              onClick: () => {setFormState({}); handleClose()},
+              onClick: () => { setFormState({}); handleClose() },
               className: 'btn-secondary mx-3',
               nolabel: true
             }, 'Avbryt']

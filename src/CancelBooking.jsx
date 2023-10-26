@@ -1,4 +1,4 @@
-import { Container, Row, Col, Button, Form } from "react-bootstrap";
+import { Container, Row, Col, Button, Form, Alert } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import React, { useState } from "react";
 import Alert from 'react-bootstrap/Alert';
@@ -27,8 +27,8 @@ function CancelBooking() {
         // Handle error, e.g., show an error message to the user
         setSuccess(false);
         setMessage('Avbokningen misslyckades, kontrollera att du angivit rätt bokningsnummer och e-postadress.');
-        
-      } 
+
+      }
       console.log(response)
     } catch (error) {
       setMessage('An error occurred: ' + error);
@@ -54,8 +54,8 @@ function CancelBooking() {
         <>
           <Row className="p-4 rounded square">
             <Col>
-                <h1 className="mb-4">Avbokning</h1>
-                <p className="mb-5">För din säkerhet behöver du fylla i både bokningsnummer och e-postadress.</p>
+              <h1 className="mb-4">Avbokning</h1>
+              <p className="mb-5">För din säkerhet behöver du fylla i både bokningsnummer och e-postadress.</p>
               <Form>
                 <Form.Group className="mb-3" controlId="formGroupBookingnumber">
                   <Form.Label>Bokningsnummer</Form.Label>
