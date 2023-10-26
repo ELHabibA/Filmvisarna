@@ -69,6 +69,7 @@ const Booking = () => {
                         ticketTypes={ticketTypes}
                         setChosenSeats={setChosenSeats}
                         chosenSeats={chosenSeats}
+                        screeningId={screeningId}
 
                     />
                 </>

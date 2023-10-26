@@ -9,10 +9,13 @@ function BookingSummary({ title, date, price, ticketTypes, chosenSeats, seatsFor
         .map(id => seatsForCurrentAuditorium.find(x => x.id === id))
         .map(seat => `Rad: ${seat.rowNumber} Stol: ${seat.seatNumber} | `);
 
+<<<<<<< Updated upstream
 
     // console.log('Niceseats:', niceSeats)
     // console.log('seatsForCurrentAuditorium:', seatsForCurrentAuditorium)
     // console.log('Chosen seats:', chosenSeats)
+=======
+>>>>>>> Stashed changes
     return (
         <Container>
             <Row>
