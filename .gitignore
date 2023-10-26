@@ -15,7 +15,7 @@
 .vite
 
 # Login email
-#loginCredentials.js
+loginCredentials.js
 
 # User-specific files
 *.suo
