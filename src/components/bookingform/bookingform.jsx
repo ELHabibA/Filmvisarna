@@ -1,12 +1,11 @@
 
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { Row, Col } from "react-bootstrap";
 import { useFormHelper } from '../../hooks/useFormHelper';
 import { useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
 
 
-export default function BookingForm({ handleClose, email, setEmail }) {
+export default function BookingForm({ handleClose, email, setEmail, book }) {
 
   const {
     formState,
@@ -40,12 +39,7 @@ export default function BookingForm({ handleClose, email, setEmail }) {
     <>
 
 
-      <form onSubmit={event => sendForm({
-        event,
-        route: 'users',
-        body: formState,
-        callback: doAfterSend
-      })}>
+      <form onSubmit={book}>
         <Row>
           <Col sm={12}>
             <div className='bg-secondary rounded p-3 mt-3'>

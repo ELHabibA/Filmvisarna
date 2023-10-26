@@ -66,7 +66,8 @@ const MoviePage = () => {
     maxHeight: '50vh',
     objectFit: 'contain',
   };
-
+  
+ 
   return (
     <div>
       {loading ? (
@@ -139,7 +140,7 @@ const MoviePage = () => {
                     </li>
                     <li style={{ display: 'flex' }}>
                       <span style={{ width: '150px' }}>Längd:</span>
-                      <span>{movie.description.duration}</span>
+                      <span>{convertHours(movie.description.duration)}</span>
                     </li>
                     <li style={{ display: 'flex' }}>
                       <span style={{ width: '150px' }}>Språk:</span>

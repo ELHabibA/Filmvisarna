@@ -12,23 +12,29 @@ function FinalizeBooking({
     price,
     ticketTypes,
     chosenSeats,
-    seatsForCurrentAuditorium
+    seatsForCurrentAuditorium,
+    screeningId
 }) {
 
     const [email, setEmail] = useState('');
 
     const handleClose = () => setShowModal(false);
 
-    const data = {
-        title: { selectedMovieTitle },
-        date: { screeningDatetime },
-        ticketTypes: { ticketTypes },
-        chosenSeats: { chosenSeats },
-        seatsForCurrentAuditorium: { seatsForCurrentAuditorium },
-        price: { price },
-        email: { email }
+    async function book(e) {
+        e.preventDefault(); // do not reload page
+        const data = {
+            email,
+            screeningId: +screeningId,
+            seatIds: chosenSeats,
+            seatTypes: Object.fromEntries(
+                Object.entries(ticketTypes).map(([key, val]) => {
+                    let dict = { adults: 1, kids: 2, retired: 3 };
+                    return [dict[key] + '', val];
+                }))
+        }
+        let result = await postData('/api/makeBooking', data);
+        console.log("RESULT OF BOOKING", result)
     }
-
 
     /*data = {
         email, screeningId, seatsIds: []
@@ -52,12 +58,12 @@ function FinalizeBooking({
                     />
                 </Modal.Header>
                 <Modal.Body>
-                    <BookingForm handleClose={handleClose} setEmail={setEmail} email={email} />
+                    <BookingForm handleClose={handleClose} setEmail={setEmail} email={email} book={book} />
                 </Modal.Body>
             </Modal>
         </>
     );
-}
+};
 
 export default FinalizeBooking;
 
@@ -72,6 +78,6 @@ async function postData(url = "", data = {}) {
         body: JSON.stringify(data),
     });
     return response.json();
-}
+};
 
 
