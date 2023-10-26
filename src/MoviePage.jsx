@@ -101,7 +101,7 @@ const MoviePage = () => {
               <h2></h2>
               <p>{movie.description.description}</p>
               <label>
-                <span className='pad'>Välj visning att boka här:</span>
+              <span className='pad booking-link'>Välj visning att boka här:</span>
                 <select value={selectedDate} onChange={gotoScreening}>
                   <option value="">Välj datum</option>
                   {renderScreeningOptions()}

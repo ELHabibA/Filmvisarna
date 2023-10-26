@@ -36,3 +36,12 @@
   padding: 20px;
 }
 
+.cancel-booking-link {
+  color: #A76B09;
+}
+
+.booking-link {
+  color: #353535; 
+  font-weight: bold;
+}
+

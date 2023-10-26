@@ -117,7 +117,7 @@ const MyPage = () => {
                     <div>
                     <div className="card-horizontal-line"></div> 
                       <p>
-                        Vill du avboka en bokning? <Link to="/avbokning">Avboka här</Link>
+                        Vill du avboka en bokning? <Link to="/avbokning" className='cancel-booking-link'>Avboka här</Link>
                       </p>
                     </div>
                   </div>
