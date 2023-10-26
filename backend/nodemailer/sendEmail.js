@@ -13,7 +13,7 @@ async function sendEmail() {
 
     const info = await transporter.sendMail({
         from: `Filmvisarna <${fromEmail}>`,
-        to: 'unik2k11@gmail.com',
+        to: 'hakansson.hampus@gmail.com',
         subject: 'Tack för din bokning!',
         html: htmlTemplate,
         text: rawBooking
