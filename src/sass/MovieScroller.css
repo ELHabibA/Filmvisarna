@@ -6,8 +6,14 @@
     justify-content: center;
     position: relative;
     height: auto;
-    padding-top: 2px;
+    padding-top: 13px;
     padding-bottom: 20px;
+
+
+}
+
+.scroller-title {
+    font-size: 42px;
 }
 
 .movie-scroller .prev-button {
@@ -19,7 +25,7 @@
 .next-button {
     background-color: transparent;
     border: none;
-    font-size: 30px;
+    font-size: 45px;
     cursor: pointer;
     color: white;
     position: absolute;
@@ -30,11 +36,11 @@
 }
 
 .prev-button {
-    left: 5%;
+    left: 7%;
 }
 
 .next-button {
-    right: 15%;
+    right: 15.35%;
 }
 
 .image-container {
@@ -43,19 +49,24 @@
     justify-content: space-between;
     max-width: 100%;
     position: relative;
+
 }
 
 .center-image {
+    aspect-ratio: 21/32;
     width: 360px;
     /* Allow the center image to adjust based on its actual dimensions */
-    max-height: 280px;
-    /* Set a maximum height */
+    height: auto;
+    /* Set a maximum height (280px,420px,Larger than 400+ or auto */
     padding: 5px;
     /* Maintain aspect ratio and cover the container */
+    border: 2px solid #c98417;
+    /* Change the color and width to your preference */
 }
 
 .left-side-image,
 .right-side-image {
+    aspect-ratio: 21/32;
     max-width: 20%;
     /* Adjust the width of the side images */
     max-height: 180px;
@@ -97,13 +108,13 @@
     }
 
     .prev-button {
-        font-size: 20px;
+        font-size: 30px;
         left: 7px;
     }
 
     .next-button {
-        font-size: 20px;
-        right: 65px;
+        font-size: 30px;
+        right: 61px;
     }
 
     .center-image {

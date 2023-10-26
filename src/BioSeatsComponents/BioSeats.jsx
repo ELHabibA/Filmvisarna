@@ -3,33 +3,33 @@ import { Button, Row, Col, Container } from "react-bootstrap";
 import "./BioSeats.css";
 import FinalizeBooking from "../FinalizeBooking.jsx";
 
-function BioSeats({ sum, bookings, selectedMovieTitle, selectedScreeningTime, auditoriumId }) {
-    // States
-    const [selectedSeats, setSelectedSeats] = useState([]); // Håller koll på vilka säten som har valts
-    const [seatsData, setSeatsData] = useState([]); // Håller data om alla säten
-    const [showModal, setShowModal] = useState(false); // Kontrollerar om en modal ska visas eller inte
+function BioSeats({ sum, bookings, selectedMovieTitle, selectedScreeningTime, auditoriumId, screeningDatetime, price, ticketTypes, chosenSeats, setChosenSeats, screeningId }) {
+    const [selectedSeats, setSelectedSeats] = useState([]);
+    const [seatsData, setSeatsData] = useState([]);
+    const [showModal, setShowModal] = useState(false);
 
-    // Hämtar data om säten när komponenten laddas
+    useEffect(() => {
+        setChosenSeats(selectedSeats);
+    }, [selectedSeats]);
+
     useEffect(() => {
         fetch('/api/seats')
             .then(response => response.json())
             .then(data => setSeatsData(data))
             .catch(error => console.error(error));
     }, []);
-    
-    // Funktion för att kontrollera om ett säte är bokat
     const isSeatBooked = (seat) => {
         return bookings.some(booking => {
             return booking.movieTitle === selectedMovieTitle &&
-                   booking.screeningTime === selectedScreeningTime &&
-                   booking.seatNumbers.split(',').includes(String(seat.id));
+                booking.screeningTime === selectedScreeningTime &&
+                booking.seatNumbers.split(',').includes(String(seat.id));
         });
     };
-    
-    // Hanterar logiken för att välja och avvälja säten
+
     const handleSeatSelection = (seatId) => {
         setSelectedSeats((prevSeats) => {
             if (prevSeats.length < sum) {
+
                 return prevSeats.includes(seatId)
                     ? prevSeats.filter((id) => id !== seatId)
                     : [...prevSeats, seatId];
@@ -40,21 +40,21 @@ function BioSeats({ sum, bookings, selectedMovieTitle, selectedScreeningTime, au
         });
     };
 
-    // Ser till att antalet valda säten inte överstiger summan
     useEffect(() => {
         if (selectedSeats.length > sum) {
             setSelectedSeats(prevSeats => prevSeats.slice(0, sum));
         }
     }, [sum]);
-    
-    // Renderar sätena
+
+    const seatsForCurrentAuditorium = seatsData.filter(seat => seat.auditorium_id === auditoriumId);
+
     const renderSeats = () => {
-        const seatsForCurrentAuditorium = seatsData.filter(seat => seat.auditorium_id === auditoriumId);
 
         const groupedSeats = seatsForCurrentAuditorium.reduce((acc, seat) => {
             (acc[seat.rowNumber] || (acc[seat.rowNumber] = [])).push(seat);
             return acc;
         }, {});
+
 
         return Object.keys(groupedSeats).map(rowNumber => (
             <Row key={rowNumber} className="mb-2 center-seats flex-row">
@@ -75,7 +75,18 @@ function BioSeats({ sum, bookings, selectedMovieTitle, selectedScreeningTime, au
 
     return (
         <Container className="saloon-container mt-5">
-            <FinalizeBooking showModal={showModal} setShowModal={setShowModal} />
+            <FinalizeBooking {...{
+                selectedMovieTitle,
+                screeningDatetime,
+                showModal,
+                setShowModal,
+                price,
+                ticketTypes,
+                chosenSeats,
+                seatsForCurrentAuditorium,
+                screeningId
+            }} />
+
             <div className="screen mb-5"></div>
             {renderSeats()}
             <Row className="mt-3 justify-content-center">
