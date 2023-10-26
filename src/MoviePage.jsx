@@ -58,8 +58,8 @@ const MoviePage = () => {
     objectFit: 'contain',
     border: '6px solid #c98417',
   };
-  
- 
+
+
   return (
     <div>
       {loading ? (
@@ -72,19 +72,6 @@ const MoviePage = () => {
             </div>
             <div className="col-md-6 text-md-end">
               <div>
-                <label className='p-2'>Välj visning att boka här: </label>
-                <select
-                  value={selectedDate}
-                  onChange={gotoScreening}
-                >
-                  <option value="">Välj datum</option>
-                  {renderScreeningOptions()}
-                </select>
-                {selectedScreening && (
-                  <Link to={`/boka/${selectedScreening.id}`}>
-                    <button className="btn btn-primary">Boka biljetter</button>
-                  </Link>
-                )}
               </div>
             </div>
           </div>
@@ -113,6 +100,13 @@ const MoviePage = () => {
             <div className="col-md-8">
               <h2></h2>
               <p>{movie.description.description}</p>
+              <label>
+                <span className='pad'>Välj visning att boka här:</span>
+                <select value={selectedDate} onChange={gotoScreening}>
+                  <option value="">Välj datum</option>
+                  {renderScreeningOptions()}
+                </select>
+              </label>
             </div>
             <div className="col-md-4">
               <h1 className="my-4"></h1>
