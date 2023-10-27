@@ -140,7 +140,7 @@ function BliMedlem() {
                   'E-postadress',
                   'Bekräfta E-postadress',
                   'Telefonnummer',
-                  'Losenord',
+                  'Lösenord',
                   'Bekräfta Lösenord',
                 ].map((field) => (
                   <Form.Group key={field}>
