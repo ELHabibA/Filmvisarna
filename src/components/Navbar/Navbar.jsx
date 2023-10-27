@@ -8,7 +8,6 @@ function BasicNavbar({ user }) {
   const excludedPaths = [
     '/detaljsidan',
     '/boka/:screeningId',
-    '/avbokning',
     '/bokningsbekraftelse',
     '/detaljsidan/:movieId',
     '/finalize-booking'
