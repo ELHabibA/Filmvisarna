@@ -33,7 +33,7 @@ function FinalizeBooking({
                 }))
         }
         let result = await postData('/api/makeBooking', data);
-        console.log("RESULT OF BOOKING", result)
+    
     }
 
     /*data = {
@@ -54,7 +54,6 @@ function FinalizeBooking({
                         seatsForCurrentAuditorium={seatsForCurrentAuditorium}
                         price={price}
                         email={setEmail}
-
                     />
                 </Modal.Header>
                 <Modal.Body>

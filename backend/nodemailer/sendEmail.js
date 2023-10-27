@@ -18,7 +18,7 @@ const response = await fetch(`http://localhost:5173/api/bookingsNice/${bookingId
 
 export async function sendEmail(bookingId) {
   const bookingData = await getBookingData(bookingId);
-    console.log("Vad finns i bookingId när det är i SendEmail??", bookingId );
+  
   if (!bookingData) {
     console.error("Could not fetch booking data. Email not sent.");
     return;

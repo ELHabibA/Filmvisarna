@@ -3,12 +3,11 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
 import { pages } from '../../main';
 
-function BasicNavbar({user}) {
+function BasicNavbar({ user }) {
 
   const excludedPaths = [
     '/detaljsidan',
     '/boka/:screeningId',
-    '/avbokning',
     '/bokningsbekraftelse',
     '/detaljsidan/:movieId',
     '/finalize-booking'
