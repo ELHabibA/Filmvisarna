@@ -51,48 +51,27 @@ const MoviePage = () => {
     navigate('/boka/' + target.value);
   }
 
-  const cardStyle = {
-    backgroundColor: 'rgba(211, 211, 211, 0.6)',
-    maxWidth: '1000px',
-    margin: '0 auto',
-    display: 'flex',
-    flexDirection: 'column',
-    borderRadius: '10px',
-    padding: '20px',
-  };
 
   const posterStyle = {
     maxWidth: '100%',
     maxHeight: '50vh',
     objectFit: 'contain',
+    border: '6px solid #c98417',
   };
-  
- 
+
+
   return (
     <div>
       {loading ? (
         <p>Loading...</p>
       ) : movie ? (
-        <div className="white-card" style={cardStyle}> {/* Add the white card styling */}
+        <div className="white-card"> {/* Add the white card styling */}
           <div className="row align-items-center">
             <div className="col-md-6">
               <h1 className="my-4">{movie.title}</h1>
             </div>
             <div className="col-md-6 text-md-end">
               <div>
-                <label className='p-2'>Välj visning att boka här: </label>
-                <select
-                  value={selectedDate}
-                  onChange={gotoScreening}
-                >
-                  <option value="">Välj datum</option>
-                  {renderScreeningOptions()}
-                </select>
-                {selectedScreening && (
-                  <Link to={`/boka/${selectedScreening.id}`}>
-                    <button className="btn btn-primary">Boka biljetter</button>
-                  </Link>
-                )}
               </div>
             </div>
           </div>
@@ -101,6 +80,7 @@ const MoviePage = () => {
               <iframe
                 width="100%"
                 height="385"
+                style={{ border: '6px solid #c98417' }}
                 src={movie.description.trailerURL}
                 title="Movie Trailer"
                 frameBorder="0"
@@ -120,6 +100,13 @@ const MoviePage = () => {
             <div className="col-md-8">
               <h2></h2>
               <p>{movie.description.description}</p>
+              <label>
+              <span className='pad booking-link'>Välj visning att boka här:</span>
+                <select value={selectedDate} onChange={gotoScreening}>
+                  <option value="">Välj datum</option>
+                  {renderScreeningOptions()}
+                </select>
+              </label>
             </div>
             <div className="col-md-4">
               <h1 className="my-4"></h1>

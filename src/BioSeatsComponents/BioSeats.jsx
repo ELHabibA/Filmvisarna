@@ -1,7 +1,6 @@
-
 import React, { useState, useEffect } from "react";
 import { Button, Row, Col, Container } from "react-bootstrap";
-import "./BioSeats.css";
+import '../sass/BioSeats.css';
 import FinalizeBooking from "../FinalizeBooking.jsx";
 
 function BioSeats({ sum, bookings, selectedMovieTitle, selectedScreeningTime, auditoriumId, screeningDatetime, price, ticketTypes, chosenSeats, setChosenSeats, screeningId }) {
@@ -19,7 +18,6 @@ function BioSeats({ sum, bookings, selectedMovieTitle, selectedScreeningTime, au
             .then(data => setSeatsData(data))
             .catch(error => console.error(error));
     }, []);
-
     const isSeatBooked = (seat) => {
         return bookings.some(booking => {
             return booking.movieTitle === selectedMovieTitle &&
@@ -30,13 +28,11 @@ function BioSeats({ sum, bookings, selectedMovieTitle, selectedScreeningTime, au
 
     const handleSeatSelection = (seatId) => {
         setSelectedSeats((prevSeats) => {
-            if (prevSeats.length < sum) {
-
-                return prevSeats.includes(seatId)
-                    ? prevSeats.filter((id) => id !== seatId)
-                    : [...prevSeats, seatId];
+            if (prevSeats.includes(seatId)) {
+                return prevSeats.filter((id) => id !== seatId);
+            } else if (prevSeats.length < sum) {
+                return [...prevSeats, seatId];
             } else {
-                //Gör något annat än en alert??
                 alert("Du kan inte boka fler platser än antalet valda biljetter!");
                 return prevSeats;
             }
@@ -94,7 +90,10 @@ function BioSeats({ sum, bookings, selectedMovieTitle, selectedScreeningTime, au
             {renderSeats()}
             <Row className="mt-3 justify-content-center">
                 <Col xs="auto">
-                    <Button onClick={() => setShowModal(true)}>Fortsätt bokningen</Button>
+                    <Button
+                        onClick={() => setShowModal(true)}
+                        disabled={selectedSeats.length !== sum || sum === 0}>Fortsätt bokningen</Button>
+
                 </Col>
             </Row>
         </Container>
