@@ -33,7 +33,7 @@ function FinalizeBooking({
                 }))
         }
         let result = await postData('/api/makeBooking', data);
-        console.log("RESULT OF BOOKING", result)
+    
     }
 
     /*data = {
