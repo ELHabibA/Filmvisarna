@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Row, Col, Container } from "react-bootstrap";
-import "./BioSeats.css";
+import '../sass/BioSeats.css';
 import FinalizeBooking from "../FinalizeBooking.jsx";
 
 function BioSeats({ sum, bookings, selectedMovieTitle, selectedScreeningTime, auditoriumId, screeningDatetime, price, ticketTypes, chosenSeats, setChosenSeats, screeningId }) {
