@@ -71,7 +71,7 @@ const MyPage = () => {
           <Card.Header className="text-center">
             <h2>Min Sida</h2>
           </Card.Header>
-          <Card.Body className="text-left"> {/* Apply the custom class here */}
+          <Card.Body className="text-left">
             <div className="user-info">
               <table>
                 <tbody>
@@ -99,11 +99,16 @@ const MyPage = () => {
               <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dina bokningar:</h4>
               <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kommande:</h5>
               <ul style={{ listStyleType: 'none' }}>
-                {futureBookings.length > 0 && (
+                {futureBookings.length > 0 ? (
                   <div>
                     {futureBookings.map((booking) => (
-                      <li key={booking.id} className="text-color">{booking.movieTitle}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{formatTimestamp(booking.bookingTime)}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{booking.name}</li>
+                      <li key={booking.id} className="text-color">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{booking.movieTitle}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{formatTimestamp(booking.bookingTime)}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{booking.name}
+                      </li>
                     ))}
+                  </div>
+                ) : (
+                  <div className="text-color">
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Inga kommande bokningar</p>
                   </div>
                 )}
                 {pastBookings.length > 0 && (
@@ -115,9 +120,9 @@ const MyPage = () => {
                       ))}
                     </ul>
                     <div>
-                    <div className="card-horizontal-line"></div> 
+                      <div className="card-horizontal-line"></div>
                       <p>
-                        Vill du avboka en bokning? <Link to="/avbokning">Avboka här</Link>
+                        Vill du avboka en bokning? <Link to="/avbokning" className='cancel-booking-link'>Avboka här</Link>
                       </p>
                     </div>
                   </div>
@@ -133,6 +138,7 @@ const MyPage = () => {
         </Card>
       </Container>
     );
+    
   }; 
 
   }
