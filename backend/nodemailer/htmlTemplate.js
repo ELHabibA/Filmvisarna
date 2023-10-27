@@ -2,7 +2,8 @@ import emailContent from "./emailContent.js";
 
 
 
-const htmlTemplate = `<!DOCTYPE html>
+const htmlTemplate = (emailContent) => 
+`<!DOCTYPE html>
     <html>
     
     <head>

@@ -1,5 +1,5 @@
 import getBookingNumber from '../utilities/bookingNumber.js';
-
+import {sendEmail} from '../nodemailer/sendEmail.js';
 
 import { runQuery } from "../classes/dbEngineSpecific/MySQLQuery.js";
 const app = global.server;
@@ -37,7 +37,9 @@ app.post('/api/makeBooking', async (req, res) => {
                     VALUES (:bookingNumber, :screeningId, :userId)`,
         { bookingNumber, userId: user.id, screeningId });
     let bookingId = result.insertId;
+    console.log("Vad finns i bookingId direkt efter att det skapas??", bookingId);
     
+    console.log('Men vad fan är det för problem med seatID??', seatIds)
     // Create seat data
     let seats = [], seatIdsCopy = seatIds.slice();
     for(let type in seatTypes){
@@ -52,8 +54,11 @@ app.post('/api/makeBooking', async (req, res) => {
                     VALUES (:bookingId, :seatId, :ticketTypeId)`, { bookingId, seatId, ticketTypeId });
         console.log("HMMMMMMMM",result, {bookingId, seatId, ticketTypeId} )
     }
-
+  
+        console.log("Vad finns i bookingId??", bookingId );
     // Send email here!!!
+    
+    sendEmail(bookingId);
     
 
     res.json({ bookingNumber });
