@@ -7,7 +7,7 @@ export const settings = {
   "restPrefix": "/api/",
   "idQueriesAsObjects": true,
   "saltPasswords": process.env.DB_SALTPW,
-  "saltCookies":process.env.DB_SALTCOOKIES,
+  "saltCookies": process.env.DB_SALTCOOKIES,
   "aclOn": true,
   "getAclRules": "SELECT * FROM acl",
   "dbType": "SQL",
