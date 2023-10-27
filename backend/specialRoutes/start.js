@@ -1,5 +1,5 @@
 import getBookingNumber from '../utilities/bookingNumber.js';
-
+import { sendEmail } from '../nodemailer/sendEmail.js';
 
 import { runQuery } from "../classes/dbEngineSpecific/MySQLQuery.js";
 const app = global.server;
@@ -37,24 +37,26 @@ app.post('/api/makeBooking', async (req, res) => {
                     VALUES (:bookingNumber, :screeningId, :userId)`,
         { bookingNumber, userId: user.id, screeningId });
     let bookingId = result.insertId;
-    
     // Create seat data
     let seats = [], seatIdsCopy = seatIds.slice();
-    for(let type in seatTypes){
-        for(let i = 0; i < seatTypes[type]; i++){
-            seats.push({bookingId, seatId: seatIdsCopy.shift(), ticketTypeId: +type});
+    for (let type in seatTypes) {
+        for (let i = 0; i < seatTypes[type]; i++) {
+            seats.push({ bookingId, seatId: seatIdsCopy.shift(), ticketTypeId: +type });
         }
     }
-    
+
     // Add the seats to th db
-    for (let {bookingId, seatId, ticketTypeId} of seats){
-       let result = await runQuery(`INSERT INTO ticketTypeXbookings (bookings_id, seats_id, ticketType_id)
+    for (let { bookingId, seatId, ticketTypeId } of seats) {
+        let result = await runQuery(`INSERT INTO ticketTypeXbookings (bookings_id, seats_id, ticketType_id)
                     VALUES (:bookingId, :seatId, :ticketTypeId)`, { bookingId, seatId, ticketTypeId });
-        console.log("HMMMMMMMM",result, {bookingId, seatId, ticketTypeId} )
+
     }
 
+
     // Send email here!!!
-    
+
+    sendEmail(bookingId);
+
 
     res.json({ bookingNumber });
 });
@@ -64,18 +66,47 @@ app.post('/api/makeBooking', async (req, res) => {
 
 
 //Delete booking
-app.delete('/api/bookings', async (req, res) => {
+app.delete('/api/unbook', async (req, res) => {
 
     const { email, bookingNumber } = req.body;
 
+    let userId = await runQuery(
+        'SELECT id FROM users WHERE email= :email',
+        { email }
+    )
 
-    const result = await runQuery(
+    if (userId.length === 0) {
+        res.json({ error: 'Email does not exist.' })
+        return;
+    }
+
+    userId = userId[0].id;
+
+    let findBookingId = await runQuery(
+
+        'SELECT id FROM bookings WHERE bookingNumber = :bookingNumber', { bookingNumber }
+
+    )
+
+    if (findBookingId.length === 0) {
+        res.json({ error: 'Booking number does not exist.' })
+        return;
+    }
+
+    findBookingId = findBookingId[0].id;
+
+    const clearSeats = await runQuery(
+        'DELETE FROM ticketTypeXbookings WHERE bookings_id = :findBookingId',
+        { findBookingId }
+    )
+
+
+    const deleteBooking = await runQuery(
         'DELETE bookings FROM bookings INNER JOIN users ON bookings.userId = users.id WHERE bookings.bookingNumber = :bookingNumber AND users.email = :email',
         { email, bookingNumber }
     );
 
-    res.json(result);
-
+    res.json({ clearSeats, deleteBooking });
 
 });
 /*

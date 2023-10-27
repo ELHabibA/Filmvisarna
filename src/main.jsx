@@ -26,19 +26,19 @@ import MyPage from './MyPage.jsx';
 
 
 export const pages = [
-    
-  { path: '/', label: 'Hem', element: <Home /> },
-  { path: '/filmer', label: 'Filmer', element: <Movies /> },
-  { path: '/boka/:screeningId', label: 'Boka', element: <Booking /> },
-  { path: '/kontakt', label: 'Kontakta oss', element: <ContactUs /> },
-  { path: '/blimedlem', label: 'Bli medlem', element: <BecomeMember /> },
-  { path: '/loggain', label: 'Logga in', element: <LogIn/>  },
-  { path: '/avbokning', label: '', element: <CancelBooking/>  },
-  { path: '/minsida', label: 'Min Sida', element:  <MyPage />  },
-  { path: '/detaljsidan/:movieId', label: '', element: <MoviePage /> },
-  { path: '/finalize-booking', label: '', element: <FinalizeBooking /> }, // Ta bort sedan, kunder/externa användare ska inte kunna se denna sida utan att ha valt film.
-  { path: '/bokningsbekraftelse', label: '', element: <BookingConfirmation /> }, // Ta bort sedan, kunder/externa användare ska inte kunna se denna sida utan att ha valt film.
-    
+
+    { path: '/', label: 'Hem', element: <Home /> },
+    { path: '/filmer', label: 'Filmer', element: <Movies /> },
+    { path: '/boka/:screeningId', label: 'Boka', element: <Booking /> },
+    { path: '/kontakt', label: 'Kontakta oss', element: <ContactUs /> },
+    { path: '/blimedlem', label: 'Bli medlem', element: <BecomeMember /> },
+    { path: '/loggain', label: 'Logga in', element: <LogIn /> },
+    { path: '/avbokning', label: 'Avbokning', element: <CancelBooking /> },
+    { path: '/minsida', label: 'Min Sida', element: <MyPage /> },
+    { path: '/detaljsidan/:movieId', label: '', element: <MoviePage /> },
+    { path: '/finalize-booking', label: '', element: <FinalizeBooking /> }, // Ta bort sedan, kunder/externa användare ska inte kunna se denna sida utan att ha valt film.
+    { path: '/bokningsbekraftelse', label: '', element: <BookingConfirmation /> }, // Ta bort sedan, kunder/externa användare ska inte kunna se denna sida utan att ha valt film.
+
 ];
 
 const router = createBrowserRouter([

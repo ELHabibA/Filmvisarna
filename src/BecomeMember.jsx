@@ -12,7 +12,7 @@ const initialRegistrationData = {
   'E-postadress': '',
   'Bekräfta E-postadress': '',
   Telefonnummer: '',
-  Losenord: '',
+  Lösenord: '',
   'Bekräfta Lösenord': ''
 };
 
@@ -58,11 +58,11 @@ function BliMedlem() {
       newFieldErrors['E-postadress'] = 'E-postadresserna matchar inte.';
     }
 
-    if (!validatePassword(formState.Losenord)) {
+    if (!validatePassword(formState.Lösenord)) {
       newFieldErrors['Lösenord'] = 'Lösenordet måste innehålla minst åtta bokstäver, minst 1 stor bokstav, samt en  siffra och en tecken.';
     }
 
-    if (formState.Losenord !== formState['Bekräfta Lösenord']) {
+    if (formState.Lösenord !== formState['Bekräfta Lösenord']) {
       newFieldErrors['Bekräfta Lösenord'] = 'Lösenordet och bekräftelsen matchar inte.';
     }
 
@@ -89,7 +89,7 @@ function BliMedlem() {
       lastName: formState.Efternamn,
       email: formState['E-postadress'],
       phoneNumber: formState.Telefonnummer,
-      password: formState.Losenord,
+      password: formState.Lösenord,
     };
     const queryParts = restPostRoutes.addRow.query;
 
@@ -102,7 +102,7 @@ function BliMedlem() {
     };
 
     try {
-      const response = await fetch('http://localhost:5174/api/users', postRequest);
+      const response = await fetch('/api/users', postRequest);
       const data = await response.json();
 
 
@@ -140,7 +140,7 @@ function BliMedlem() {
                   'E-postadress',
                   'Bekräfta E-postadress',
                   'Telefonnummer',
-                  'Losenord',
+                  'Lösenord',
                   'Bekräfta Lösenord',
                 ].map((field) => (
                   <Form.Group key={field}>
@@ -148,7 +148,7 @@ function BliMedlem() {
                       {field === 'Bekräfta Lösenord' ? 'Bekräfta Lösenord' : field}
                     </Form.Label>
                     <Form.Control
-                      type={field === 'Losenord' || field === 'Bekräfta Lösenord' ? 'password' : 'text'}
+                      type={field === 'Lösenord' || field === 'Bekräfta Lösenord' ? 'password' : 'text'}
                       className="form-control"
                       placeholder=""
                       value={formState[field]}
