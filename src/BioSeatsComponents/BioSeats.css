@@ -21,10 +21,10 @@
     border-top-right-radius: 50px;
 }
 
-/* Stil för sätesknapparna */
+/* Stil fï¿½r sï¿½tesknapparna */
 
 .seat-button-primary {
-    background-color: #f1f1f1 !important; /* Grön */
+    background-color: #f1f1f1 !important; /* Grï¿½n */
     border-color: #8B6F47 !important;
 }
 
@@ -36,13 +36,13 @@
     .seat-button-primary:hover, .seat-button-secondary:hover {
         background-color: #ffe44d !important; /* Ljusare guld */
         border-color: #9D7F58 !important;
-        transform: scale(1.1); /* Förstorar lite vid hover */
+        transform: scale(1.1); /* Fï¿½rstorar lite vid hover */
     }
 
     .seat-button-primary:active, .seat-button-secondary:active {
         background-color: #ffd700 !important; /* Stark guld */
         border-color: #9D7F58 !important;
-        transform: scale(0.95); /* Förminskar lite vid klick */
+        transform: scale(0.95); /* Fï¿½rminskar lite vid klick */
     }
 
 .btn:disabled {
@@ -73,7 +73,7 @@
     }
 
     .seat-button-primary:hover, .seat-button-secondary:hover {
-        transform: scale(2.0); /* Större förstorning vid hover på mobil */
+        transform: scale(2.0); /* Stï¿½rre fï¿½rstorning vid hover pï¿½ mobil */
     }
 }
 
@@ -89,11 +89,11 @@
     }
 
     .seat-button-primary:hover, .seat-button-secondary:hover {
-        transform: scale(1.5); /* Större förstorning vid hover på mobil */
+        transform: scale(1.5); /* Stï¿½rre fï¿½rstorning vid hover pï¿½ mobil */
     }
 }
 
-@media (min-width: 667px) and (max-width: 992px) { /* Mellanstor skärm */
+@media (min-width: 667px) and (max-width: 992px) { /* Mellanstor skï¿½rm */
     .saloon-container {
         width: 100%;
         max-width: none;
@@ -109,5 +109,21 @@
         font-size: 0.8rem;
         width: 5vw;
         height: 5vw;
+    }
+}
+
+@media (max-width: 550px) {
+    .seat-btn {
+        font-size: 0.4rem; /* Adjust font size */
+        width: 17px; /* Adjust width */
+        height: 25px; /* Adjust height */
+    }
+
+    .seat-col {
+        padding: 1px !important; /* Adjust padding */
+    }
+
+    .saloon-container {
+        padding: 5px; /* Adjust padding */
     }
 }
