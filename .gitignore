@@ -15,7 +15,7 @@
 .vite
 
 # Login email
-loginCredentials.js
+backend/nodemailer/loginCredentials.js
 
 # User-specific files
 *.suo
