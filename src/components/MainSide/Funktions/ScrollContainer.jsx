@@ -1,23 +1,19 @@
 import { useState, useEffect } from 'react';
 
 function ScrollContainer() {
-  const [showKidsContainer, setShowKidsContainer] = useState(true);
-  const [showSeIdagContainer, setShowSeIdagContainer] = useState(true);
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [showContainer, setShowContainer] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.scrollY;
 
-      if (currentScrollPos > prevScrollPos) {
-        setShowKidsContainer(false);
-        setShowSeIdagContainer(false);
+      if (currentScrollPos === 0) {
+        // If at the top of the page, show the container
+        setShowContainer(true);
       } else {
-        setShowKidsContainer(true);
-        setShowSeIdagContainer(true);
+        // If scrolling down, hide the container
+        setShowContainer(false);
       }
-
-      setPrevScrollPos(currentScrollPos);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -25,13 +21,10 @@ function ScrollContainer() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [prevScrollPos]);
+  }, []);
 
-  // You can return the state values if needed, for example:
-  return {
-    showKidsContainer,
-    showSeIdagContainer,
-  };
+  // You can return the state value if needed, for example:
+  return showContainer;
 }
 
 export default ScrollContainer;

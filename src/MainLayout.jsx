@@ -36,19 +36,19 @@ function MainLayout() {
     // Use the useLibraryToggle hook to manage the library toggle
     const { showKidsLibrary, toggleLibrary } = useLibraryToggle(true);
 
-    const { showKidsContainer, showSeIdagContainer } = ScrollContainer();
+    const showContainer = ScrollContainer();
 
     return (
         <div className="main-layout">
             <div className="content">
                 <div className="movie-scroller">
-                    {showSeIdagContainer && <SeIdag15Plus />}
+                    {showContainer && <SeIdag15Plus />}
                     <MovieScroller
                         movieImages={movieImages.slice(0, 5)}
                         movieIds={movieIds}
                         handleImageClick={handleImageClick}
                     />
-                    {showKidsContainer && <KidsContainer />}
+                    {showContainer && <KidsContainer />}
 
                 </div>
                 {/* Use the IdagMovies component and pass in the data as props */}

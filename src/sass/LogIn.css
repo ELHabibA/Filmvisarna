@@ -1,0 +1,42 @@
+.card {
+  background-color: rgba(211, 211, 211, 0.6);
+  max-width: 700px;
+  margin: auto;
+
+}
+
+.card h2 {
+  color: white;
+}
+
+.form-control {
+  background: black;
+  color: white;
+  border-color: #272A31;
+  border: 1px solid white;
+  max-width: 80%;
+  margin-left: 40px;
+  margin-bottom: 10px;
+}
+
+.inputFieldStyle {
+  color: white;
+
+}
+
+.card .placeholderStyle {
+  color: white;
+  text-align: left;
+  margin-left: 40px;
+  display: block;
+}
+
+
+.card Form.Label {
+  color: white;
+
+}
+
+.card .become-member-link {
+  color: #A76B09;
+}
