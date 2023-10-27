@@ -44,7 +44,7 @@ const Login = () => {
         <Col xs={12} sm={10} md={8} lg={6}>
           <Card className="card">
             <Card.Body className="text-center">
-              <h2 className="h2">Logga In</h2>
+              <h2 className="h2">Logga in</h2>
               <Form className="rectangle-form">
                 <Form.Group>
                   <Form.Label className="placeholderStyle">E-post</Form.Label>

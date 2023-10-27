@@ -69,7 +69,7 @@ const MyPage = () => {
       <Container className="mt-5">
         <Card className="my-page-card">
           <Card.Header className="text-center">
-            <h2>Min Sida</h2>
+            <h2>Min sida</h2>
           </Card.Header>
           <Card.Body className="text-left">
             <div className="user-info">
