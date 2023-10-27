@@ -54,7 +54,6 @@ function FinalizeBooking({
                         seatsForCurrentAuditorium={seatsForCurrentAuditorium}
                         price={price}
                         email={setEmail}
-
                     />
                 </Modal.Header>
                 <Modal.Body>
