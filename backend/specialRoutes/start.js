@@ -37,9 +37,6 @@ app.post('/api/makeBooking', async (req, res) => {
                     VALUES (:bookingNumber, :screeningId, :userId)`,
         { bookingNumber, userId: user.id, screeningId });
     let bookingId = result.insertId;
-    console.log("Vad finns i bookingId direkt efter att det skapas??", bookingId);
-
-    console.log('Men vad fan är det för problem med seatID??', seatIds)
     // Create seat data
     let seats = [], seatIdsCopy = seatIds.slice();
     for (let type in seatTypes) {
@@ -52,10 +49,10 @@ app.post('/api/makeBooking', async (req, res) => {
     for (let { bookingId, seatId, ticketTypeId } of seats) {
         let result = await runQuery(`INSERT INTO ticketTypeXbookings (bookings_id, seats_id, ticketType_id)
                     VALUES (:bookingId, :seatId, :ticketTypeId)`, { bookingId, seatId, ticketTypeId });
-        console.log("HMMMMMMMM", result, { bookingId, seatId, ticketTypeId })
+
     }
 
-    console.log("Vad finns i bookingId??", bookingId);
+
     // Send email here!!!
 
     sendEmail(bookingId);
