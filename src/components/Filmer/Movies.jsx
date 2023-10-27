@@ -47,7 +47,7 @@ const Movies = () => {
   return (
     <div>
       <img
-        src="https://i-viaplay-com.akamaized.net/viaplay-prod/575/668/1686897326-b16e011791d011412639483343f89c9f3af6f360.jpg?width=400&height=600"
+        src="https://static1.cbrimages.com/wordpress/wp-content/uploads/2023/03/sci-fi-fantasy-march.jpg"
         alt="Filmer Poster"
         className="movie-poster"
       />
