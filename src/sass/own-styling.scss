@@ -142,3 +142,9 @@ button:nth-child(2) {
   display: flex;
   flex-wrap: wrap;
 }
+
+.form-control:disabled {
+  background-color: #e9ecef;
+  opacity: 1;
+  color: black;
+}
