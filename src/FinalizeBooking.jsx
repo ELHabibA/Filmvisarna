@@ -30,17 +30,13 @@ function FinalizeBooking({
                 Object.entries(ticketTypes).map(([key, val]) => {
                     let dict = { adults: 1, kids: 2, retired: 3 };
                     return [dict[key] + '', val];
-                }))
-        }
+                })
+            )
+        };
         let result = await postData('/api/makeBooking', data);
-    
+        return result;
     }
 
-    /*data = {
-        email, screeningId, seatsIds: []
-    }*/
-
-    // const response = postData('/api/makeBooking', data)
 
     return (
         <>
@@ -67,7 +63,7 @@ function FinalizeBooking({
 export default FinalizeBooking;
 
 
-async function postData(url = "", data = {}) {
+export async function postData(url = "", data = {}) {
 
     const response = await fetch(url, {
         method: "POST",

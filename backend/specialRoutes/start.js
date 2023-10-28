@@ -16,7 +16,8 @@ app.get('/api/bookingNumber', (req, res) => {
 
 
 app.post('/api/makeBooking', async (req, res) => {
-
+  
+ try {
     // Data from request body
     let { email, screeningId, seatIds, seatTypes } = req.body;
 
@@ -51,14 +52,15 @@ app.post('/api/makeBooking', async (req, res) => {
                     VALUES (:bookingId, :seatId, :ticketTypeId)`, { bookingId, seatId, ticketTypeId });
 
     }
-
-
-    // Send email here!!!
-
     sendEmail(bookingId);
-
-
-    res.json({ bookingNumber });
+     res.status(200).json({ status: 'success', bookingNumber });
+     
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ status: 'error', message: 'Något gick fel vid bokningen.' });
+    }
+  
 });
 
 
