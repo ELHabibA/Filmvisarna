@@ -1,11 +1,12 @@
-
 import { Row, Col } from "react-bootstrap";
 import { useFormHelper } from '../../hooks/useFormHelper';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
 
 
 export default function BookingForm({ handleClose, email, setEmail, book }) {
+  const [onSubmitMessage, setOnSubmitAnswer] = useState('');
+  const [bookingCompleted, setBookingCompleted] = useState(false);
 
   const {
     formState,
@@ -15,6 +16,7 @@ export default function BookingForm({ handleClose, email, setEmail, book }) {
   } = useFormHelper();
 
   const { user } = useOutletContext();
+
   useEffect(() => {
     if (user) {
       setFormState({ ...formState, email: user.email });
@@ -29,40 +31,49 @@ export default function BookingForm({ handleClose, email, setEmail, book }) {
     setEmail(formState.email)
   }, [formState]);
 
-  function doAfterSend(serverResponse) {
-    console.log('serverResponse', serverResponse);
-    handleClose();
-    setEmail = email;
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+    const response = await book(event);
+    if (response.status === 'success' && response.bookingNumber) {
+      setOnSubmitAnswer('Tack för din bokning!');
+      setBookingCompleted(true);
+    } else {
+      setOnSubmitAnswer('Det funkade ej. Försök igen snart.');
+    }
+  } catch (error) {
+    console.error('Något gick fel:', error);
+    setOnSubmitAnswer('Det funkade ej. Försök igen snart.');
   }
+  };
 
   return <>
     <>
 
 
-      <form onSubmit={book}>
+      <form onSubmit={handleSubmit}>
         <Row>
           <Col sm={12}>
             <div className='bg-secondary rounded p-3 mt-3'>
               <h4>Dina uppgifter</h4>
               {[
 
-
                 ['input', 'email', 'E-post', { type: 'email', disabled: !!user }],
-
 
               ].map(elData => createInputElement(...elData))
 
-              }</div></Col>
+              }</div>
+          </Col>
         </Row>
-
-
 
         <Row>
           <Col sm={12} className='mt-3 mb-3'>{[
 
             ['button', '_submit', '', {
               type: 'submit',
-              className: !formIsValid ? 'can-not-submit' : '',
+              className: !formIsValid || bookingCompleted ? 'can-not-submit' : '',
+              disabled: !formIsValid || bookingCompleted,
               nolabel: true
             }, 'Boka'],
 
@@ -76,7 +87,7 @@ export default function BookingForm({ handleClose, email, setEmail, book }) {
           ].map(elData => createInputElement(...elData))
           }</Col>
         </Row>
-
+        {onSubmitMessage && <p>{onSubmitMessage}</p>}
       </form>
     </>
   </>;
