@@ -2,7 +2,8 @@ import emailContent from "./emailContent.js";
 
 
 
-const htmlTemplate = `<!DOCTYPE html>
+const htmlTemplate = (emailContent) => 
+`<!DOCTYPE html>
     <html>
     
     <head>
@@ -29,7 +30,7 @@ const htmlTemplate = `<!DOCTYPE html>
                 <td style="vertical-align: top; width: 20%;">
                     <img 
                         style="display: block; margin-right: 10px;"
-                        src="https://pbs.twimg.com/media/FvUVt3hXgAAxP1H?format=jpg&name=900x900" 
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3luCZ5wGZkhPfM7aUByTJcYj8T0tcmvYLWw&usqp=CAU" 
                         alt="A Group of Ring-tailed Lemurs" 
                         width="150px"
                         height="200px"
@@ -52,7 +53,7 @@ const htmlTemplate = `<!DOCTYPE html>
                                 <b>Datum:</b>
                             </th>
                             <td>
-                                ${emailContent.date}
+                                ${emailContent.date.toLocaleString('sv-SE').slice(0, -3)}
                             </td>
                         </tr>
                         <tr>

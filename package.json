@@ -19,6 +19,7 @@
     "express-mysql-session": "^3.0.0",
     "express-session": "^1.17.3",
     "mysql2": "^3.6.2",
+    "node-fetch": "^3.3.2",
     "nodemailer": "^6.9.5",
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.0",

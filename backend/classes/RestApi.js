@@ -57,7 +57,7 @@ export class RestApi {
   
     // if no route matches the query...
     this.server.all('/api/*', (req, res) => {
-      res.status(this.settings.errorStatus);
+      res.status(global.settings.errorStatus);
       res.json({ error: 'no such route' });
     });
   }

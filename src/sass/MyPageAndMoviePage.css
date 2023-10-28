@@ -1,0 +1,47 @@
+/* MyPage.css */
+
+.my-page-card {
+  background-color: rgba(211, 211, 211, 0.6);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.text-color {
+  color: rgb(40, 35, 35); 
+}
+
+.text-color-2 {
+  color: rgb(55, 55, 55); 
+}
+
+.card-horizontal-line {
+  border-top: 0.5px solid #727070; 
+  margin-top: 10px; 
+  margin-bottom: 10px; 
+}
+
+.text-left {
+  margin-bottom: 10px; 
+}
+
+
+/* MoviePage.css */
+.white-card {
+  background-color: rgba(211, 211, 211, 0.6);
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.cancel-booking-link {
+  color: #A76B09;
+}
+
+.booking-link {
+  color: #353535; 
+  font-weight: bold;
+}
+

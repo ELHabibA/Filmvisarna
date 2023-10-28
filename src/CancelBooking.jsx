@@ -1,7 +1,6 @@
-import { Container, Row, Col, Button, Form } from "react-bootstrap";
+import { Container, Row, Col, Button, Form, Alert } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import React, { useState } from "react";
-import Alert from 'react-bootstrap/Alert';
 
 function CancelBooking() {
   const [bookingNumber, setBookingNumber] = useState('');
@@ -11,7 +10,7 @@ function CancelBooking() {
 
   const handleCancelBooking = async () => {
     try {
-      const response = await (await fetch('/api/bookings', {
+      const response = await (await fetch('/api/unbook', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -19,7 +18,9 @@ function CancelBooking() {
         body: JSON.stringify({ email, bookingNumber }),
       })).json();
 
-      if (response.affectedRows) {
+      console.log('Response', response)
+
+      if (!response.error && (response.clearSeats.affectedRows > 0 && response.deleteBooking.affectedRows > 0)) {
         // Handle success, e.g., show a success message to the user
         setSuccess(true);
         setMessage('Avbokningen lyckades, avbokningsbekräftelse kommer att skickas till din mejl.');

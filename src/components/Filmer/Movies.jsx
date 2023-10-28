@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useParams, useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useLocation, useOutletContext } from 'react-router-dom';
 import MovieFilter from './MovieFilter';
 import MovieItem from './MovieItem';
 import './../../sass/movies.css';
-import { useOutletContext } from "react-router-dom";
+
 
 const Movies = () => {
 
@@ -47,7 +47,7 @@ const Movies = () => {
   return (
     <div>
       <img
-        src="https://i-viaplay-com.akamaized.net/viaplay-prod/575/668/1686897326-b16e011791d011412639483343f89c9f3af6f360.jpg?width=400&height=600"
+        src="https://static1.cbrimages.com/wordpress/wp-content/uploads/2023/03/sci-fi-fantasy-march.jpg"
         alt="Filmer Poster"
         className="movie-poster"
       />
