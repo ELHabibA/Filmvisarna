@@ -36,7 +36,7 @@ export default function BookingForm({ handleClose, email, setEmail, book }) {
     try {
       const response = await book(event);
       if (response.status === 'success' && response.bookingNumber) {
-        setOnSubmitAnswer('Tack för din bokning!');
+        setOnSubmitAnswer(`Tack för din bokning! Ditt bokningsnummer är ${response.bookingNumber}` );
         setShowSuccessModal(true);
       } else {
         setOnSubmitAnswer('Det funkade ej. Försök igen snart.');

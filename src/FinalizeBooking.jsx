@@ -34,7 +34,6 @@ function FinalizeBooking({
             )
         };
         let result = await postData('/api/makeBooking', data);
-        console.log('the response in book: ',result);
         return result;
     }
 
