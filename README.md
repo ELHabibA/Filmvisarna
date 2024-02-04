@@ -34,11 +34,11 @@ The following features are outlined based on the product owner's user stories:
 
 3. **Booking System:**
    - Choose adjacent seats for a specific movie showing.
-   - Dynamically mark the best remaining seats.
+   - Dynamically mark the remaining seats.
    - Change seat selection during the booking process.
 
 4. **Price Variation:**
-   - Implement different ticket prices for normal, senior, and child tickets.
+   - Implement different ticket prices for normal, retired, and child tickets.
 
 5. **Filtering and Sorting:**
    - Filter movie showings by date.
