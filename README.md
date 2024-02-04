@@ -90,14 +90,14 @@ Our team consisted of seven members, each contributing to different aspects of t
 
 ### Backend:
 
-- Node.js. 
-- REST API for data delivery to the frontend and user authentication.
-- MySQL for the database.
+- Node.js
+- REST API
+- MySQL 
 
 ### Frontend:
 
-- React as the frontend framework.
-- Utilization of a responsive CSS framework Bootstrap.
+- React.js
+- Bootstrap
 
 ## Project Timeline
 
