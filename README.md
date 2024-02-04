@@ -1,6 +1,6 @@
 # Filmvisarna
 
-### Note: This project is a fork of the original repository, which can be found [here](https://github.com/BobbyMoreau/Filmvisarna).
+This project is a fork of the original repository, which can be found [here](https://github.com/BobbyMoreau/Filmvisarna).
 
 ## Group Collaboration
 
@@ -8,9 +8,51 @@ This project represents a collaborative effort undertaken by a group of students
 
 ## Project Overview
 
-Filmvisarna AB is a small cinema chain striving to establish local competition with SF. The project involves building the initial version of their website, and our team has focused on implementing features outlined by the product owner's user stories.
+Filmvisarna AB is a small cinema chain aiming to compete locally with SF, a larger cinema chain. The company has secured rights to showcase a variety of film titles and currently operates several cinema halls in Småstad.
 
-## Team Dynamics and Collaboration
+The primary goal of this project is to build the initial version of their website, allowing visitors to:
+
+- Obtain information about movies, including dates and showtimes.
+- Watch trailers for the movies.
+- Book cinema tickets online, with details such as total price, seat locations (row and seat number), and booking number.
+
+Filmvisarna AB also desires a booking system featuring a graphical representation of cinema halls and seats, enabling users to reserve adjacent seats for their group during a specific movie showing. Initially, the system should highlight the best-remaining seats, but users should have the flexibility to modify their selection.
+
+## Project Features
+
+The following features are outlined based on the product owner's user stories:
+
+1. **Movie Information:**
+   - View details about movies, including dates and times.
+   - Watch trailers for each film.
+
+2. **Online Booking:**
+   - Reserve cinema tickets online.
+   - Select the number of visitors and view the total price.
+   - Receive a unique, hard-to-guess booking number.
+   - See selected seat numbers, film details, and date/time in the booking confirmation.
+
+3. **Booking System:**
+   - Choose adjacent seats for a specific movie showing.
+   - Dynamically mark the best remaining seats.
+   - Change seat selection during the booking process.
+
+4. **Price Variation:**
+   - Implement different ticket prices for normal, senior, and child tickets.
+
+5. **Filtering and Sorting:**
+   - Filter movie showings by date.
+   - Filter movies based on age restrictions.
+
+6. **User Account Management:**
+   - Register a new account.
+   - Log in to access user-specific features.
+   - View booking history.
+
+7. **Security Measures:**
+   - Ensure secure storage of user passwords in the database.
+   - Implement safeguards against XSS and database injection attacks.
+   - Generate hard-to-guess booking numbers.
 
 ### Agile Approach
 
