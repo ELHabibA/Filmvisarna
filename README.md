@@ -120,12 +120,12 @@ To run the project:
     ```bash
     cd frontend
     ```
-2. Then install npm                                 
+2. Install npm                                 
 
     ```bash
     npm install
     ```
-3. Then run the project
+3. Run the project
 
      ```bash
     npm run dev
